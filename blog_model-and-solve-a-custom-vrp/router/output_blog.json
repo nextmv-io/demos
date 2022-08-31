@@ -1,0 +1,129 @@
+{
+    "version": { "sdk": "v0.16.0-dev.0-5" },
+    "options": {
+        "diagram": { "expansion": { "limit": 1 }, "width": 10 },
+        "limits": { "duration": "10s" },
+        "search": { "buffer": 100 },
+        "sense": "minimize"
+    },
+    "store": {
+        "unassigned": [],
+        "vehicles": [
+            {
+                "id": "v1",
+                "route": [
+                    {
+                        "id": "v1-start",
+                        "position": { "lon": 50.984202, "lat": 6.836984 },
+                        "estimated_arrival": "2022-10-17T06:00:00+02:00",
+                        "estimated_departure": "2022-10-17T06:00:00+02:00"
+                    },
+                    {
+                        "id": "Pulheim",
+                        "position": { "lon": 50.999689, "lat": 6.802784 },
+                        "estimated_arrival": "2022-10-17T06:06:57+02:00",
+                        "estimated_departure": "2022-10-17T06:21:57+02:00"
+                    },
+                    {
+                        "id": "Chorweiler",
+                        "position": { "lon": 51.022098, "lat": 6.895993 },
+                        "estimated_arrival": "2022-10-17T06:39:43+02:00",
+                        "estimated_departure": "2022-10-17T06:54:43+02:00"
+                    },
+                    {
+                        "id": "Ehrenfeld",
+                        "position": { "lon": 50.967262, "lat": 6.897119 },
+                        "estimated_arrival": "2022-10-17T07:04:48+02:00",
+                        "estimated_departure": "2022-10-17T07:19:48+02:00"
+                    },
+                    {
+                        "id": "Zollstock",
+                        "position": { "lon": 50.907191, "lat": 6.940605 },
+                        "estimated_arrival": "2022-10-17T07:33:29+02:00",
+                        "estimated_departure": "2022-10-17T07:48:29+02:00"
+                    },
+                    {
+                        "id": "Huerth",
+                        "position": { "lon": 50.880198, "lat": 6.874512 },
+                        "estimated_arrival": "2022-10-17T08:01:42+02:00",
+                        "estimated_departure": "2022-10-17T08:16:42+02:00"
+                    },
+                    {
+                        "id": "v1-end",
+                        "position": { "lon": 50.984202, "lat": 6.836984 },
+                        "estimated_arrival": "2022-10-17T08:37:04+02:00",
+                        "estimated_departure": "2022-10-17T08:37:04+02:00"
+                    }
+                ],
+                "route_duration": 9424
+            },
+            {
+                "id": "v2",
+                "route": [
+                    {
+                        "id": "v2-start",
+                        "position": { "lon": 50.984202, "lat": 6.836984 },
+                        "estimated_arrival": "2022-10-17T06:00:00+02:00",
+                        "estimated_departure": "2022-10-17T06:00:00+02:00"
+                    },
+                    {
+                        "id": "Altstadt",
+                        "position": { "lon": 50.938221, "lat": 6.952554 },
+                        "estimated_arrival": "2022-10-17T06:23:02+02:00",
+                        "estimated_departure": "2022-10-17T06:38:02+02:00"
+                    },
+                    {
+                        "id": "Porz",
+                        "position": { "lon": 50.882609, "lat": 7.066523 },
+                        "estimated_arrival": "2022-10-17T07:01:30+02:00",
+                        "estimated_departure": "2022-10-17T07:16:30+02:00"
+                    },
+                    {
+                        "id": "Kalk",
+                        "position": { "lon": 50.930312, "lat": 7.02801 },
+                        "estimated_arrival": "2022-10-17T07:27:49+02:00",
+                        "estimated_departure": "2022-10-17T07:42:49+02:00"
+                    },
+                    {
+                        "id": "Deutz",
+                        "position": { "lon": 50.942762, "lat": 6.982058 },
+                        "estimated_arrival": "2022-10-17T07:51:38+02:00",
+                        "estimated_departure": "2022-10-17T08:06:38+02:00"
+                    },
+                    {
+                        "id": "Nippes",
+                        "position": { "lon": 50.963105, "lat": 6.955426 },
+                        "estimated_arrival": "2022-10-17T08:12:50+02:00",
+                        "estimated_departure": "2022-10-17T08:27:50+02:00"
+                    },
+                    {
+                        "id": "v2-end",
+                        "position": { "lon": 50.984202, "lat": 6.836984 },
+                        "estimated_arrival": "2022-10-17T08:50:07+02:00",
+                        "estimated_departure": "2022-10-17T08:50:07+02:00"
+                    }
+                ],
+                "route_duration": 10207
+            }
+        ]
+    },
+    "statistics": {
+        "bounds": { "lower": -9223372036854775808, "upper": 221233 },
+        "search": {
+            "generated": 424,
+            "filtered": 0,
+            "expanded": 424,
+            "reduced": 0,
+            "restricted": 424,
+            "deferred": 424,
+            "explored": 414,
+            "solutions": 4
+        },
+        "time": {
+            "elapsed": "1.002489313s",
+            "elapsed_seconds": 1.002489313,
+            "start": "2022-08-30T14:41:21.92439809+02:00"
+        },
+        "value": 221233
+    }
+}

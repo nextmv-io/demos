@@ -1,0 +1,180 @@
+{
+    "vehicles": [
+        "v1",
+        "v2"
+    ],
+    "velocities": [
+        10.0,
+        10.0
+    ],
+    "stops": [
+        {
+            "id": "Chorweiler",
+            "position": {
+                "lon": 51.022098,
+                "lat": 6.895993
+            }
+        },
+        {
+            "id": "Pulheim",
+            "position": {
+                "lon": 50.999689,
+                "lat": 6.802784
+            }
+        },
+        {
+            "id": "Ehrenfeld",
+            "position": {
+                "lon": 50.967262,
+                "lat": 6.897119
+            }
+        },
+        {
+            "id": "Altstadt",
+            "position": {
+                "lon": 50.938221,
+                "lat": 6.952554
+            }
+        },
+        {
+            "id": "Nippes",
+            "position": {
+                "lon": 50.963105,
+                "lat": 6.955426
+            }
+        },
+        {
+            "id": "Deutz",
+            "position": {
+                "lon": 50.942762,
+                "lat": 6.982058
+            }
+        },
+        {
+            "id": "Zollstock",
+            "position": {
+                "lon": 50.907191,
+                "lat": 6.940605
+            }
+        },
+        {
+            "id": "Huerth",
+            "position": {
+                "lon": 50.880198,
+                "lat": 6.874512
+            }
+        },
+        {
+            "id": "Porz",
+            "position": {
+                "lon": 50.882609,
+                "lat": 7.066523
+            }
+        },
+        {
+            "id": "Kalk",
+            "position": {
+                "lon": 50.930312,
+                "lat": 7.028010
+            }
+        }
+    ],
+    "starts": [
+        { 
+            "lon": 50.984202,
+            "lat": 6.836984
+        },
+        {
+            "lon": 50.984202,
+            "lat": 6.836984
+        }
+    ],
+    "ends": [
+        {
+            "lon": 50.984202,
+            "lat": 6.836984
+        },
+        {
+            "lon": 50.984202,
+            "lat": 6.836984
+        }
+    ],
+    "service_times": [
+        {
+            "id": "Chorweiler",
+            "duration": 900
+        },
+        {
+            "id": "Pulheim",
+            "duration": 900
+        },
+        {
+            "id": "Ehrenfeld",
+            "duration": 900
+        },
+        {
+            "id": "Altstadt",
+            "duration": 900
+        }, 
+        {
+            "id": "Nippes",
+            "duration": 900
+        },
+        {
+            "id": "Deutz",
+            "duration": 900
+        },
+        {
+            "id": "Zollstock",
+            "duration": 900
+        },
+        {
+            "id": "Huerth",
+            "duration": 900
+        },
+        {
+            "id": "Porz",
+            "duration": 900
+        },
+        {
+            "id": "Kalk",
+            "duration": 900
+        }
+    ],
+    "shift": [
+        {
+            "start": "2022-10-17T06:00:00+02:00",
+            "end": "2022-10-17T10:00:00+02:00"
+        },
+        {
+            "start": "2022-10-17T06:00:00+02:00",
+            "end": "2022-10-17T10:00:00+02:00"
+        }
+    ],
+    "penalties": [
+        2000000,
+        2000000,
+        2000000,
+        2000000,
+        2000000,
+        2000000,
+        2000000,
+        2000000,
+        2000000,
+        2000000
+    ],
+    "classification":{
+        "Ehrenfeld": "large",
+        "Altstadt": "large",
+        "Chorweiler": "normal",
+        "Pulheim": "normal",
+        "Nippes": "normal",
+        "Deutz": "normal",
+        "Zollstock": "normal",
+        "Huerth": "normal",
+        "Porz": "normal",
+        "Kalk": "normal"
+    },
+    "imbalance_penalty": 10000,
+    "unassigned_penalty": 20000000
+}

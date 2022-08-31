@@ -1,2 +1,3 @@
 # demos
-material for demos referenced in Nextmv blog posts and elsewhere
+
+This repo contains materials needed to reproduce examples referenced in Nextmv blog posts and elsewhere.
