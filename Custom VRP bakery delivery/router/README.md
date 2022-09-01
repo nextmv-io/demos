@@ -7,7 +7,7 @@ The most important files created are `main.go` and an input file.
 
 `main.go` implements a VRP solver with many real world features already
 configured. `input_blog.json` is a sample input for the use-case described in
-our [blog post](https://nextmv.io/blog/TKTK).
+our [blog post](https://www.nextmv.io/model-and-solve-a-custom-vrp-using-software-paradigms-with-a-food-retailer-example).
 
 Before you start customizing run the command below to see if everything works as
 expected:
