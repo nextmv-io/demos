@@ -1,6 +1,6 @@
-# Nextmv route template
+# Nextmv routing template
 
-`route` is a modeling kit for vehicle routing problems (VRP). This template
+`routing` is a modeling kit for vehicle routing problems (VRP). This template
 will get you up to speed deploying your own solution.
 
 The most important files created are `main.go` and an input file.
@@ -13,8 +13,10 @@ Before you start customizing run the command below to see if everything works as
 expected:
 
 ```
-nextmv sdk run main.go -- -hop.runner.input.path input_blog.json\
-  -hop.runner.output.path output_blog.json
+nextmv run local main.go -- \
+  -hop.runner.input.path input.json \
+  -hop.solver.limits.duration 10s \ 
+  -hop.runner.output.path output.json
 ```
 
 A file `output_blog.json` should have been created with a VRP solution.
