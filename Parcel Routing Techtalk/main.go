@@ -18,12 +18,12 @@ func main() {
 	}
 }
 
-// This struct describes the expected json input by the runner.
+// These structs describe the expected json input for the model.
 // Features not needed can simply be deleted or commented out, but make
 // sure that the corresponding option in `solver` is also commented out.
 // In case you would like to support additional options or constraints
 // you can change the schema to suit those. You will need to change the code
-// below to extract the new input data.
+// below to extract the new input data into the proper structs for the engine.
 type input struct {
 	Stops         []Stop        `json:"stops"`
 	Vehicles      []Vehicle     `json:"vehicles"`
@@ -65,8 +65,8 @@ func solver(i input, opts store.Options) (store.Solver, error) {
 	// it is advisable from a security point of view to add strong
 	// input validations before passing the data to the solver.
 
-	// First we need to create data structures which are compatible with the
-	// Router engine.
+	// First we will create a few helper variables and a set of data structures
+	// which are compatible with the Router engine.
 	var stopCount = len(i.Stops)
 	var vehicleCount = len(i.Vehicles)
 	var maxWait = -1
@@ -99,7 +99,7 @@ func solver(i input, opts store.Options) (store.Solver, error) {
 		if stop.Type != "" {
 			stopTypes[s] = stop.Type
 		}
-		// Not all stops may have hard windows, so these are conditional.
+		// Not all stops may have time windows, so these are conditional.
 		if stop.HardWindow != (route.TimeWindow{}) {
 			windows[s] = route.Window{TimeWindow: stop.HardWindow, MaxWait: maxWait}
 		}
@@ -123,7 +123,8 @@ func solver(i input, opts store.Options) (store.Solver, error) {
 	// Since we want to explicitly optimize for duration rather than distance, we
 	// will create a duration measure. This one uses Haversine, but this is
 	// easily adaptable to accept a matrix input built from your chosen provider
-	// of distance & duration data.
+	// of distance & duration data. More information about available measures is
+	// available [in our docs](https://www.nextmv.io/docs/how-to-guides/router#measures---cost).
 	distance := measure.HaversineByPoint()
 	distanceIndexed := route.Indexed(distance, points)
 	timeMeasures := make([]route.ByIndex, vehicleCount)
@@ -132,7 +133,7 @@ func solver(i input, opts store.Options) (store.Solver, error) {
 		timeMeasures[m] = measure.Scale(distanceIndexed, 1.0/float64(i.Configuration.Speed))
 	}
 
-	// We need to implement the interface for our custom constraint.
+	// We need to create the custom type needed for our custom constraint interface.
 	typeConstraint := CustomConstraint{types: stopTypes}
 
 	// Now we define our router with the constraints and options we've selected.
