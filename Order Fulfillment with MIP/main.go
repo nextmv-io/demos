@@ -105,7 +105,7 @@ type Output struct {
 	Cartons 	map[string]float64 	`json:"cartons"`
 }
 
-func getAssignments(input input) []assignment{
+func computeAssignments(input input) []assignment{
 	assignments := []assignment{}
 	for _, it := range input.Items{
 		for _, fc := range input.FulfillmentCenters{
@@ -130,7 +130,7 @@ func solver(input input, opts Option) ([]Output, error) {
 	m := mip.NewModel()
 
 	// create assignments (item, fc, carrier combinations)
-	assignments := getAssignments(input)
+	assignments := computeAssignments(input)
 
 	// create some helping data structures
 	fulfillmentCenterCarrierCombinations := []carrier{}
