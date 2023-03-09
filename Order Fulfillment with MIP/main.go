@@ -1,4 +1,4 @@
-// package main holds the implementation of the mip-knapsack template.
+// package main holds the implementation of the order fulfillment model.
 package main
 
 import (
@@ -16,15 +16,14 @@ import (
 // This is a Integer Programming model to solve the order fulfillment problem.
 // We created this model, by initializing the mip-knapsack template from the
 // nextmv CLI first and then modifying it to this specific use case.
-// This mip-knapsack template demonstrates how to solve a Mixed Integer
-// Programming problem. To solve a mixed integer problem is to optimize a linear
+
+// To solve a mixed integer problem is to optimize a linear
 // objective function of many variables, subject to linear constraints.
 // The order fulfillment problem is a typical decision problem in e-commerce and
-// the retailer industry. Whenever multiple fulfillment centers are available to
-// fulfill an order, it needs to be determined, which one is actually used.
-// Furthermore, it might be necessary to determine, which carrier is used to
-// transport the order from the fulfillment center to the customer if there is
-// more than one option.
+// the retailer industry. It needs to be determined which fulfillment centers
+// are used and which carriers should be considered for the transportation of
+// the order to the customer. Of course these are not all aspects of the order
+// fulfillment problem, but these decisions will be the focus of this model.
 func main() {
 	err := run.CLI(solver).Run(context.Background())
 	if err != nil {
@@ -38,7 +37,7 @@ type input struct {
 	FulfillmentCenters	[]fulfillmentCenter				`json:"fulfillmentCenters"`
 	CarrierCapacities	map[string]map[string]float64	`json:"carrierCapacities"`
 	DeliveryCosts		map[string]map[string]float64	`json:"deliveryCosts"`
-	CartonVolume		float64							`json:"cartonVolume"`
+	BoxVolume			float64							`json:"boxVolume"`
 }
 
 // An item has a unique ID, an ordered quantity and a volume
@@ -102,7 +101,7 @@ type Output struct {
 	Items   	[]item  			`json:"items,omitempty"`
 	Value   	float64 			`json:"value,omitempty"`
 	Assignments []assignment 		`json:"assignments"`
-	Cartons 	map[string]float64 	`json:"cartons"`
+	Boxes	 	map[string]float64 	`json:"boxes"`
 }
 
 func computeAssignments(input input) []assignment{
@@ -174,13 +173,13 @@ func solver(input input, opts Option) ([]Output, error) {
 		}, assignments)
 
 	// create another multimap which will hold the info about the number of
-	// cartons at each distribution center
-	cartons := model.NewMultiMap(
+	// boxes at each distribution center
+	boxes := model.NewMultiMap(
 		func(...carrier) mip.Float{
 			return m.NewFloat(0.0, 1000.0)
 		}, fulfillmentCenterCarrierCombinations)
 
-	// We want to maximize the value of the knapsack.
+	// We want to minimize the costs for fulfilling the order.
 	m.Objective().SetMinimize()
 
 	/* Fulfilment constraint -> ensure all items are assigned */
@@ -224,30 +223,30 @@ func solver(input input, opts Option) ([]Output, error) {
 		}
 	}
 
-	/* carton computation -> look at every distribution center and accumulate
-	the volume of all the assigned items, use the carton volume from the input to
-	compute the number of cartons that are necessary */
+	/* box computation -> look at every distribution center and accumulate
+	the volume of all the assigned items, use the box volume from the input to
+	compute the number of boxes that are necessary */
 	for _, fc := range fulfillmentCenterCarrierCombinations{
-		cartonConstr := m.NewConstraint(
+		boxConstr := m.NewConstraint(
 			mip.Equal,
 			0.0,
 		)
-		cartonConstr.NewTerm(-1, cartons.Get(fc))
+		boxConstr.NewTerm(-1, boxes.Get(fc))
 		for _, a := range assignments{
 			if a.FulfillmentCenter.FulfillmentCenterId == fc.FulfillmentCenter.FulfillmentCenterId && a.Carrier == fc.Carrier{
-				cartonConstr.NewTerm(a.Item.Volume * float64(a.Quantity) * 1/input.CartonVolume, x.Get(a))
+				boxConstr.NewTerm(a.Item.Volume * float64(a.Quantity) * 1/input.BoxVolume, x.Get(a))
 			}
 		}
 	}
 
 	/* objective function = handling costs + delivery costs */
-	/* handling costs: cost is based on number of cartons that need to be
+	/* handling costs: cost is based on number of boxes that need to be
 	handled at a distribution center */
-	/* delivery costs: cost is based on number of cartons that need to be
+	/* delivery costs: cost is based on number of boxes that need to be
 	transported */
 	for _, combination := range fulfillmentCenterCarrierCombinations {
-		m.Objective().NewTerm(input.DeliveryCosts[combination.FulfillmentCenter.FulfillmentCenterId][combination.Carrier], cartons.Get(combination))		// delivery costs
-		m.Objective().NewTerm(combination.FulfillmentCenter.HandlingCost, cartons.Get(combination))	// handling costs
+		m.Objective().NewTerm(input.DeliveryCosts[combination.FulfillmentCenter.FulfillmentCenterId][combination.Carrier], boxes.Get(combination))		// delivery costs
+		m.Objective().NewTerm(combination.FulfillmentCenter.HandlingCost, boxes.Get(combination))	// handling costs
 	}
 
 	// We create a solver using the 'highs' provider
@@ -277,7 +276,7 @@ func solver(input input, opts Option) ([]Output, error) {
 		return nil, err
 	}
 
-	output, err := format(solution, input, x, assignments, fulfillmentCenterCarrierCombinations, cartons)
+	output, err := format(solution, input, x, assignments, fulfillmentCenterCarrierCombinations, boxes)
 	if err != nil {
 		return nil, err
 	}
@@ -291,7 +290,7 @@ func format(
 	x model.MultiMap[mip.Bool, assignment],
 	assignments []assignment,
 	carriers []carrier,
-	cartons model.MultiMap[mip.Float, carrier],
+	boxes model.MultiMap[mip.Float, carrier],
 ) (output Output, err error) {
 	output.Status = "infeasible"
 	output.Runtime = solution.RunTime().String()
@@ -314,9 +313,9 @@ func format(
 
 		output.Assignments = assignmentList
 
-		output.Cartons = make(map[string]float64)
+		output.Boxes = make(map[string]float64)
 		for _, c := range carriers{
-			output.Cartons[c.FulfillmentCenter.FulfillmentCenterId+"-"+c.Carrier] = solution.Value(cartons.Get(c))
+			output.Boxes[c.FulfillmentCenter.FulfillmentCenterId+"-"+c.Carrier] = solution.Value(boxes.Get(c))
 		}
 	} else {
 		return output, errors.New("no solution found")

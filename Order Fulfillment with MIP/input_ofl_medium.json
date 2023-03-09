@@ -1,6 +1,6 @@
 {
   "numberOfItems": 15,
-  "cartonVolume": 2.0,
+  "boxVolume": 2.0,
   "items": [
     {
       "itemId": "book",
