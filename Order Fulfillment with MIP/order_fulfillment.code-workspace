@@ -10,7 +10,7 @@
     "launch": {
         "configurations": [
             {
-                "name": "Debug Knapsack MIP",
+                "name": "Debug Order Fulfillment MIP",
                 "type": "go",
                 "request": "launch",
                 "mode": "auto",
