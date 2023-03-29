@@ -1,0 +1,71 @@
+type vehicleInfo struct {
+}
+
+// Update implements route.VehicleUpdater
+func (v vehicleInfo) Update(s route.PartialVehicle) (route.VehicleUpdater, int, bool) {
+	return v, s.Value(), false
+}
+
+type planInfo struct {
+	unassignedStops		int
+	fleetValue 			int
+	initCosts			[]float64
+	penalties			[]int
+	quantities			[]int
+	capacities			[]int
+}
+
+// Update implements route.PlanUpdater
+func (p planInfo) Update(s route.PartialPlan, v []route.PartialVehicle) (route.PlanUpdater, int, bool) {
+	newValue := 0
+	for j, v := range s.Vehicles() {
+		route := v.Route()
+		etas := v.Times().EstimatedArrival
+		etds := v.Times().EstimatedDeparture
+		capacity := p.capacities[j]
+
+		if len(route) > 2 {
+			newValue += int(p.initCosts[j])
+		}
+
+		// simplified consideration of volume in the value function
+		totalVolume := 0
+		for _, r := range route {
+			if r < len(p.quantities){
+				if p.quantities[r] < 0 {
+					totalVolume += p.quantities[r] * -1
+				}
+			}
+		}
+
+		frac := float64(totalVolume) / float64(capacity)
+		if frac < 1{
+			newValue += int((1 - frac) * 20000) 
+		}
+
+		// The new solution value is the travel time with all waiting and
+		// service times.
+		newValue += etds[len(etds)-1] - etas[0]
+	}
+
+	for _, u := range s.Unassigned().Slice() {
+		newValue += p.penalties[u]
+	}
+
+	
+	return p, newValue, true
+}
+
+
+v := vehicleInfo{}
+f := planInfo{
+	unassignedStops: 0,
+	fleetValue: 0,
+	initCosts: i.InitializationCosts,
+	capacities: i.Capacities,
+	quantities: i.Quantities,
+	penalties: i.Penalties,
+}
+
+
+route.Update(v, f),
