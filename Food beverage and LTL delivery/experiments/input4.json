@@ -1,0 +1,748 @@
+{
+	"vehicles": ["v1", "v2", "v3", "v4", "v5", "v6"],
+	"velocities": [13.0, 13.0, 13.0, 13.0, 13.0, 13.0],
+	"stops": [
+		{
+			"id": "order-2-pickup",
+			"position": {
+				"lon": -71.2382577857293,
+				"lat": 42.789740473193237
+			}
+		},
+		{
+			"id": "order-2-dropoff",
+			"position": {
+				"lon": -70.91688723310212,
+				"lat": 42.56195932566899
+			}
+		},
+		{
+			"id": "order-4-pickup",
+			"position": {
+				"lon": -71.2382577857293,
+				"lat": 42.789740473193237
+			}
+		},
+		{
+			"id": "order-4-dropoff",
+			"position": {
+				"lon": -71.67575880863483,
+				"lat": 42.07011157236289
+			}
+		},
+		{
+			"id": "order-6-pickup",
+			"position": {
+				"lon": -71.3642411060118,
+				"lat": 42.03063074210636
+			}
+		},
+		{
+			"id": "order-6-dropoff",
+			"position": {
+				"lon": -71.72280715942664,
+				"lat": 42.29167293395393
+			}
+		},
+		{
+			"id": "order-8-pickup",
+			"position": {
+				"lon": -71.54881038934234,
+				"lat": 42.825044499185697
+			}
+		},
+		{
+			"id": "order-8-dropoff",
+			"position": {
+				"lon": -71.06385030647469,
+				"lat": 42.70812995316367
+			}
+		},
+		{
+			"id": "order-10-pickup",
+			"position": {
+				"lon": -71.58768058963763,
+				"lat": 42.665145890968329
+			}
+		},
+		{
+			"id": "order-10-dropoff",
+			"position": {
+				"lon": -71.73196066451624,
+				"lat": 42.198859684311717
+			}
+		},
+		{
+			"id": "order-12-pickup",
+			"position": {
+				"lon": -71.58768058963763,
+				"lat": 42.665145890968329
+			}
+		},
+		{
+			"id": "order-12-dropoff",
+			"position": {
+				"lon": -72.21693042355935,
+				"lat": 42.60952651410069
+			}
+		},
+		{
+			"id": "order-14-pickup",
+			"position": {
+				"lon": -71.58768058963763,
+				"lat": 42.665145890968329
+			}
+		},
+		{
+			"id": "order-14-dropoff",
+			"position": {
+				"lon": -72.21693042355935,
+				"lat": 42.60952651410069
+			}
+		},
+		{
+			"id": "order-16-pickup",
+			"position": {
+				"lon": -71.67953947297613,
+				"lat": 42.73671132237625
+			}
+		},
+		{
+			"id": "order-16-dropoff",
+			"position": {
+				"lon": -71.00370934141172,
+				"lat": 42.60814283451649
+			}
+		},
+		{
+			"id": "order-18-pickup",
+			"position": {
+				"lon": -71.263450,
+				"lat": 42.375035
+			}
+		},
+		{
+			"id": "order-18-dropoff",
+			"position": {
+				"lon": -71.14398609388884,
+				"lat": 41.620975250289
+			}
+		},
+		{
+			"id": "order-20-pickup",
+			"position": {
+				"lon": -71.04571863469657,
+				"lat": 42.34522378740377
+			}
+		},
+		{
+			"id": "order-20-dropoff",
+			"position": {
+				"lon": -71.44601514568845,
+				"lat": 42.22560057125893
+			}
+		},
+		{
+			"id": "order-22-pickup",
+			"position": {
+				"lon": -71.18159201881763,
+				"lat": 42.42885434626085
+			}
+		},
+		{
+			"id": "order-22-dropoff",
+			"position": {
+				"lon": -71.109421,
+				"lat": 42.134535
+			}
+		},
+		{
+			"id": "order-24-pickup",
+			"position": {
+				"lon": -70.98527497766053,
+				"lat": 42.40576496665818
+			}
+		},
+		{
+			"id": "order-24-dropoff",
+			"position": {
+				"lon": -71.41968941908815,
+				"lat": 42.631489345130677
+			}
+		},
+		{
+			"id": "order-26-pickup",
+			"position": {
+				"lon": -70.98527497766053,
+				"lat": 42.40576496665818
+			}
+		},
+		{
+			"id": "order-26-dropoff",
+			"position": {
+				"lon": -70.99840880671394,
+				"lat": 41.99977413283768
+			}
+		},
+		{
+			"id": "order-28-pickup",
+			"position": {
+				"lon": -70.9892100727235,
+				"lat": 42.47985156774565
+			}
+		},
+		{
+			"id": "order-28-dropoff",
+			"position": {
+				"lon": -71.94789151536283,
+				"lat": 42.467558132165517
+			}
+		},
+		{
+			"id": "order-30-pickup",
+			"position": {
+				"lon": -71.315124,
+				"lat": 42.277770
+			}
+		},
+		{
+			"id": "order-30-dropoff",
+			"position": {
+				"lon": -71.016644,
+				"lat": 42.245642
+			}
+		}
+	],
+	"starts": [
+		{
+			"lon": -71.074528,
+			"lat": 42.351778
+		},
+		{
+			"lon": -71.074528,
+			"lat": 42.351778
+		},
+		{
+			"lon": -71.074528,
+			"lat": 42.351778
+		},
+		{
+			"lon": -71.074528,
+			"lat": 42.351778
+		},
+		{
+			"lon": -71.074528,
+			"lat": 42.351778
+		},
+		{
+			"lon": -71.074528,
+			"lat": 42.351778
+		}
+	],
+	"ends": [
+		{
+			"lon": -71.074528,
+			"lat": 42.351778
+		},
+		{
+			"lon": -71.074528,
+			"lat": 42.351778
+		},
+		{
+			"lon": -71.074528,
+			"lat": 42.351778
+		},
+		{
+			"lon": -71.074528,
+			"lat": 42.351778
+		},
+		{
+			"lon": -71.074528,
+			"lat": 42.351778
+		},
+		{
+			"lon": -71.074528,
+			"lat": 42.351778
+		}
+	],
+	"capacities": [500, 500, 500, 500, 500, 500],
+	"quantities": [
+		-20, 20,
+		-82, 82,
+		-9, 9,
+		-120, 120,
+		-45, 45,
+		-182, 182,
+		-22, 22,
+		-11, 11,
+		-100, 100,
+		-7, 7,
+		-29, 29,
+		-137, 137,
+		-65, 65,
+		-11, 11,
+		-10, 10
+	],
+	"precedences": [
+		{
+			"pick_up": "order-2-pickup",
+			"drop_off": "order-2-dropoff"
+		},
+		{
+			"pick_up": "order-4-pickup",
+			"drop_off": "order-4-dropoff"
+		},
+		{
+			"pick_up": "order-6-pickup",
+			"drop_off": "order-6-dropoff"
+		},
+		{
+			"pick_up": "order-8-pickup",
+			"drop_off": "order-8-dropoff"
+		},
+		{
+			"pick_up": "order-10-pickup",
+			"drop_off": "order-10-dropoff"
+		},
+		{
+			"pick_up": "order-12-pickup",
+			"drop_off": "order-12-dropoff"
+		},
+		{
+			"pick_up": "order-14-pickup",
+			"drop_off": "order-14-dropoff"
+		},
+		{
+			"pick_up": "order-16-pickup",
+			"drop_off": "order-16-dropoff"
+		},
+		{
+			"pick_up": "order-18-pickup",
+			"drop_off": "order-18-dropoff"
+		},
+		{
+			"pick_up": "order-20-pickup",
+			"drop_off": "order-20-dropoff"
+		},
+		{
+			"pick_up": "order-22-pickup",
+			"drop_off": "order-22-dropoff"
+		},
+		{
+			"pick_up": "order-24-pickup",
+			"drop_off": "order-24-dropoff"
+		},
+		{
+			"pick_up": "order-26-pickup",
+			"drop_off": "order-26-dropoff"
+		},
+		{
+			"pick_up": "order-28-pickup",
+			"drop_off": "order-28-dropoff"
+		},
+		{
+			"pick_up": "order-30-pickup",
+			"drop_off": "order-30-dropoff"
+		}
+	],
+	"service_times": [
+		{
+			"id": "order-2-pickup",
+			"duration": 120
+		},
+		{
+			"id": "order-2-dropoff",
+			"duration": 120
+		},
+		{
+			"id": "order-4-pickup",
+			"duration": 120
+		},
+		{
+			"id": "order-4-dropoff",
+			"duration": 120
+		},
+		{
+			"id": "order-6-pickup",
+			"duration": 120
+		},
+		{
+			"id": "order-6-dropoff",
+			"duration": 120
+		},
+		{
+			"id": "order-8-pickup",
+			"duration": 120
+		},
+		{
+			"id": "order-8-dropoff",
+			"duration": 120
+		},
+		{
+			"id": "order-10-pickup",
+			"duration": 120
+		},
+		{
+			"id": "order-10-dropoff",
+			"duration": 120
+		},
+		{
+			"id": "order-12-pickup",
+			"duration": 120
+		},
+		{
+			"id": "order-12-dropoff",
+			"duration": 120
+		},
+		{
+			"id": "order-14-pickup",
+			"duration": 120
+		},
+		{
+			"id": "order-14-dropoff",
+			"duration": 120
+		},
+		{
+			"id": "order-16-pickup",
+			"duration": 120
+		},
+		{
+			"id": "order-16-dropoff",
+			"duration": 120
+		},
+		{
+			"id": "order-18-pickup",
+			"duration": 120
+		},
+		{
+			"id": "order-18-dropoff",
+			"duration": 120
+		},
+		{
+			"id": "order-20-pickup",
+			"duration": 120
+		},
+		{
+			"id": "order-20-dropoff",
+			"duration": 120
+		},
+		{
+			"id": "order-22-pickup",
+			"duration": 120
+		},
+		{
+			"id": "order-22-dropoff",
+			"duration": 120
+		},
+		{
+			"id": "order-24-pickup",
+			"duration": 120
+		},
+		{
+			"id": "order-24-dropoff",
+			"duration": 120
+		},
+		{
+			"id": "order-26-pickup",
+			"duration": 120
+		},
+		{
+			"id": "order-26-dropoff",
+			"duration": 120
+		},
+		{
+			"id": "order-28-pickup",
+			"duration": 120
+		},
+		{
+			"id": "order-28-dropoff",
+			"duration": 120
+		},
+		{
+			"id": "order-30-pickup",
+			"duration": 120
+		},
+		{
+			"id": "order-30-dropoff",
+			"duration": 120
+		}
+	],
+	"shifts": [
+		{
+			"start": "2023-04-03T06:00:00-06:00",
+			"end": "2023-04-03T15:00:00-06:00"
+		},
+		{
+			"start": "2023-04-03T06:00:00-06:00",
+			"end": "2023-04-03T15:00:00-06:00"
+		},
+		{
+			"start": "2023-04-03T06:00:00-06:00",
+			"end": "2023-04-03T15:00:00-06:00"
+		},
+		{
+			"start": "2023-04-03T11:00:00-06:00",
+			"end": "2023-04-03T20:00:00-06:00"
+		},
+		{
+			"start": "2023-04-03T11:00:00-06:00",
+			"end": "2023-04-03T20:00:00-06:00"
+		},
+		{
+			"start": "2023-04-03T11:00:00-06:00",
+			"end": "2023-04-03T20:00:00-06:00"
+		}
+	],
+	"windows": [
+		{
+			"time_window": {
+				"start": "2023-04-03T06:00:00-06:00",
+				"end": "2023-04-03T10:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T09:00:00-06:00",
+				"end": "2023-04-03T14:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T06:00:00-06:00",
+				"end": "2023-04-03T10:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T11:00:00-06:00",
+				"end": "2023-04-03T16:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T09:00:00-06:00",
+				"end": "2023-04-03T13:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T12:00:00-06:00",
+				"end": "2023-04-03T15:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T09:00:00-06:00",
+				"end": "2023-04-03T13:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T12:00:00-06:00",
+				"end": "2023-04-03T15:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T10:00:00-06:00",
+				"end": "2023-04-03T15:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T15:00:00-06:00",
+				"end": "2023-04-03T20:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T10:00:00-06:00",
+				"end": "2023-04-03T15:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T13:00:00-06:00",
+				"end": "2023-04-03T18:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T10:00:00-06:00",
+				"end": "2023-04-03T15:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T13:00:00-06:00",
+				"end": "2023-04-03T18:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T13:00:00-06:00",
+				"end": "2023-04-03T18:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T12:00:00-06:00",
+				"end": "2023-04-03T16:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T12:00:00-06:00",
+				"end": "2023-04-03T20:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T12:00:00-06:00",
+				"end": "2023-04-03T16:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T13:00:00-06:00",
+				"end": "2023-04-03T18:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T13:00:00-06:00",
+				"end": "2023-04-03T18:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T06:00:00-06:00",
+				"end": "2023-04-03T11:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T13:00:00-06:00",
+				"end": "2023-04-03T20:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T07:00:00-06:00",
+				"end": "2023-04-03T11:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T12:00:00-06:00",
+				"end": "2023-04-03T15:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T07:00:00-06:00",
+				"end": "2023-04-03T11:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T12:00:00-06:00",
+				"end": "2023-04-03T15:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T06:00:00-06:00",
+				"end": "2023-04-03T09:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T10:00:00-06:00",
+				"end": "2023-04-03T15:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T10:00:00-06:00",
+				"end": "2023-04-03T13:00:00-06:00"
+			  },
+			  "max_wait": -1
+		},
+		{
+			"time_window": {
+				"start": "2023-04-03T15:00:00-06:00",
+				"end": "2023-04-03T20:00:00-06:00"
+			  },
+			  "max_wait": -1
+		}
+	],
+	"penalties": [
+		2000000, 2000000, 2000000, 2000000, 2000000, 2000000,
+		2000000, 2000000, 2000000, 2000000, 2000000, 2000000,
+		2000000, 2000000, 2000000, 2000000, 2000000, 2000000,
+		2000000, 2000000, 2000000, 2000000, 2000000, 2000000,
+		2000000, 2000000, 2000000, 2000000, 2000000, 2000000
+	],
+	"initialization_costs": [500, 500, 500, 500, 500, 500],
+	"vehicle_attributes": [
+		{
+			"id": "v1",
+			"attributes": ["refrigerated"]
+		},
+		{
+			"id": "v2",
+			"attributes": ["refrigerated"]
+		},
+		{
+			"id": "v3",
+			"attributes": []
+		},
+		{
+			"id": "v4",
+			"attributes": ["refrigerated"]
+		},
+		{
+			"id": "v5",
+			"attributes": []
+		},
+		{
+			"id": "v6",
+			"attributes": []
+		}
+	],
+	"stop_attributes": [
+		{
+			"id": "order-2-pickup",
+			"attributes": ["refrigerated"]
+		}
+	]
+}
