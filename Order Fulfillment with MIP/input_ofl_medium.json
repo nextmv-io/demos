@@ -1,0 +1,203 @@
+{
+  "numberOfItems": 15,
+  "boxVolume": 2.0,
+  "items": [
+    {
+      "itemId": "book",
+      "quantity": 5,
+      "volume": 0.1
+    },
+    {
+      "itemId": "sneaker",
+      "quantity": 2,
+      "volume": 0.2
+    },
+    {
+      "itemId": "hydrating gel",
+      "quantity": 12,
+      "volume": 0.1
+    },
+    {
+      "itemId": "pressure cooker",
+      "quantity": 2,
+      "volume": 0.4
+    },
+    {
+      "itemId": "mattress",
+      "quantity": 2,
+      "volume": 3
+    },
+    {
+      "itemId": "permanent marker",
+      "quantity": 20,
+      "volume": 0.1
+    },
+    {
+      "itemId": "kitchen knife",
+      "quantity": 5,
+      "volume": 0.2
+    },
+    {
+      "itemId": "football",
+      "quantity": 5,
+      "volume": 0.4
+    },
+    {
+      "itemId": "tent",
+      "quantity": 2,
+      "volume": 2
+    },
+    {
+      "itemId": "dog toy",
+      "quantity": 10,
+      "volume": 0.25
+    },
+    {
+      "itemId": "car seat",
+      "quantity": 3,
+      "volume": 1.25
+    },
+    {
+      "itemId": "fitness tracker",
+      "quantity": 10,
+      "volume": 0.1
+    },
+    {
+      "itemId": "acoustic guitar",
+      "quantity": 2,
+      "volume": 1.3
+    },
+    {
+      "itemId": "dash cam",
+      "quantity": 4,
+      "volume": 0.2
+    },
+    {
+      "itemId": "cordless drill",
+      "quantity": 6,
+      "volume": 0.4
+    }
+  ],
+  "fulfillmentCenters": [
+    {
+      "fulfillmentCenterId": "fc1",
+      "handlingCost": 1,
+      "inventory": {
+        "book": 3,
+        "sneaker": 8,
+        "hydrating gel": 12,
+        "pressure cooker": 4,
+        "mattress": 14,
+        "permanent marker": 3,
+        "kitchen knife": 15,
+        "football": 2,
+        "tent": 3,
+        "dog toy": 14,
+        "car seat": 12,
+        "fitness tracker": 11,
+        "acoustic guitar": 1,
+        "dash cam": 13,
+        "cordless drill": 6
+      }
+    },
+    {
+      "fulfillmentCenterId": "fc2",
+      "handlingCost": 0.4,
+      "inventory": {
+        "book": 17,
+        "sneaker": 7,
+        "hydrating gel": 9,
+        "pressure cooker": 0,
+        "mattress": 3,
+        "permanent marker": 2,
+        "kitchen knife": 7,
+        "football": 0,
+        "tent": 1,
+        "dog toy": 5,
+        "car seat": 6,
+        "fitness tracker": 2,
+        "acoustic guitar": 2,
+        "dash cam": 7,
+        "cordless drill": 13
+      }
+    },
+    {
+      "fulfillmentCenterId": "fc3",
+      "handlingCost": 0.7,
+      "inventory": {
+        "book": 2,
+        "sneaker": 15,
+        "hydrating gel": 11,
+        "pressure cooker": 2,
+        "mattress": 6,
+        "permanent marker": 17,
+        "kitchen knife": 2,
+        "football": 3,
+        "tent": 5,
+        "dog toy": 3,
+        "car seat": 4,
+        "fitness tracker": 7,
+        "acoustic guitar": 12,
+        "dash cam": 13,
+        "cordless drill": 1
+      }
+    },
+    {
+      "fulfillmentCenterId": "fc4",
+      "handlingCost": 0.6,
+      "inventory": {
+        "book": 12,
+        "sneaker": 16,
+        "hydrating gel": 11,
+        "pressure cooker": 2,
+        "mattress": 1,
+        "permanent marker": 0,
+        "kitchen knife": 0,
+        "football": 2,
+        "tent": 1,
+        "dog toy": 1,
+        "car seat": 16,
+        "fitness tracker": 14,
+        "acoustic guitar": 7,
+        "dash cam": 9,
+        "cordless drill": 10
+      }
+    }
+  ],
+  "carrierCapacities": {
+    "fc1": {
+      "carrier1": 10.0,
+      "carrier2": 25.0
+    },
+    "fc2": {
+      "carrier1": 21.0,
+      "carrier2": 18.0
+    },
+    "fc3": {
+      "carrier1": 8.0,
+      "carrier2": 15.0
+    },
+    "fc4": {
+      "carrier1": 15.0,
+      "carrier2": 23.0
+    }
+  },
+  "deliveryCosts": {
+    "fc1": {
+      "carrier1": 1.5,
+      "carrier2": 1.2
+    },
+    "fc2": {
+      "carrier1": 1.4,
+      "carrier2": 1.5
+    },
+    "fc3": {
+      "carrier1": 0.8,
+      "carrier2": 1.05
+    },
+    "fc4": {
+      "carrier1": 1.1,
+      "carrier2": 1.3
+    }
+  }
+}
