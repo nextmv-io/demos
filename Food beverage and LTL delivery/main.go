@@ -8,11 +8,14 @@ import (
 
 	"github.com/nextmv-io/sdk/route"
 	"github.com/nextmv-io/sdk/run"
+	"github.com/nextmv-io/sdk/run/encode"
 	"github.com/nextmv-io/sdk/store"
 )
 
 func main() {
-	err := run.Run(solver)
+
+	err := run.Run(solver,
+		run.Encode[run.CLIRunnerConfig, input](GenericEncoder[store.Solution, store.Options](encode.JSON())))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -54,7 +57,6 @@ func solver(i input, opts store.Options) (store.Solver, error) {
 	// it is advisable from a security point of view to add strong
 	// input validations before passing the data to the solver.
 
-
 	// Define base router.
 	router, err := route.NewRouter(
 		i.Stops,
@@ -72,7 +74,6 @@ func solver(i input, opts store.Options) (store.Solver, error) {
 		route.InitializationCosts(i.InitializationCosts),
 		route.Backlogs(i.Backlogs),
 		route.Attribute(i.VehicleAttributes, i.StopAttributes),
-
 	)
 	if err != nil {
 		return nil, err
