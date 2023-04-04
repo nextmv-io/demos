@@ -199,8 +199,8 @@ func (g *genericEncoder[Solution, Options]) Encode(
 					Custom: custom{
 						Routing: routing{
 							Stops: stops{
-								Unassigned: 0,
-								Assigned:   0,
+								Unassigned: len(s.Store.Unassigned),
+								Assigned:   assigned,
 							},
 						},
 						NumberVans:  0,
