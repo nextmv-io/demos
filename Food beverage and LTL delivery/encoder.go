@@ -188,7 +188,9 @@ func (g *genericEncoder[Solution, Options]) Encode(
 
 			assigned := 0
 			for _, v := range s.Store.Vehicles {
-				assigned += len(v.Route) - 2
+				if len(v.Route) > 0 {
+					assigned += len(v.Route) - 2
+				}
 			}
 
 			m.Statistics = StatisticsOut{
