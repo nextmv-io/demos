@@ -64,7 +64,7 @@ func (d *Duration) UnmarshalJSON(b []byte) error {
 type StatisticsOut struct {
 	Schema string `json:"schema"`
 	Run    struct {
-		Time float64 `json:"int"`
+		Time float64 `json:"time"`
 	} `json:"run"`
 	Result result `json:"result"`
 }
