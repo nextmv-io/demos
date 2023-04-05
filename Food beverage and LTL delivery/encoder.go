@@ -194,7 +194,7 @@ func (g *genericEncoder[Solution, Options]) Encode(
 			}
 
 			m.Statistics = StatisticsOut{
-				Schema: "v0",
+				Schema: "v1",
 				Result: result{
 					Value:   float64(*s.Statistics.Value),
 					Elapsed: s.Statistics.Time.Elapsed.Seconds(),
