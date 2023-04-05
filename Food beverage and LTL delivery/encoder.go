@@ -86,9 +86,8 @@ type meta[Options, Solution any] struct {
 }
 
 type custom struct {
-	Routing     routing `json:"routing"`
-	NumberVans  int     `json:"number_vans"`
-	NumberBikes int     `json:"number_bikes"`
+	Routing      routing `json:"routing"`
+	UsedVehicles int     `json:"used_vehicles"`
 }
 
 type routing struct {
@@ -136,7 +135,7 @@ func (g *genericEncoder[Solution, Options]) Encode(
 
 	ioWriter, ok := writer.(io.Writer)
 	if !ok {
-		err = errors.New("Encoder is not compatible with configured IOProducer")
+		err = errors.New("encoder is not compatible with configured IOProducer")
 		return err
 	}
 
@@ -163,9 +162,7 @@ func (g *genericEncoder[Solution, Options]) Encode(
 			solutions = tempSolutions
 		}
 	}
-	if len(solutions) > 0 {
 
-	}
 	if quieter, ok := runnerCfg.(run.Quieter); ok && !quieter.Quiet() {
 		m := meta[Options, Solution]{}
 		m.Version = version{
@@ -187,28 +184,35 @@ func (g *genericEncoder[Solution, Options]) Encode(
 			}
 
 			assigned := 0
+			usedVehicles := 0
 			for _, v := range s.Store.Vehicles {
-				if len(v.Route) > 0 {
+				if len(v.Route) > 2 {
 					assigned += len(v.Route) - 2
+					usedVehicles++
 				}
 			}
 
-			m.Statistics = StatisticsOut{
-				Schema: "v1",
-				Result: result{
-					Value:   float64(*s.Statistics.Value),
-					Elapsed: s.Statistics.Time.Elapsed.Seconds(),
-					Custom: custom{
-						Routing: routing{
-							Stops: stops{
-								Unassigned: len(s.Store.Unassigned),
-								Assigned:   assigned,
+			unassigned := 0
+			if len(s.Store.Unassigned) > 0 {
+				unassigned = len(s.Store.Unassigned)
+			}
+			if s.Store.Vehicles != nil {
+				m.Statistics = StatisticsOut{
+					Schema: "v1",
+					Result: result{
+						Value:   float64(*s.Statistics.Value),
+						Elapsed: s.Statistics.Time.Elapsed.Seconds(),
+						Custom: custom{
+							Routing: routing{
+								Stops: stops{
+									Unassigned: unassigned,
+									Assigned:   assigned,
+								},
 							},
+							UsedVehicles: usedVehicles,
 						},
-						NumberVans:  0,
-						NumberBikes: 0,
 					},
-				},
+				}
 			}
 		}
 		if err = g.encoder.Encode(ioWriter, m); err != nil {
