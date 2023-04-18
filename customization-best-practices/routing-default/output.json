@@ -1,0 +1,230 @@
+{
+  "version": { "sdk": "v0.23.0" },
+  "options": {
+    "diagram": { "expansion": { "limit": 1 }, "width": 10 },
+    "limits": { "duration": "10s", "nodes": 0, "solutions": 0 },
+    "search": { "buffer": 100 },
+    "sense": "minimize"
+  },
+  "solutions": [
+    {
+      "store": {
+        "earliness": 441700,
+        "lateness": 12229800,
+        "num_lifo_violations": 1,
+        "total_duration": 43499,
+        "unassigned": [],
+        "vehicles": [
+          {
+            "id": "v1",
+            "route": [
+              {
+                "earliness": 0,
+                "estimated_arrival": "2020-10-17T09:00:00-06:00",
+                "estimated_departure": "2020-10-17T09:00:00-06:00",
+                "estimated_service": "2020-10-17T09:00:00-06:00",
+                "id": "v1-start",
+                "lateness": 0,
+                "position": { "lon": -74.04866, "lat": 4.69018 },
+                "target": null
+              },
+              {
+                "earliness": 0,
+                "estimated_arrival": "2020-10-17T09:00:00-06:00",
+                "estimated_departure": "2020-10-17T09:00:00-06:00",
+                "estimated_service": "2020-10-17T09:00:00-06:00",
+                "id": "West",
+                "lateness": 0,
+                "position": { "lon": -74.04866, "lat": 4.69018 },
+                "target": "2020-10-17T09:00:00-06:00"
+              },
+              {
+                "earliness": 441700,
+                "estimated_arrival": "2020-10-17T09:06:23-06:00",
+                "estimated_departure": "2020-10-17T09:06:23-06:00",
+                "estimated_service": "2020-10-17T09:06:23-06:00",
+                "id": "Resting Place 3",
+                "lateness": 0,
+                "position": { "lon": -74.049, "lat": 4.69012 },
+                "target": "2020-10-17T10:20:00-06:00"
+              },
+              {
+                "earliness": 0,
+                "estimated_arrival": "2020-10-17T09:55:37-06:00",
+                "estimated_departure": "2020-10-17T09:55:37-06:00",
+                "estimated_service": "2020-10-17T09:55:37-06:00",
+                "id": "South West",
+                "lateness": 63700,
+                "position": { "lon": -74.047572, "lat": 4.687877 },
+                "target": "2020-10-17T09:45:00-06:00"
+              },
+              {
+                "earliness": 0,
+                "estimated_arrival": "2020-10-17T12:03:25-06:00",
+                "estimated_departure": "2020-10-17T12:06:45-06:00",
+                "estimated_service": "2020-10-17T12:03:25-06:00",
+                "id": "North",
+                "lateness": 1010500,
+                "position": { "lon": -74.044215, "lat": 4.693907 },
+                "target": "2020-10-17T09:15:00-06:00"
+              },
+              {
+                "earliness": 0,
+                "estimated_arrival": "2020-10-17T13:00:56-06:00",
+                "estimated_departure": "2020-10-17T13:00:56-06:00",
+                "estimated_service": "2020-10-17T13:00:56-06:00",
+                "id": "North West",
+                "lateness": 1325600,
+                "position": { "lon": -74.046988, "lat": 4.692952 },
+                "target": "2020-10-17T09:20:00-06:00"
+              },
+              {
+                "earliness": 0,
+                "estimated_arrival": "2020-10-17T14:00:52-06:00",
+                "estimated_departure": "2020-10-17T14:00:52-06:00",
+                "estimated_service": "2020-10-17T14:00:52-06:00",
+                "id": "v1-end",
+                "lateness": 0,
+                "position": { "lon": -74.04866, "lat": 4.69018 },
+                "target": null
+              }
+            ],
+            "route_distance": 1785,
+            "route_duration": 18052
+          },
+          {
+            "id": "v2",
+            "route": [
+              {
+                "earliness": 0,
+                "estimated_arrival": "2020-10-17T09:00:00-06:00",
+                "estimated_departure": "2020-10-17T09:00:00-06:00",
+                "estimated_service": "2020-10-17T09:00:00-06:00",
+                "id": "v2-start",
+                "lateness": 0,
+                "position": { "lon": -74.04866, "lat": 4.69018 },
+                "target": null
+              },
+              {
+                "earliness": 0,
+                "estimated_arrival": "2020-10-17T10:49:10-06:00",
+                "estimated_departure": "2020-10-17T10:49:10-06:00",
+                "estimated_service": "2020-10-17T10:49:10-06:00",
+                "id": "South",
+                "lateness": 385000,
+                "position": { "lon": -74.044219, "lat": 4.686293 },
+                "target": "2020-10-17T09:45:00-06:00"
+              },
+              {
+                "earliness": 0,
+                "estimated_arrival": "2020-10-17T11:58:31-06:00",
+                "estimated_departure": "2020-10-17T11:58:31-06:00",
+                "estimated_service": "2020-10-17T11:58:31-06:00",
+                "id": "South East",
+                "lateness": 1011100,
+                "position": { "lon": -74.040685, "lat": 4.687558 },
+                "target": "2020-10-17T09:10:00-06:00"
+              },
+              {
+                "earliness": 0,
+                "estimated_arrival": "2020-10-17T12:45:01-06:00",
+                "estimated_departure": "2020-10-17T12:45:01-06:00",
+                "estimated_service": "2020-10-17T12:45:01-06:00",
+                "id": "East",
+                "lateness": 1170100,
+                "position": { "lon": -74.039745, "lat": 4.689886 },
+                "target": "2020-10-17T09:30:00-06:00"
+              },
+              {
+                "earliness": 0,
+                "estimated_arrival": "2020-10-17T13:39:09-06:00",
+                "estimated_departure": "2020-10-17T13:39:09-06:00",
+                "estimated_service": "2020-10-17T13:39:09-06:00",
+                "id": "North East",
+                "lateness": 1584900,
+                "position": { "lon": -74.041242, "lat": 4.692397 },
+                "target": "2020-10-17T09:15:00-06:00"
+              },
+              {
+                "earliness": 0,
+                "estimated_arrival": "2020-10-17T15:33:26-06:00",
+                "estimated_departure": "2020-10-17T15:33:26-06:00",
+                "estimated_service": "2020-10-17T15:33:26-06:00",
+                "id": "Resting Place 1",
+                "lateness": 1700600,
+                "position": { "lon": -74.047, "lat": 4.69014 },
+                "target": "2020-10-17T10:50:00-06:00"
+              },
+              {
+                "earliness": 0,
+                "estimated_arrival": "2020-10-17T15:51:54-06:00",
+                "estimated_departure": "2020-10-17T15:51:54-06:00",
+                "estimated_service": "2020-10-17T15:51:54-06:00",
+                "id": "Resting Place 4",
+                "lateness": 2051400,
+                "position": { "lon": -74.048, "lat": 4.69015 },
+                "target": "2020-10-17T10:10:00-06:00"
+              },
+              {
+                "earliness": 0,
+                "estimated_arrival": "2020-10-17T16:01:09-06:00",
+                "estimated_departure": "2020-10-17T16:01:09-06:00",
+                "estimated_service": "2020-10-17T16:01:09-06:00",
+                "id": "Resting Place 2",
+                "lateness": 1926900,
+                "position": { "lon": -74.0485, "lat": 4.69017 },
+                "target": "2020-10-17T10:40:00-06:00"
+              },
+              {
+                "earliness": 0,
+                "estimated_arrival": "2020-10-17T16:04:07-06:00",
+                "estimated_departure": "2020-10-17T16:04:07-06:00",
+                "estimated_service": "2020-10-17T16:04:07-06:00",
+                "id": "v2-end",
+                "lateness": 0,
+                "position": { "lon": -74.04866, "lat": 4.69018 },
+                "target": null
+              }
+            ],
+            "route_distance": 2544,
+            "route_duration": 25447
+          }
+        ]
+      },
+      "statistics": {
+        "bounds": { "lower": -9223372036854775808, "upper": 4330 },
+        "search": {
+          "generated": 337,
+          "filtered": 0,
+          "expanded": 337,
+          "reduced": 0,
+          "restricted": 337,
+          "deferred": 11,
+          "explored": 326,
+          "solutions": 10
+        },
+        "time": {
+          "elapsed": "23.826263ms",
+          "elapsed_seconds": 0.023826263,
+          "start": "2023-04-18T16:08:49.394513-04:00"
+        },
+        "value": 4330
+      }
+    }
+  ],
+  "statistics": {
+    "schema": "v1",
+    "result": {
+      "value": 4330,
+      "elapsed": 0.023826263,
+      "custom": {
+        "routing": { "stops": { "unassigned": 0, "assigned": 12 } },
+        "used_vehicles": 2,
+        "lateness": 12229800,
+        "earliness": 441700,
+        "total_duration": 43499,
+        "lifo_violations": 1
+      }
+    }
+  }
+}
