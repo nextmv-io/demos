@@ -7,14 +7,27 @@
 #
 # See original reference https://colab.research.google.com/github/ampl/colab.ampl.com/blob/master/authors/nfbvs/pglib_uc/pglib_uc.ipynb
 
-import json
+# Disable Python bytecode generation (__pycache__) - MUST BE FIRST!
 import os
+import sys
+
+os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
+sys.dont_write_bytecode = True
+
+import json
 import time
 
+import nextmv
 import pandas as pd
 
 # highs and gurobi modules will be used
 from amplpy import AMPL, modules
+from nextmv import cloud
+from visuals import create_power_system_dashboard
+
+# MODIFIED - load manifest and extract options to use in the execution
+manifest = cloud.Manifest.from_yaml(".")
+options = manifest.extract_options()
 
 
 def prepare_pglib_uc(data_file, log=True):
@@ -72,7 +85,9 @@ def prepare_pglib_uc(data_file, log=True):
         for i, val in enumerate(p_max):
             ren_power_output_maximum[(k, i + 1)] = val
 
-    demand = data["demand"]
+    # MODIFIED - scale demand
+    demand = [d * options.demand_multiplier for d in data["demand"]]
+
     reserves = data["reserves"]
 
     # pack everything in a dict and return data
@@ -94,7 +109,6 @@ def prepare_pglib_uc(data_file, log=True):
 
 def run_uc(data, solver="highs", solver_options=None, log=True):
     start_time = time.time()
-
     # activate license if file with license uuid is present (otherwise use demo
     # license)
     if os.path.isfile("ampl_license_uuid"):
@@ -188,22 +202,33 @@ def run_uc(data, solver="highs", solver_options=None, log=True):
     return result
 
 
+# download sample instance
 data = prepare_pglib_uc("data.json")
 
-# Solve with HiGHS
+# MODIFIED - run with solver and solver options provided via options input
+result = run_uc(data, solver=options.solver, solver_options=options.solver_options)
+with open("result.txt", "w") as f:
+    f.write(f"result: {result}\n")
 
-result_highs = run_uc(
-    data, solver="highs", solver_options="outlev=1 timelim=30 threads=16"
-)
-with open("result_highs.txt", "w") as f:
-    f.write(f"result: {result_highs}\n")
+print(f"objective: {result['objective']}")
 
-print(f"objective: {result_highs['objective']}")
+# MODIFIED - write statistics to statistics.json
+statistics_file = "statistics.json"
+with open(statistics_file, "w") as stats_f:
+    statistics = nextmv.Statistics(
+        result=nextmv.ResultStatistics(
+            duration=result["total_time"],
+            value=result["objective"],
+            custom={
+                "nvars": result["nvars"],
+                "ncons": result["ncons"],
+            },
+        ),
+    )
+    stats_f.write(json.dumps({"statistics": statistics.to_dict()}))
 
-# Solve with Gurobi
+assets_file = "assets.json"
+with open(assets_file, "w") as assets_f:
+    assets = create_power_system_dashboard(result)
 
-result_gurobi = run_uc(data, solver="gurobi", solver_options="outlev=1")
-with open("result_gurobi.txt", "w") as f:
-    f.write(f"result: {result_gurobi}\n")
-
-print(f"objective: {result_gurobi['objective']}")
+    assets_f.write(json.dumps({"assets": [asset.to_dict() for asset in assets]}))

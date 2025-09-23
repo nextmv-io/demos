@@ -11,3 +11,13 @@ files:
   - main.py
   - diet.py
 
+configuration:
+  content:
+    format: "multi-file"
+    multi-file:
+      input:
+        path: "."
+      output:
+        solutions: "."
+        statistics: "."
+        assets: "."

@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 
-import json
 
-import nextmv
 from diet import model
-from nextmv import cloud
 from pyomo.environ import value
 from pyomo.opt import SolverFactory
 
@@ -13,21 +10,16 @@ def main():
     """
     Main function to solve the diet optimization problem using Pyomo functions.
     """
-    # MODIFIED - redirect solver chatter from stdout to stderr 
-    nextmv.redirect_stdout()
-    
-    # MODIFIED - read input from inputs/diet.dat
-    instance = model.create_instance("inputs/diet.dat")
+
+    instance = model.create_instance("diet.dat")
     solver = SolverFactory("glpk")
     if not solver.available():
-        
         print(f"Error: glpk solver is not available!")
         print("Please install the solver or try a different solver.")
         return
     results = solver.solve(instance, tee=True)
-    
-    # MODIFIED - write output to outputs/solutions
-    output_file = "outputs/solutions/diet_solution.txt"
+
+    output_file = "diet_solution.txt"
     with open(output_file, "w") as f:
         if results.solver.termination_condition == "optimal":
             f.write("=" * 50 + "\n")

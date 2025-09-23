@@ -12,14 +12,13 @@ from pyomo.opt import SolverFactory
 manifest = cloud.Manifest.from_yaml(".")
 options = manifest.extract_options()
 
+
 def main():
     """
     Main function to solve the diet optimization problem using Pyomo functions.
     """
-    # MODIFIED - redirect solver chatter from stdout to stderr
-    nextmv.redirect_stdout()
-    # MODIFIED - read input from inputs/diet.dat
     instance = model.create_instance("inputs/diet.dat")
+
     # MODIFIED - use solver that was specified in the options
     solver = SolverFactory(options.solver)
     if not solver.available():
@@ -27,9 +26,8 @@ def main():
         print("Please install the solver or try a different solver.")
         return
     results = solver.solve(instance, tee=True)
-    # MODIFIED - write output to outputs/solutions
     output_file = "outputs/solutions/diet_solution.txt"
-    statistics_file = "outputs/statistics/statistics.json"
+
     with open(output_file, "w") as f:
         if results.solver.termination_condition == "optimal":
             f.write("=" * 50 + "\n")
@@ -53,13 +51,15 @@ def main():
                 f"Solver terminated with condition: {results.solver.termination_condition}\n"
             )
             f.write("No optimal solution found.\n")
-    # MODIFIED - write statistics to outputs/statistics/statistics.json
+
+    # MODIFIED - write statistics for experiments
+    statistics_file = "outputs/statistics/statistics.json"
     with open(statistics_file, "w") as stats_f:
         statistics = nextmv.Statistics(
             result=nextmv.ResultStatistics(
                 custom={
-                    "cost": value(instance.cost),     
-                    },
+                    "cost": value(instance.cost),
+                },
             ),
         )
         stats_f.write(json.dumps({"statistics": statistics.to_dict()}))

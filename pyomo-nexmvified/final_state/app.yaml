@@ -12,6 +12,8 @@ files:
   - diet.py
 
 configuration:
+  content:
+    format: "multi-file"
   options:
     items:
       - name: solver

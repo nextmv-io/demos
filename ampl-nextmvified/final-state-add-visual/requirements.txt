@@ -6,4 +6,6 @@ ampltools
 ampl-module-base
 ampl-module-highs
 ampl-module-gurobi
+nextmv
 pandas
+plotly

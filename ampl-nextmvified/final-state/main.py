@@ -78,7 +78,9 @@ def prepare_pglib_uc(data_file, log=True):
         for i, val in enumerate(p_max):
             ren_power_output_maximum[(k, i + 1)] = val
 
-    demand = data["demand"]
+    # MODIFIED - scale demand
+    demand = [d * options.demand_multiplier for d in data["demand"]]
+
     reserves = data["reserves"]
 
     # pack everything in a dict and return data
@@ -194,17 +196,17 @@ def run_uc(data, solver="highs", solver_options=None, log=True):
 
 
 # download sample instance
-data = prepare_pglib_uc("inputs/data.json")
+data = prepare_pglib_uc("data.json")
 
 # MODIFIED - run with solver and solver options provided via options input
 result = run_uc(data, solver=options.solver, solver_options=options.solver_options)
-with open("outputs/solutions/result.txt", "w") as f:
+with open("result.txt", "w") as f:
     f.write(f"result: {result}\n")
 
 print(f"objective: {result['objective']}")
 
-# MODIFIED - write statistics to outputs/statistics/statistics.json
-statistics_file = "outputs/statistics/statistics.json"
+# MODIFIED - write statistics to statistics.json
+statistics_file = "statistics.json"
 with open(statistics_file, "w") as stats_f:
     statistics = nextmv.Statistics(
         result=nextmv.ResultStatistics(
@@ -216,4 +218,4 @@ with open(statistics_file, "w") as stats_f:
             },
         ),
     )
-stats_f.write(json.dumps({"statistics": statistics.to_dict()}))
+    stats_f.write(json.dumps({"statistics": statistics.to_dict()}))

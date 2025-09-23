@@ -192,9 +192,15 @@ data = prepare_pglib_uc("data.json")
 result_highs = run_uc(
     data, solver="highs", solver_options="outlev=1 timelim=30 threads=16"
 )
-print("objective:", result_highs["objective"])
+with open("result_highs.txt", "w") as f:
+    f.write(f"result: {result_highs}\n")
+
+print(f"objective: {result_highs['objective']}")
 
 # Solve with Gurobi
 
 result_gurobi = run_uc(data, solver="gurobi", solver_options="outlev=1")
-print("objective:", result_gurobi["objective"])
+with open("result_gurobi.txt", "w") as f:
+    f.write(f"result: {result_gurobi}\n")
+
+print(f"objective: {result_gurobi['objective']}")

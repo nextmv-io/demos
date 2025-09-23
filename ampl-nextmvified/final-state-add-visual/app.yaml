@@ -9,6 +9,7 @@ python:
 # (e.g.: configs/*.json) is supported.
 files:
   - main.py
+  - visuals.py
   - uc.mod
   - ampl_license_uuid
 

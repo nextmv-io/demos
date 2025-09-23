@@ -11,3 +11,14 @@ files:
   - main.py
   - uc.mod
   - ampl_license_uuid
+
+configuration:
+  content:
+    format: "multi-file"
+    multi-file:
+      input:
+        path: "."
+      output:
+        solutions: "."
+        statistics: "statistics.json"
+        assets: "assets.json"
