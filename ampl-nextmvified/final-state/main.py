@@ -104,8 +104,8 @@ def run_uc(data, solver="highs", solver_options=None, log=True):
     start_time = time.time()
     # activate license if file with license uuid is present (otherwise use demo
     # license)
-    if os.path.isfile("ampl_license_uuid"):
-        with open("ampl_license_uuid") as file:
+    if os.path.isfile("ampl_license_uuid.txt"):
+        with open("ampl_license_uuid.txt") as file:
             license = file.read().strip()
         modules.activate(license)
     start_time = time.time()

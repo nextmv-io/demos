@@ -10,7 +10,7 @@ python:
 files:
   - main.py
   - uc.mod
-  - ampl_license_uuid
+  - ampl_license_uuid.txt
 
 configuration:
   content:

@@ -1,0 +1,103 @@
+{
+  "categories": {
+    "calories": {
+      "min": 1800,
+      "max": 2200
+    },
+    "protein": {
+      "min": 91,
+      "max": null
+    },
+    "fat": {
+      "min": 0,
+      "max": 65
+    },
+    "sodium": {
+      "min": 0,
+      "max": 1779
+    }
+  },
+  "foods": {
+    "hamburger": {
+      "cost": 2.49,
+      "nutrition": {
+        "calories": 410,
+        "protein": 24,
+        "fat": 26,
+        "sodium": 730
+      }
+    },
+    "chicken": {
+      "cost": 2.89,
+      "nutrition": {
+        "calories": 420,
+        "protein": 32,
+        "fat": 10,
+        "sodium": 1190
+      }
+    },
+    "hot dog": {
+      "cost": 1.50,
+      "nutrition": {
+        "calories": 560,
+        "protein": 20,
+        "fat": 32,
+        "sodium": 1800
+      }
+    },
+    "fries": {
+      "cost": 1.89,
+      "nutrition": {
+        "calories": 380,
+        "protein": 4,
+        "fat": 19,
+        "sodium": 270
+      }
+    },
+    "macaroni": {
+      "cost": 2.09,
+      "nutrition": {
+        "calories": 320,
+        "protein": 12,
+        "fat": 10,
+        "sodium": 930
+      }
+    },
+    "pizza": {
+      "cost": 1.99,
+      "nutrition": {
+        "calories": 320,
+        "protein": 15,
+        "fat": 12,
+        "sodium": 820
+      }
+    },
+    "salad": {
+      "cost": 2.49,
+      "nutrition": {
+        "calories": 320,
+        "protein": 31,
+        "fat": 12,
+        "sodium": 1230
+      }
+    },
+    "milk": {
+      "cost": 0.89,
+      "nutrition": {
+        "calories": 100,
+        "protein": 8,
+        "fat": 2.5,
+        "sodium": 125
+      }
+    },
+    "ice cream": {
+      "cost": 1.59,
+      "nutrition": {
+        "calories": 330,
+        "protein": 8,
+        "fat": 10,
+        "sodium": 180
+      }
+    }
+  }
+}

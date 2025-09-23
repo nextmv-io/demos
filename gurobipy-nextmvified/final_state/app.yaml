@@ -9,8 +9,6 @@ python:
 # (e.g.: configs/*.json) is supported.
 files:
   - main.py
-  - uc.mod
-  - ampl_license_uuid.txt
 
 configuration:
   content:
@@ -22,3 +20,12 @@ configuration:
         solutions: "."
         statistics: "statistics.json"
         assets: "assets.json"
+  options:
+      items:
+        - name: limit_dairy
+          option_type: bool
+          default: false
+          required: false
+          ui:
+            control_type: toggle
+            display_name: "Limit dairy products"
