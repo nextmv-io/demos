@@ -71,3 +71,18 @@ def volume_rule(model):
 
 
 model.volume = Constraint(rule=volume_rule)
+
+
+# Limit dairy
+def dairy_rule(model):
+    # Find foods that contain "dairy" or milk-related items
+    dairy_foods = [i for i in model.F if "dairy" in i.lower() or "milk" in i.lower()]
+    if not dairy_foods:
+        # If no dairy foods found, return a feasible constraint
+        return Constraint.Feasible
+    return sum(model.x[i] for i in dairy_foods) <= 3
+
+
+def add_dairy_constraint(model):
+    """Add dairy constraint to the model if needed."""
+    model.dairy_limit = Constraint(rule=dairy_rule)

@@ -19,5 +19,5 @@ configuration:
         path: "."
       output:
         solutions: "."
-        statistics: "."
-        assets: "."
+        statistics: "statistics.json"
+        assets: "assets.json"

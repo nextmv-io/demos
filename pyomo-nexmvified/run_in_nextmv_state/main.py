@@ -12,9 +12,9 @@ def main():
     """
 
     instance = model.create_instance("diet.dat")
-    solver = SolverFactory("glpk")
+    solver = SolverFactory("highs")
     if not solver.available():
-        print(f"Error: glpk solver is not available!")
+        print(f"Error: highs solver is not available!")
         print("Please install the solver or try a different solver.")
         return
     results = solver.solve(instance, tee=True)

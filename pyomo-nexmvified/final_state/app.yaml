@@ -14,6 +14,13 @@ files:
 configuration:
   content:
     format: "multi-file"
+    multi-file:
+      input:
+        path: "."
+      output:
+        solutions: "."
+        statistics: "statistics.json"
+        assets: "assets.json"
   options:
     items:
       - name: solver
@@ -22,5 +29,11 @@ configuration:
           values:
             - cbc
             - glpk
+            - highs
         ui:
           control_type: select
+      - name: limit_dairy
+        option_type: bool
+        default: false
+        ui:
+          control_type: toggle

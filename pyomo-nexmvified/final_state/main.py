@@ -3,7 +3,7 @@
 import json
 
 import nextmv
-from diet import model
+from diet import add_dairy_constraint, model
 from nextmv import cloud
 from pyomo.environ import value
 from pyomo.opt import SolverFactory
@@ -17,7 +17,11 @@ def main():
     """
     Main function to solve the diet optimization problem using Pyomo functions.
     """
-    instance = model.create_instance("inputs/diet.dat")
+    instance = model.create_instance("diet.dat")
+
+    # MODIFIED - add dairy constraint if specified in options
+    if options.limit_dairy:
+        add_dairy_constraint(instance)
 
     # MODIFIED - use solver that was specified in the options
     solver = SolverFactory(options.solver)
@@ -26,7 +30,7 @@ def main():
         print("Please install the solver or try a different solver.")
         return
     results = solver.solve(instance, tee=True)
-    output_file = "outputs/solutions/diet_solution.txt"
+    output_file = "diet_solution.txt"
 
     with open(output_file, "w") as f:
         if results.solver.termination_condition == "optimal":
@@ -53,12 +57,16 @@ def main():
             f.write("No optimal solution found.\n")
 
     # MODIFIED - write statistics for experiments
-    statistics_file = "outputs/statistics/statistics.json"
+    statistics_file = "statistics.json"
     with open(statistics_file, "w") as stats_f:
         statistics = nextmv.Statistics(
             result=nextmv.ResultStatistics(
+                value=value(instance.cost),
                 custom={
-                    "cost": value(instance.cost),
+                    "nvars": len(instance.x),
+                    "nconstraints": len(instance.nutrient_limit)
+                    + 1
+                    + (1 if options.limit_dairy else 0),
                 },
             ),
         )
