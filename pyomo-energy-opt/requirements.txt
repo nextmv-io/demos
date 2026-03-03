@@ -1,0 +1,4 @@
+pyomo==6.9.5
+nextmv==1.1.2
+highspy==1.9.0
+pyscipopt==5.6.0

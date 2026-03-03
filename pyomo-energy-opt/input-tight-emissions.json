@@ -1,0 +1,51 @@
+{
+  "generators": [
+    {
+      "id": "coal_1",
+      "pmin": 100,
+      "pmax": 500,
+      "variable_cost": 25.0,
+      "fixed_cost": 1500.0,
+      "emission_rate": 0.9,
+      "renewable": "false"
+    },
+    {
+      "id": "gas_1",
+      "pmin": 50,
+      "pmax": 300,
+      "variable_cost": 45.0,
+      "fixed_cost": 800.0,
+      "emission_rate": 0.4,
+      "renewable": "false"
+    },
+    {
+      "id": "gas_2",
+      "pmin": 50,
+      "pmax": 200,
+      "variable_cost": 50.0,
+      "fixed_cost": 600.0,
+      "emission_rate": 0.4,
+      "renewable": "false"
+    },
+    {
+      "id": "wind_1",
+      "pmin": 0,
+      "pmax": 150,
+      "variable_cost": 0.0,
+      "fixed_cost": 0.0,
+      "emission_rate": 0.0,
+      "renewable": "true"
+    },
+    {
+      "id": "solar_1",
+      "pmin": 0,
+      "pmax": 100,
+      "variable_cost": 0.0,
+      "fixed_cost": 0.0,
+      "emission_rate": 0.0,
+      "renewable": "true"
+    }
+  ],
+  "demand": [300, 320, 350, 400, 450, 500, 520, 510, 480, 460, 440, 420, 410, 430, 460, 490, 520, 540, 510, 470, 430, 390, 350, 310],
+  "emission_limit": 2000
+}

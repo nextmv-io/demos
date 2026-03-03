@@ -1,0 +1,49 @@
+type: python
+runtime: ghcr.io/nextmv-io/runtime/pyomo:latest
+python:
+  pip-requirements: requirements.txt
+files:
+- main.py
+configuration:
+  options:
+    strict: false
+    items:
+    - name: provider
+      option_type: string
+      default: highs
+      description: Solver to use for optimization.
+      required: false
+      additional_attributes:
+        values:
+        - highs
+        - cbc
+        - glpk
+        - scip
+      ui:
+        control_type: select
+        display_name: Solver
+    - name: duration
+      option_type: int
+      default: 60
+      description: Maximum solver runtime in seconds.
+      required: false
+      additional_attributes:
+        min: 1
+        max: 600
+        step: 1
+      ui:
+        control_type: slider
+        display_name: Solve Duration (s)
+    - name: emission_multiplier
+      option_type: float
+      description: Scales the emission_limit from the input. 1.0 = use as-is, 0.5 = half as strict, 2.0 = twice as lenient,
+        -1 = no cap. Defaults to 1.0 if not provided.
+      required: false
+      additional_attributes:
+        min: -1.0
+        max: 5.0
+      ui:
+        control_type: input
+        display_name: Emission Limit Multiplier
+  content:
+    format: json

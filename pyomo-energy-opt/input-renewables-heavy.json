@@ -1,0 +1,60 @@
+{
+  "generators": [
+    {
+      "id": "gas_backup",
+      "pmin": 50,
+      "pmax": 400,
+      "variable_cost": 55.0,
+      "fixed_cost": 1000.0,
+      "emission_rate": 0.4,
+      "renewable": "false"
+    },
+    {
+      "id": "wind_1",
+      "pmin": 0,
+      "pmax": 250,
+      "variable_cost": 0.0,
+      "fixed_cost": 0.0,
+      "emission_rate": 0.0,
+      "renewable": "true"
+    },
+    {
+      "id": "wind_2",
+      "pmin": 0,
+      "pmax": 200,
+      "variable_cost": 0.0,
+      "fixed_cost": 0.0,
+      "emission_rate": 0.0,
+      "renewable": "true"
+    },
+    {
+      "id": "solar_1",
+      "pmin": 0,
+      "pmax": 180,
+      "variable_cost": 0.0,
+      "fixed_cost": 0.0,
+      "emission_rate": 0.0,
+      "renewable": "true"
+    },
+    {
+      "id": "solar_2",
+      "pmin": 0,
+      "pmax": 120,
+      "variable_cost": 0.0,
+      "fixed_cost": 0.0,
+      "emission_rate": 0.0,
+      "renewable": "true"
+    },
+    {
+      "id": "hydro",
+      "pmin": 0,
+      "pmax": 150,
+      "variable_cost": 5.0,
+      "fixed_cost": 0.0,
+      "emission_rate": 0.0,
+      "renewable": "true"
+    }
+  ],
+  "demand": [300, 310, 330, 380, 430, 480, 500, 490, 460, 440, 420, 400, 390, 410, 440, 470, 500, 520, 490, 450, 410, 370, 340, 310],
+  "emission_limit": 1000
+}
