@@ -1,0 +1,36 @@
+{
+  "description": "Local run created at 2026-03-11T21:25:35.805918Z",
+  "id": "local-zcm5ijmx",
+  "metadata": {
+    "application_id": "local-app-uwo0wc0b",
+    "application_instance_id": "",
+    "application_version_id": "",
+    "created_at": "2026-03-11T21:25:35.805918Z",
+    "duration": 13458.8,
+    "error": "Run failed, please check logs for details.",
+    "input_size": 0.0,
+    "output_size": 0.0,
+    "format": {
+      "input": {
+        "type": "text"
+      },
+      "output": {
+        "type": "json"
+      }
+    },
+    "status_v2": "failed"
+  },
+  "name": "local run local-zcm5ijmx",
+  "user_email": "",
+  "console_url": "",
+  "synced_runs": [
+    {
+      "run_id": "devint-zliT7xFvg",
+      "synced_at": "2026-03-11T21:35:22.337598Z",
+      "app_id": "inventory-allocation"
+    }
+  ],
+  "error_log": {
+    "error": "Run failed, please check logs for details."
+  }
+}

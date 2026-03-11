@@ -1,0 +1,10 @@
+{
+  "result_value": 1350.04,
+  "transportation_cost": 1350.04,
+  "fill_rate": 1.0,
+  "total_units_allocated": 759.0,
+  "total_demand": 759,
+  "total_supply": 3376,
+  "num_unmet_stores": 0,
+  "status": "optimal"
+}

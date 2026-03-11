@@ -1,0 +1,36 @@
+{
+  "description": "Local run created at 2026-03-11T21:26:23.290447Z",
+  "id": "local-bursa622",
+  "metadata": {
+    "application_id": "local-app-uwo0wc0b",
+    "application_instance_id": "",
+    "application_version_id": "",
+    "created_at": "2026-03-11T21:26:23.290447Z",
+    "duration": 2464.9,
+    "error": "Run failed, please check logs for details.",
+    "input_size": 142.0,
+    "output_size": 0.0,
+    "format": {
+      "input": {
+        "type": "json"
+      },
+      "output": {
+        "type": "json"
+      }
+    },
+    "status_v2": "failed"
+  },
+  "name": "local run local-bursa622",
+  "user_email": "",
+  "console_url": "",
+  "synced_runs": [
+    {
+      "run_id": "devint-X1d2nxFDg",
+      "synced_at": "2026-03-11T21:34:57.496541Z",
+      "app_id": "inventory-allocation"
+    }
+  ],
+  "error_log": {
+    "error": "Run failed, please check logs for details."
+  }
+}

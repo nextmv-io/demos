@@ -1,0 +1,26 @@
+{
+  "description": "Local run created at 2026-03-11T21:45:20.983370Z",
+  "id": "local-b8z60c2f",
+  "metadata": {
+    "application_id": "local-app-uwo0wc0b",
+    "application_instance_id": "",
+    "application_version_id": "",
+    "created_at": "2026-03-11T21:45:20.983370Z",
+    "duration": 2578.0,
+    "error": "",
+    "input_size": 138,
+    "output_size": 0.0,
+    "format": {
+      "input": {
+        "type": "json"
+      },
+      "output": {
+        "type": "json"
+      }
+    },
+    "status_v2": "succeeded"
+  },
+  "name": "small-glpk",
+  "user_email": "",
+  "console_url": ""
+}

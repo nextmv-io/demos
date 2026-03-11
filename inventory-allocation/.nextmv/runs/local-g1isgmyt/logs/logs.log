@@ -1,0 +1,4 @@
+Warehouses: 5, total supply: 365
+Stores: 20, total demand: 2881
+Penalty per unmet unit: 100
+Solver status: optimal

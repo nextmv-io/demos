@@ -1,0 +1,36 @@
+{
+  "description": "Local run created at 2026-03-11T22:21:07.259324Z",
+  "id": "local-p4chh9gp",
+  "metadata": {
+    "application_id": "local-app-zokg7o4v",
+    "application_instance_id": "",
+    "application_version_id": "",
+    "created_at": "2026-03-11T22:21:07.259324Z",
+    "duration": 2269.2,
+    "error": "Run failed, please check logs for details.",
+    "input_size": 3266.0,
+    "output_size": 0.0,
+    "format": {
+      "input": {
+        "type": "multi-file"
+      },
+      "output": {
+        "type": "multi-file"
+      }
+    },
+    "status_v2": "failed"
+  },
+  "name": "local run local-p4chh9gp",
+  "user_email": "",
+  "console_url": "",
+  "synced_runs": [
+    {
+      "run_id": "devint-pznBvbFvg",
+      "synced_at": "2026-03-11T22:48:03.050150Z",
+      "app_id": "order-prioritization"
+    }
+  ],
+  "error_log": {
+    "error": "Run failed, please check logs for details."
+  }
+}
