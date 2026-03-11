@@ -450,6 +450,51 @@ nextmv local app sync --app-src . --target-app-id <cloud-app-id> \
 
 ---
 
+## Step 8: Write README.md
+
+Every app must include a `README.md` in its directory. Keep it concise — the goal is to quickly orient someone to what the app does and how to run it.
+
+### Required sections
+
+The README should contain the following sections:
+
+**`# App Name`** — One-sentence description of the decision problem being solved.
+
+**`## Approach`** — Describe the modeling approach or framework (e.g., LP via Pyomo/HiGHS, declarative rules via business-rules). Mention key design choices.
+
+**`## Configuration Options`** — Table of options with name, type, default, and description.
+
+**`## Input Format`** — Describe JSON fields/types or CSV columns. Include a short example.
+
+**`## Output`** — Describe the solution file(s), metrics reported in `metrics.json`, and the Plotly visualizations.
+
+**`## Running Locally`** — Commands to run with the Nextmv CLI:
+
+```bash
+# JSON format app
+cat input.json | nextmv local run create --app-src . --wait
+cat inputs/large.json | nextmv local run create --app-src . --name large --wait
+
+# Multi-file app (run from the input directory)
+nextmv local run create --app-src . --wait
+```
+
+**`## Syncing to Nextmv Cloud`**:
+
+```bash
+nextmv local app sync --app-src . --target-app-id <cloud-app-id>
+```
+
+### README tips
+
+- Do not repeat content that is obvious from the code.
+- Focus on options and how to use them.
+- Explain the metrics.
+- Link to the tool or solver documentation for readers unfamiliar with it.
+- For multi-file apps, clarify which directory to run from and where output files appear.
+
+---
+
 ## Checklist Before Committing
 
 - [ ] `app.yaml` has at least one user-facing configuration option (beyond input/output)
