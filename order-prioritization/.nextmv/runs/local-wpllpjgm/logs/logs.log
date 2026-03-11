@@ -1,7 +1,0 @@
-Orders: 100
-Rule set: cost-first
-Expedite deadline threshold: 2 days
-Standard deadline threshold: 7 days
-expedite=71  standard=25  defer=4
-
-Exception during run execution: 'list' object has no attribute 'get'
