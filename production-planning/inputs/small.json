@@ -1,0 +1,13 @@
+{
+  "products": ["Widget A", "Widget B"],
+  "periods": ["Q1", "Q2", "Q3", "Q4"],
+  "demand": [
+    [40, 50, 45, 60],
+    [25, 30, 35, 40]
+  ],
+  "production_cost": [2.0, 3.5],
+  "holding_cost": [0.20, 0.35],
+  "resource_use": [1.0, 1.5],
+  "capacity": [120, 110, 130, 140],
+  "initial_inventory": [5, 0]
+}

@@ -1,0 +1,14 @@
+{
+  "products": ["Widget A", "Widget B", "Widget C"],
+  "periods": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+  "demand": [
+    [50, 60, 55, 70, 80, 75],
+    [30, 35, 40, 45, 50, 55],
+    [20, 25, 30, 35, 40, 45]
+  ],
+  "production_cost": [2.0, 3.5, 5.0],
+  "holding_cost": [0.20, 0.35, 0.50],
+  "resource_use": [1.0, 1.5, 2.0],
+  "capacity": [200, 190, 210, 220, 210, 215],
+  "initial_inventory": [10, 5, 0]
+}
