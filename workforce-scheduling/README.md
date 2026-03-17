@@ -12,6 +12,7 @@ Multi-objective optimization via [NSGA-II](https://pymoo.org/algorithms/moo/nsga
 The algorithm returns the full **Pareto front** of non-dominated solutions — the set of assignments where no solution is strictly better on both objectives. A single "best" solution is then selected by minimizing understaffing first, then cost.
 
 Workers respect two constraints enforced via a repair operator:
+
 - **Availability**: workers can only be assigned to shifts in their `available_shifts` list
 - **Max shifts**: workers cannot be assigned more than `max_shifts` shifts per week
 
@@ -76,6 +77,7 @@ A single JSON object with two arrays.
 | `status` | `optimal` (fully covered) or `suboptimal` (some understaffing) |
 
 **Visualizations**:
+
 - **Pareto Front** (tab 1): scatter plot of cost vs. understaffed shifts — each point is a non-dominated solution; the selected solution is highlighted
 - **Schedule** (tab 2): heatmap of worker × shift assignments for the best solution; understaffed shifts are marked with ⚠
 - **Convergence** (tab 3): best feasible cost and minimum understaffing over generations
