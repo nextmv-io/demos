@@ -495,6 +495,127 @@ nextmv local app sync --app-src . --target-app-id <cloud-app-id>
 
 ---
 
+## Step 9: Deploy to Nextmv Cloud
+
+Once local tests pass, deploy the app to Nextmv Cloud, set up instances, and run tests to validate behavior before and after changes.
+
+### 1. Sync local runs to the Cloud app
+
+Sync successful local runs so they are visible in the Cloud UI and can be used as inputs for scenario tests.
+
+```bash
+nextmv local app sync --app-src . --target-app-id <cloud-app-id>
+```
+
+### 2. Push the app
+
+Push the app code to create a new deployable version. Use `--version-yes` to skip the interactive prompt.
+
+```bash
+# Push and create a new version (auto-generates version ID)
+nextmv cloud app push --app-id <cloud-app-id> --version-yes
+
+# Push with a specific version ID
+nextmv cloud app push --app-id <cloud-app-id> --version-id v1.0.0
+```
+
+### 3. Create production and staging instances
+
+Instances link a version to a set of default options. Create at minimum a `production` instance and a `staging` instance so you can compare them in tests.
+
+```bash
+# Production instance — conservative defaults
+nextmv cloud instance create \
+  --app-id <cloud-app-id> \
+  --version-id <version-id> \
+  --instance-id production \
+  --name "Production"
+
+# Staging instance — candidate config to test against production
+nextmv cloud instance create \
+  --app-id <cloud-app-id> \
+  --version-id <version-id> \
+  --instance-id staging \
+  --name "Staging" \
+  --options <option-name>=<value>
+```
+
+To update an existing instance to a new version:
+
+```bash
+nextmv cloud instance update \
+  --app-id <cloud-app-id> \
+  --instance-id staging \
+  --version-id <new-version-id>
+```
+
+### 4. Run a scenario test
+
+A scenario test runs one or more inputs against one or more instances and compares the results. Use this to validate that a new version or config change does not regress quality metrics.
+
+Each scenario requires an `instance_id` and an `input_set` input (create input sets in the Cloud UI or via `nextmv cloud input-set`).
+
+```bash
+SCENARIO='{
+  "instance_id": "staging",
+  "scenario_input": {
+    "scenario_input_type": "input_set",
+    "scenario_input_data": {
+      "input_id": "<input-id>",
+      "input_set_id": "<input-set-id>"
+    }
+  }
+}'
+
+nextmv cloud scenario create \
+  --app-id <cloud-app-id> \
+  --name "Smoke test after deploy" \
+  --scenarios "$SCENARIO" \
+  --wait
+```
+
+To sweep multiple option values in a single test, add a `configuration` block:
+
+```bash
+SCENARIO='{
+  "instance_id": "production",
+  "scenario_input": {
+    "scenario_input_type": "input_set",
+    "scenario_input_data": {
+      "input_id": "<input-id>",
+      "input_set_id": "<input-set-id>"
+    }
+  },
+  "configuration": [
+    {"name": "<option-name>", "values": ["<value-1>", "<value-2>"]}
+  ]
+}'
+```
+
+### 5. Run a shadow test
+
+A shadow test routes live traffic to both a baseline and one or more candidate instances simultaneously and compares their outputs. Use this to evaluate a new version or config against real production traffic before promoting.
+
+```bash
+COMPARISONS='{
+  "production": ["staging"]
+}'
+
+nextmv cloud shadow create \
+  --app-id <cloud-app-id> \
+  --name "Staging vs Production" \
+  --comparisons "$COMPARISONS" \
+  --termination-maximum-runs 50
+
+# Start the shadow test (if not using --start-time)
+nextmv cloud shadow start --app-id <cloud-app-id> --shadow-test-id <shadow-test-id>
+
+# Stop it early if needed
+nextmv cloud shadow stop --app-id <cloud-app-id> --shadow-test-id <shadow-test-id>
+```
+
+---
+
 ## Checklist Before Committing
 
 - [ ] `app.yaml` has at least one user-facing configuration option (beyond input/output)
@@ -504,3 +625,26 @@ nextmv local app sync --app-src . --target-app-id <cloud-app-id>
 - [ ] All solver/library dependencies are Apache 2.0 (or MIT/BSD) licensed
 - [ ] `input.json` sample is included and works locally
 - [ ] `requirements.txt` has pinned versions
+- [ ] Ran locally with the Nextmv CLI and confirmed:
+  - Run status is `succeeded` (not `failed`)
+  - Quality metric is in the expected range
+  - At least one non-default option value was tested (e.g. `-o penalty_unmet_demand=1000`) and the result changed in the expected direction
+
+  **JSON format** — pipe input via stdin:
+
+  ```bash
+  nextmv local run create -i input.json --app-src . --wait
+  ```
+
+  **Multi-file format** — pass the input directory with `--input-dir`; do NOT pipe via stdin:
+
+  ```bash
+  nextmv local run create --app-src . --input-dir input --wait
+  nextmv local run create --app-src . --input-dir inputs/large --name large --wait
+  ```
+
+- [ ] Synced local runs to Cloud app (`nextmv local app sync --app-src . --target-app-id <cloud-app-id>`)
+- [ ] Pushed app to Cloud and created a new version (`nextmv cloud app push --app-id <cloud-app-id> --version-yes`)
+- [ ] Created or updated `production` and `staging` instances with the new version
+- [ ] Ran a scenario test against the production instance and confirmed metrics are within expected range
+- [ ] (For config changes) Ran a shadow test comparing `staging` vs `production` before promoting

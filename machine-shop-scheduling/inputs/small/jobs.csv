@@ -1,0 +1,10 @@
+job_id,sequence,machine,duration
+product_A,1,drill,15
+product_A,2,mill,20
+product_A,3,inspect,5
+product_B,1,mill,18
+product_B,2,drill,10
+product_B,3,inspect,6
+product_C,1,drill,12
+product_C,2,mill,22
+product_C,3,inspect,4
