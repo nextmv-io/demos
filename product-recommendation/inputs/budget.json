@@ -1,0 +1,28 @@
+{
+  "customer": {
+    "id": "budget-shopper",
+    "preferred_categories": ["books", "home"],
+    "preferred_brands": [],
+    "excluded_categories": ["automotive"],
+    "budget": 80,
+    "price_sensitivity": 0.95,
+    "previously_purchased": []
+  },
+  "products": [
+    {"id": "p001", "name": "Atomic Habits", "category": "books", "brand": "Avery", "price": 18, "rating": 4.8, "in_stock": true},
+    {"id": "p002", "name": "Deep Work", "category": "books", "brand": "Grand Central", "price": 17, "rating": 4.6, "in_stock": true},
+    {"id": "p003", "name": "The Lean Startup", "category": "books", "brand": "Crown", "price": 19, "rating": 4.4, "in_stock": true},
+    {"id": "p004", "name": "Shoe Dog", "category": "books", "brand": "Scribner", "price": 15, "rating": 4.7, "in_stock": true},
+    {"id": "p005", "name": "Anker USB-C Cable 3-pack", "category": "electronics", "brand": "Anker", "price": 12, "rating": 4.6, "in_stock": true},
+    {"id": "p006", "name": "Anker Wireless Charger", "category": "electronics", "brand": "Anker", "price": 15, "rating": 4.4, "in_stock": true},
+    {"id": "p007", "name": "Bamboo Cutting Board", "category": "home", "brand": "OXO", "price": 29, "rating": 4.7, "in_stock": true},
+    {"id": "p008", "name": "Airtight Food Containers Set", "category": "home", "brand": "Rubbermaid", "price": 35, "rating": 4.5, "in_stock": true},
+    {"id": "p009", "name": "Resistance Bands Set", "category": "sports", "brand": "Fit Simplify", "price": 12, "rating": 4.5, "in_stock": true},
+    {"id": "p010", "name": "Jump Rope", "category": "sports", "brand": "WOD Nation", "price": 18, "rating": 4.6, "in_stock": true},
+    {"id": "p011", "name": "Sony WH-1000XM5 Headphones", "category": "electronics", "brand": "Sony", "price": 299, "rating": 4.8, "in_stock": true},
+    {"id": "p012", "name": "Expensive Coffee Machine", "category": "home", "brand": "Breville", "price": 699, "rating": 4.8, "in_stock": true},
+    {"id": "p013", "name": "CeraVe Face Wash", "category": "beauty", "brand": "CeraVe", "price": 14, "rating": 4.8, "in_stock": true},
+    {"id": "p014", "name": "Microfiber Cleaning Cloths", "category": "home", "brand": "AmazonBasics", "price": 11, "rating": 4.4, "in_stock": true},
+    {"id": "p015", "name": "Skipping Rope Pro", "category": "sports", "brand": "CrossRope", "price": 68, "rating": 4.7, "in_stock": true}
+  ]
+}

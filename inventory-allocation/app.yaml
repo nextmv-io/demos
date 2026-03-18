@@ -17,7 +17,7 @@ configuration:
       ui:
         control_type: input
         hidden_from:
-        - operator
+        - admin
     - name: output
       option_type: string
       default: ''
@@ -26,7 +26,7 @@ configuration:
       ui:
         control_type: input
         hidden_from:
-        - operator
+        - admin
     - name: solver
       option_type: string
       default: highs

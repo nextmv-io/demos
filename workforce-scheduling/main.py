@@ -88,11 +88,11 @@ class GenerationCallback(Callback):
 
 
 def main():
-    input_data = nextmv.load()
-    data = input_data.data
-
     manifest = nextmv.Manifest.from_yaml(".")
     options = manifest.extract_options()
+
+    input_data = nextmv.load(options=options, path=options.input)
+    data = input_data.data
 
     workers = data["workers"]
     shifts = data["shifts"]

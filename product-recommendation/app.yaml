@@ -27,61 +27,71 @@ configuration:
         control_type: input
         hidden_from:
         - operator
-    - name: population_size
+    - name: max_recommendations
       option_type: int
-      default: 100
+      default: 10
       description: ''
       required: false
       additional_attributes:
-        min: 20
-        max: 300
-        step: 20
+        min: 3
+        max: 20
+        step: 1
       ui:
         control_type: slider
-        display_name: Population Size
-    - name: num_generations
-      option_type: int
-      default: 100
-      description: ''
-      required: false
-      additional_attributes:
-        min: 20
-        max: 500
-        step: 20
-      ui:
-        control_type: slider
-        display_name: Number of Generations
-    - name: mutation_rate
+        display_name: Max Recommendations
+    - name: category_weight
       option_type: float
-      default: 0.02
+      default: 0.35
       description: ''
       required: false
       additional_attributes:
-        min: 0.001
-        max: 0.1
-        step: 0.001
-      ui:
-        control_type: slider
-        display_name: Per-Gene Mutation Rate
-    - name: crossover_rate
-      option_type: float
-      default: 0.9
-      description: ''
-      required: false
-      additional_attributes:
-        min: 0.5
+        min: 0.0
         max: 1.0
         step: 0.05
       ui:
         control_type: slider
-        display_name: Crossover Rate
-    - name: seed
-      option_type: int
-      default: 42
+        display_name: Category Match Weight
+    - name: brand_weight
+      option_type: float
+      default: 0.25
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0.0
+        max: 1.0
+        step: 0.05
+      ui:
+        control_type: slider
+        display_name: Brand Affinity Weight
+    - name: price_weight
+      option_type: float
+      default: 0.2
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0.0
+        max: 1.0
+        step: 0.05
+      ui:
+        control_type: slider
+        display_name: Price Fit Weight
+    - name: rating_weight
+      option_type: float
+      default: 0.2
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0.0
+        max: 1.0
+        step: 0.05
+      ui:
+        control_type: slider
+        display_name: Rating Weight
+    - name: diversity
+      option_type: bool
+      default: true
       description: ''
       required: false
       ui:
-        control_type: input
-        hidden_from:
-        - operator
-        display_name: Random Seed
+        control_type: toggle
+        display_name: Enforce Category Diversity

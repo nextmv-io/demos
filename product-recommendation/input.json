@@ -1,0 +1,43 @@
+{
+  "customer": {
+    "id": "customer-001",
+    "preferred_categories": ["electronics", "books"],
+    "preferred_brands": ["Sony", "Apple", "Anker"],
+    "excluded_categories": [],
+    "budget": 600,
+    "price_sensitivity": 0.6,
+    "previously_purchased": ["p003", "p015"]
+  },
+  "products": [
+    {"id": "p001", "name": "Sony WH-1000XM5 Headphones", "category": "electronics", "brand": "Sony", "price": 299, "rating": 4.8, "in_stock": true},
+    {"id": "p002", "name": "Apple AirPods Pro (2nd Gen)", "category": "electronics", "brand": "Apple", "price": 249, "rating": 4.7, "in_stock": true},
+    {"id": "p003", "name": "Sony SRS-XB33 Speaker", "category": "electronics", "brand": "Sony", "price": 149, "rating": 4.5, "in_stock": true},
+    {"id": "p004", "name": "Anker PowerCore 26800 Battery", "category": "electronics", "brand": "Anker", "price": 55, "rating": 4.6, "in_stock": true},
+    {"id": "p005", "name": "Apple iPad Air (M2)", "category": "electronics", "brand": "Apple", "price": 599, "rating": 4.8, "in_stock": true},
+    {"id": "p006", "name": "Samsung 27\" 4K Monitor", "category": "electronics", "brand": "Samsung", "price": 349, "rating": 4.5, "in_stock": true},
+    {"id": "p007", "name": "Logitech MX Master 3 Mouse", "category": "electronics", "brand": "Logitech", "price": 99, "rating": 4.7, "in_stock": true},
+    {"id": "p008", "name": "Anker USB-C Hub 7-in-1", "category": "electronics", "brand": "Anker", "price": 35, "rating": 4.5, "in_stock": true},
+    {"id": "p009", "name": "Clean Code by Robert Martin", "category": "books", "brand": "Prentice Hall", "price": 35, "rating": 4.6, "in_stock": true},
+    {"id": "p010", "name": "Designing Data-Intensive Applications", "category": "books", "brand": "O'Reilly", "price": 55, "rating": 4.8, "in_stock": true},
+    {"id": "p011", "name": "The Pragmatic Programmer", "category": "books", "brand": "Addison-Wesley", "price": 45, "rating": 4.7, "in_stock": true},
+    {"id": "p012", "name": "Nike Running Shoes Air Zoom", "category": "sports", "brand": "Nike", "price": 129, "rating": 4.5, "in_stock": true},
+    {"id": "p013", "name": "Hydro Flask 32oz Water Bottle", "category": "sports", "brand": "Hydro Flask", "price": 44, "rating": 4.8, "in_stock": true},
+    {"id": "p014", "name": "Yoga Mat Premium Non-Slip", "category": "sports", "brand": "Manduka", "price": 88, "rating": 4.6, "in_stock": true},
+    {"id": "p015", "name": "IKEA KALLAX Shelf Unit", "category": "home", "brand": "IKEA", "price": 199, "rating": 4.3, "in_stock": true},
+    {"id": "p016", "name": "Philips Hue Starter Kit", "category": "home", "brand": "Philips", "price": 179, "rating": 4.4, "in_stock": true},
+    {"id": "p017", "name": "Dyson V15 Vacuum", "category": "home", "brand": "Dyson", "price": 549, "rating": 4.7, "in_stock": true},
+    {"id": "p018", "name": "Instant Pot Duo 7-in-1", "category": "home", "brand": "Instant Pot", "price": 89, "rating": 4.7, "in_stock": true},
+    {"id": "p019", "name": "CeraVe Moisturizing Cream", "category": "beauty", "brand": "CeraVe", "price": 16, "rating": 4.8, "in_stock": true},
+    {"id": "p020", "name": "Oral-B Pro 1000 Electric Toothbrush", "category": "beauty", "brand": "Oral-B", "price": 49, "rating": 4.5, "in_stock": true},
+    {"id": "p021", "name": "LEGO Technic Bugatti Chiron", "category": "toys", "brand": "LEGO", "price": 349, "rating": 4.9, "in_stock": true},
+    {"id": "p022", "name": "Nintendo Switch OLED", "category": "electronics", "brand": "Nintendo", "price": 349, "rating": 4.8, "in_stock": true},
+    {"id": "p023", "name": "Kindle Paperwhite (16GB)", "category": "electronics", "brand": "Amazon", "price": 149, "rating": 4.7, "in_stock": true},
+    {"id": "p024", "name": "Atomic Habits by James Clear", "category": "books", "brand": "Avery", "price": 18, "rating": 4.8, "in_stock": true},
+    {"id": "p025", "name": "Deep Work by Cal Newport", "category": "books", "brand": "Grand Central", "price": 17, "rating": 4.6, "in_stock": true},
+    {"id": "p026", "name": "Bose QuietComfort Earbuds II", "category": "electronics", "brand": "Bose", "price": 199, "rating": 4.5, "in_stock": true},
+    {"id": "p027", "name": "Garmin Fenix 7 Smartwatch", "category": "electronics", "brand": "Garmin", "price": 599, "rating": 4.6, "in_stock": false},
+    {"id": "p028", "name": "DJI Mini 3 Drone", "category": "electronics", "brand": "DJI", "price": 759, "rating": 4.7, "in_stock": true},
+    {"id": "p029", "name": "Weber Spirit II Gas Grill", "category": "home", "brand": "Weber", "price": 499, "rating": 4.6, "in_stock": true},
+    {"id": "p030", "name": "Anker Wireless Charger Pad", "category": "electronics", "brand": "Anker", "price": 15, "rating": 4.4, "in_stock": true}
+  ]
+}

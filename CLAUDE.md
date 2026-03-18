@@ -67,9 +67,27 @@ files:
 
 configuration:
   options:
+    strict: false
+    items:
+      - name: input
+        option_type: string
+        default: ''
+        required: false
+        ui:
+          control_type: input
+          hidden_from:
+            - operator
+      - name: output
+        option_type: string
+        default: ''
+        required: false
+        ui:
+          control_type: input
+          hidden_from:
+            - operator
 ```
 
-No `content` block is needed; JSON is the default.
+No `content` block is needed; JSON is the default. The `input` and `output` options are required so that `nextmv.load(options=options, path=options.input)` works correctly.
 
 ### Content format: multi-file
 
@@ -519,7 +537,37 @@ nextmv cloud app push --app-id <cloud-app-id> --version-yes
 nextmv cloud app push --app-id <cloud-app-id> --version-id v1.0.0
 ```
 
-### 3. Create production and staging instances
+### 3. Create cloud runs from all inputs
+
+After the first push, create cloud runs on the `latest` instance using each input file. Use the same format distinction as local runs:
+
+**JSON format** — pipe input via stdin (same as local):
+
+```bash
+# Run default input
+cat input.json | nextmv cloud run create --app-id <cloud-app-id> --instance-id latest --name default --wait
+
+# Run all inputs in inputs/
+for f in inputs/*.json; do
+  cat "$f" | nextmv cloud run create --app-id <cloud-app-id> --instance-id latest \
+    --name "$(basename $f .json)" --wait
+done
+```
+
+**Multi-file format** — pass the input directory path with `-i`:
+
+```bash
+# Run default input
+nextmv cloud run create --app-id <cloud-app-id> --instance-id latest -i input --name default --wait
+
+# Run all input directories in inputs/
+for d in inputs/*/; do
+  nextmv cloud run create --app-id <cloud-app-id> --instance-id latest \
+    -i "$d" --name "$(basename $d)" --wait
+done
+```
+
+### 4. Create production and staging instances
 
 Instances link a version to a set of default options. Create at minimum a `production` instance and a `staging` instance so you can compare them in tests.
 
@@ -645,6 +693,7 @@ nextmv cloud shadow stop --app-id <cloud-app-id> --shadow-test-id <shadow-test-i
 
 - [ ] Synced local runs to Cloud app (`nextmv local app sync --app-src . --target-app-id <cloud-app-id>`)
 - [ ] Pushed app to Cloud and created a new version (`nextmv cloud app push --app-id <cloud-app-id> --version-yes`)
+- [ ] Created cloud runs on the `latest` instance for all inputs using `nextmv cloud run create --app-id <cloud-app-id> --instance-id latest -i <input-file-or-dir> --name <name> --wait`
 - [ ] Created or updated `production` and `staging` instances with the new version
 - [ ] Ran a scenario test against the production instance and confirmed metrics are within expected range
 - [ ] (For config changes) Ran a shadow test comparing `staging` vs `production` before promoting
