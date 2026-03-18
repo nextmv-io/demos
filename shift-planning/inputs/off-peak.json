@@ -1,0 +1,17 @@
+{
+  "time_periods": [
+    {"id": "t0",  "label": "08:00", "demand": 1},
+    {"id": "t1",  "label": "09:00", "demand": 2},
+    {"id": "t2",  "label": "10:00", "demand": 3},
+    {"id": "t3",  "label": "11:00", "demand": 3},
+    {"id": "t4",  "label": "12:00", "demand": 4},
+    {"id": "t5",  "label": "13:00", "demand": 4},
+    {"id": "t6",  "label": "14:00", "demand": 3},
+    {"id": "t7",  "label": "15:00", "demand": 2},
+    {"id": "t8",  "label": "16:00", "demand": 2},
+    {"id": "t9",  "label": "17:00", "demand": 3},
+    {"id": "t10", "label": "18:00", "demand": 3},
+    {"id": "t11", "label": "19:00", "demand": 2},
+    {"id": "t12", "label": "20:00", "demand": 1}
+  ]
+}

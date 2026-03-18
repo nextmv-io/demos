@@ -5,6 +5,7 @@ python:
 files:
 - main.py
 - visuals.py
+- heuristic.py
 configuration:
   options:
     strict: false
@@ -45,6 +46,26 @@ configuration:
       ui:
         control_type: slider
         display_name: Changeover Weight (multiplier)
+    - name: use_heuristic
+      option_type: bool
+      default: false
+      description: ''
+      required: false
+      ui:
+        display_name: Use Heuristic Fallback
+    - name: dispatch_rule
+      option_type: string
+      default: spt
+      description: ''
+      required: false
+      additional_attributes:
+        values:
+        - spt
+        - lpt
+        - fifo
+      ui:
+        control_type: select
+        display_name: Dispatch Rule (spt / lpt / fifo)
   content:
     format: multi-file
     multi-file:

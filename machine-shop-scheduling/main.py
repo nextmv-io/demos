@@ -8,6 +8,7 @@ from collections import defaultdict
 import nextmv
 from ortools.sat.python import cp_model
 
+from heuristic import greedy_schedule
 from visuals import gantt_chart, utilization_chart
 
 STATUS_MAP = {
@@ -140,34 +141,51 @@ def main():
     model.AddMaxEquality(makespan, final_ends)
     model.Minimize(makespan)
 
-    # Solve
-    solver = cp_model.CpSolver()
-    solver.parameters.max_time_in_seconds = options.time_limit
-    solver.parameters.num_workers = options.num_workers
+    # Run greedy heuristic directly when requested; otherwise use CP-SAT
+    if options.use_heuristic:
+        rule = options.dispatch_rule or "spt"
+        nextmv.log(f"Running greedy heuristic ({rule})")
+        nextmv.redirect_stdout()
+        schedule = greedy_schedule(jobs, changeovers, options.changeover_weight, rule)
+        makespan_val = max((t["end"] for t in schedule), default=0)
+        solver_used = f"heuristic_{rule}"
+        status_str = "feasible"
+        nextmv.log(f"Heuristic makespan: {makespan_val} min")
+    else:
+        # Solve with CP-SAT
+        solver = cp_model.CpSolver()
+        solver.parameters.max_time_in_seconds = options.time_limit
+        solver.parameters.num_workers = options.num_workers
 
-    nextmv.redirect_stdout()
-    status_code = solver.Solve(model)
-    status_str = solver.StatusName(status_code).lower()
-    nextmv.log(f"Solver status: {status_str}")
+        nextmv.redirect_stdout()
+        status_code = solver.Solve(model)
+        status_str = solver.StatusName(status_code).lower()
+        nextmv.log(f"Solver status: {status_str}")
 
-    # Extract solution
-    if status_code in (cp_model.OPTIMAL, cp_model.FEASIBLE):
-        makespan_val = int(solver.ObjectiveValue())
-        schedule = []
-        for t in tasks:
-            key = (t["job_id"], t["step"])
-            start = solver.Value(task_starts[key])
-            schedule.append(
-                {
-                    "job_id": t["job_id"],
-                    "step": t["step"],
-                    "machine": t["machine"],
-                    "start": start,
-                    "end": start + t["duration"],
-                    "duration": t["duration"],
-                }
-            )
+        solver_feasible = status_code in (cp_model.OPTIMAL, cp_model.FEASIBLE)
+        solver_used = "cp_sat"
 
+        if solver_feasible:
+            makespan_val = int(solver.ObjectiveValue())
+            schedule = []
+            for t in tasks:
+                key = (t["job_id"], t["step"])
+                start = solver.Value(task_starts[key])
+                schedule.append(
+                    {
+                        "job_id": t["job_id"],
+                        "step": t["step"],
+                        "machine": t["machine"],
+                        "start": start,
+                        "end": start + t["duration"],
+                        "duration": t["duration"],
+                    }
+                )
+        else:
+            makespan_val = 0
+            schedule = []
+
+    if schedule:
         total_processing = sum(t["duration"] for t in tasks)
         avg_util = total_processing / (makespan_val * len(all_machines)) if makespan_val > 0 else 0
         machine_util = {
@@ -176,8 +194,6 @@ def main():
         }
         nextmv.log(f"Makespan: {makespan_val} min | Avg utilization: {avg_util:.1%}")
     else:
-        makespan_val = 0
-        schedule = []
         avg_util = 0.0
         machine_util = {m: 0.0 for m in all_machines}
 
@@ -204,6 +220,7 @@ def main():
                 "total_jobs": len(all_job_ids),
                 "total_tasks": len(tasks),
                 "status": STATUS_MAP.get(status_str, status_str),
+                "solver_used": solver_used,
             },
             f,
         )

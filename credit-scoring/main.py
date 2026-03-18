@@ -2,6 +2,14 @@ import nextmv
 import numpy as np
 from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import (
+    confusion_matrix,
+    f1_score,
+    log_loss,
+    precision_score,
+    recall_score,
+    roc_auc_score,
+)
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
@@ -74,7 +82,20 @@ def main() -> None:
 
     clf.fit(X_train_s, y_train)
     test_accuracy = float(clf.score(X_test_s, y_test))
-    nextmv.log(f"Model test accuracy: {test_accuracy:.3f}")
+    y_pred = clf.predict(X_test_s)
+    y_prob = clf.predict_proba(X_test_s)[:, list(clf.classes_).index(1)]
+
+    precision = float(precision_score(y_test, y_pred, zero_division=0))
+    recall = float(recall_score(y_test, y_pred, zero_division=0))
+    f1 = float(f1_score(y_test, y_pred, zero_division=0))
+    roc_auc = float(roc_auc_score(y_test, y_prob))
+    logloss = float(log_loss(y_test, clf.predict_proba(X_test_s)))
+    tn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()
+
+    nextmv.log(
+        f"Accuracy: {test_accuracy:.3f} | Precision: {precision:.3f} | "
+        f"Recall: {recall:.3f} | F1: {f1:.3f} | AUC-ROC: {roc_auc:.3f}"
+    )
 
     X_app = scaler.transform(to_matrix(applicants))
     # class 0 = no default → approval score
@@ -119,14 +140,23 @@ def main() -> None:
         assets=[chart1, chart2],
         metrics={
             "result_value": round(approval_rate, 4),
-            "model_accuracy": round(test_accuracy, 4),
+            "status": "optimal",
+            "model_type": model_type,
+            "accuracy": round(test_accuracy, 4),
+            "precision": round(precision, 4),
+            "recall": round(recall, 4),
+            "f1_score": round(f1, 4),
+            "roc_auc": round(roc_auc, 4),
+            "log_loss": round(logloss, 4),
+            "true_positives": int(tp),
+            "true_negatives": int(tn),
+            "false_positives": int(fp),
+            "false_negatives": int(fn),
             "num_approved": num_approved,
             "num_review": num_review,
             "num_denied": num_denied,
             "approval_rate": round(approval_rate, 4),
             "total_applicants": len(decisions),
-            "model_type": model_type,
-            "status": "optimal",
         },
     )
 

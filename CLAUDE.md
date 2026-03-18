@@ -8,8 +8,12 @@ This repo contains Nextmv demo apps that showcase Apache-licensed, open-source P
 
 - **License**: Only use Apache 2.0 licensed solvers and libraries (e.g., Pyomo, OR-Tools, HiGHS, CBC, GLPK). Avoid commercial solvers (Gurobi, Xpress, CPLEX) unless an explicit free/academic license is available and documented.
 - **Metrics**: Every app must write metrics to a `metrics.json` (or report them via `nextmv.Output(metrics={...})`).
+  - **Optimization apps** (MIP, LP, CP, heuristics): use `status` (`optimal` | `suboptimal` | `infeasible` | `unbounded`) and `result_value` (objective value). Do NOT use these fields in ML or predictive apps.
+  - **ML classifier apps**: omit `status`/`result_value`; instead include `accuracy`, `precision`, `recall`, `f1_score`, `roc_auc`, `log_loss`, and confusion matrix counts (`true_positives`, `true_negatives`, `false_positives`, `false_negatives`).
+  - **ML regression / forecasting apps**: omit `status`/`result_value`; instead include `rmse`, `mae`, `r2`, and any domain-relevant metrics (e.g. `mape` for forecasting).
+  - **Simulation / rules-engine apps**: use domain-specific metrics (e.g. throughput, utilization, queue length); no `status`/`result_value` unless the model includes an optimization objective.
 - **Visualization**: Every app must include at least one Plotly visualization rendered as a `nextmv.Asset`.
-- **Configuration**: Every app must expose user-facing configuration options via `app.yaml`.
+- **Configuration**: Every app must expose user-facing configuration options via `app.yaml`. Any app that uses a random seed internally must expose a `random_seed` option (`option_type: int`, not required, no default) so results can be reproduced on demand.
 
 ---
 
@@ -17,7 +21,7 @@ This repo contains Nextmv demo apps that showcase Apache-licensed, open-source P
 
 Each app lives in its own directory with this structure:
 
-```
+```md
 my-app/
 ├── app.yaml          # Nextmv manifest (required)
 ├── main.py           # Entry point
@@ -29,21 +33,9 @@ my-app/
 
 ---
 
-## Step 1: Generate the App Manifest with the Nextmv CLI
+## Step 1: Create the App Manifest
 
-Use the Nextmv CLI to scaffold the `app.yaml` manifest:
-
-```bash
-nextmv manifest init --type python
-```
-
-This creates a base `app.yaml`. Edit it to match the app's runtime, files, and options (see Step 2).
-
-To validate the manifest at any time:
-
-```bash
-nextmv manifest validate
-```
+Write `app.yaml` manually based on the templates in Step 2. The `nextmv manifest` CLI command does not exist in the current CLI version.
 
 ---
 
@@ -181,6 +173,25 @@ configuration:
           control_type: slider
 ```
 
+### Random seed option
+
+Any app that uses a random seed must expose it as an optional, unhidden option with no default so users can reproduce specific results:
+
+```yaml
+- name: random_seed
+  option_type: int
+  required: false
+  ui:
+    control_type: input
+    display_name: Random Seed (optional, for reproducibility)
+```
+
+In code, use `None` as the fallback so the library picks a random seed when unset:
+
+```python
+seed = options.random_seed if options.random_seed else None
+```
+
 ### Option types and valid control_types
 
 | `option_type` | Valid `control_type` values | Default | Notes |
@@ -220,16 +231,33 @@ data = input.data  # dict parsed from input.json
 nextmv.redirect_stdout()
 
 # Write
+# Optimization app — use status + result_value
 output = nextmv.Output(
     solution={"assignments": [...]},
     assets=[chart],          # list of nextmv.Asset from visuals.py
     metrics={
-        "result_value": objective_value,
-        "status": "optimal",   # optimal | suboptimal | infeasible | unbounded
+        "result_value": objective_value,   # optimization apps only
+        "status": "optimal",               # optimal | suboptimal | infeasible | unbounded — optimization apps only
         "variables": num_vars,
         "constraints": num_constraints,
     },
 )
+
+# ML / predictive app — do NOT use status or result_value; use model metrics instead
+output = nextmv.Output(
+    solution={"predictions": [...]},
+    assets=[chart],
+    metrics={
+        # Classifier
+        "accuracy": 0.91, "precision": 0.88, "recall": 0.85,
+        "f1_score": 0.86, "roc_auc": 0.94, "log_loss": 0.32,
+        "true_positives": 42, "true_negatives": 130,
+        "false_positives": 6, "false_negatives": 8,
+        # Regressor / forecaster (use instead of classifier metrics)
+        # "rmse": 12.4, "mae": 9.1, "r2": 0.87, "mape": 0.08,
+    },
+)
+
 nextmv.write(output, path=options.output)
 ```
 
@@ -254,11 +282,13 @@ with open("output/results.csv", "w", newline="") as f:
     writer.writerows(results)
 
 # Write metrics.json as a plain dict
+# Optimization apps: use result_value + status
 with open("metrics.json", "w") as f:
     json.dump({
         "result_value": objective_value,
-        "status": "optimal",   # optimal | suboptimal | infeasible | unbounded
+        "status": "optimal",   # optimal | suboptimal | infeasible | unbounded — optimization only
     }, f)
+# ML/predictive apps: use model metrics instead (no status/result_value)
 
 # Write assets.json — must be {"assets": [...]} at the top level
 # Each asset's visual uses "schema" and "type" (not "visual_schema"/"visual_type")
@@ -336,7 +366,7 @@ def build_chart(solution, input_data, label="Solution", tab_order=1) -> nextmv.A
 
 Pin all dependencies. Always include `nextmv` and `plotly`. Use Apache-licensed solvers only.
 
-```
+```txt
 nextmv==1.2.0
 plotly==6.5.2
 numpy==2.2.0
@@ -356,7 +386,7 @@ Every app must include a default `input.json` at the root plus an `inputs/` dire
 
 | File | Purpose |
 | --- | --- |
-| `input.json` | Default — small/medium, used by `nextmv local run create` without flags |
+| `input.json` | Default — small/medium, used by `mcp__nextmv__local_run` without specifying an input directory |
 | `inputs/small.json` | Smallest meaningful problem — fast solver, easy to inspect |
 | `inputs/medium.json` | Representative mid-size instance |
 | `inputs/large.json` | Stress test — larger problem, longer solve time |
@@ -377,44 +407,68 @@ Use descriptive names that reflect what varies, not just size:
 
 ## Step 7: Local Testing and Cloud Sync
 
-### Run locally with the Nextmv CLI
+### Run locally with the Nextmv MCP server
 
-The app is registered automatically on first run. Use `--app-src .` to point at the current directory, or `--app-id <id>` once it's registered.
+Use `mcp__nextmv__local_run` to run the app and wait for the result, or `mcp__nextmv__local_run_submit` for a non-blocking submit.
 
-```bash
-# Run with the default input — app is auto-registered on first run
-cat input.json | nextmv local run create --app-src . --wait
+**JSON format** — pass the parsed JSON object as `input`:
 
-# Run a specific input with a name
-cat inputs/large.json | nextmv local run create --app-src . --name large --wait
+```python
+# Run with the default input and wait
+mcp__nextmv__local_run(app_dir=".", input=<parsed input.json>)
 
-# Run all inputs in the inputs/ directory
-for f in inputs/*.json; do
-  cat $f | nextmv local run create --app-src . --name $(basename $f .json) --wait
-done
+# Run with a specific input and solver options
+mcp__nextmv__local_run(
+  app_dir=".",
+  input=<parsed inputs/large.json>,
+  run_options={"solve.duration": "30s"}
+)
 
+# Submit without waiting (returns run_id)
+mcp__nextmv__local_run_submit(app_dir=".", input=<parsed input.json>)
+```
+
+**Multi-file format** — pass the input directory path as `input_dir`:
+
+```python
+# Run with the default input directory
+mcp__nextmv__local_run(app_dir=".", input_dir="input")
+
+# Run a named input directory
+mcp__nextmv__local_run(app_dir=".", input_dir="inputs/large")
+```
+
+**List and inspect runs:**
+
+```python
 # List all local runs for this app
-nextmv local run list --app-src .
+mcp__nextmv__local_list_runs(app_dir=".")
 
 # View logs for a specific run
-nextmv local run logs --app-src . --run-id <run-id>
+mcp__nextmv__local_run_logs(app_dir=".", run_id="<run-id>")
 ```
 
 ### Sync local runs to Nextmv Cloud
 
-Once runs look good locally, sync them to a Cloud app for sharing, experiments, and the UI.
+Once runs look good locally, sync them to a Cloud app using `mcp__nextmv__local_sync`.
 
-```bash
+```python
 # Sync all local runs to a Cloud app
-nextmv local app sync --app-src . --target-app-id <cloud-app-id>
+mcp__nextmv__local_sync(app_dir=".", cloud_app_id="<cloud-app-id>")
 
 # Sync only specific runs
-nextmv local app sync --app-src . --target-app-id <cloud-app-id> \
-  --run-ids <run-id-1> --run-ids <run-id-2>
+mcp__nextmv__local_sync(
+  app_dir=".",
+  cloud_app_id="<cloud-app-id>",
+  run_ids=["<run-id-1>", "<run-id-2>"]
+)
 
 # Sync and associate runs with a specific Cloud instance (for experiments)
-nextmv local app sync --app-src . --target-app-id <cloud-app-id> \
-  --instance-id <instance-id>
+mcp__nextmv__local_sync(
+  app_dir=".",
+  cloud_app_id="<cloud-app-id>",
+  instance_id="<instance-id>"
+)
 ```
 
 ---
@@ -486,21 +540,21 @@ The README should contain the following sections:
 
 **`## Output`** — Describe the solution file(s), metrics reported in `metrics.json`, and the Plotly visualizations.
 
-**`## Running Locally`** — Commands to run with the Nextmv CLI:
+**`## Running Locally`** — MCP tool calls to run the app:
 
-```bash
+```python
 # JSON format app
-cat input.json | nextmv local run create --app-src . --wait
-cat inputs/large.json | nextmv local run create --app-src . --name large --wait
+mcp__nextmv__local_run(app_dir=".", input=<parsed input.json>)
+mcp__nextmv__local_run(app_dir=".", input=<parsed inputs/large.json>)
 
-# Multi-file app (run from the input directory)
-nextmv local run create --app-src . --wait
+# Multi-file app
+mcp__nextmv__local_run(app_dir=".", input_dir="input")
 ```
 
 **`## Syncing to Nextmv Cloud`**:
 
-```bash
-nextmv local app sync --app-src . --target-app-id <cloud-app-id>
+```python
+mcp__nextmv__local_sync(app_dir=".", cloud_app_id="<cloud-app-id>")
 ```
 
 ### README tips
@@ -521,145 +575,142 @@ Once local tests pass, deploy the app to Nextmv Cloud, set up instances, and run
 
 Sync successful local runs so they are visible in the Cloud UI and can be used as inputs for scenario tests.
 
-```bash
-nextmv local app sync --app-src . --target-app-id <cloud-app-id>
+```python
+mcp__nextmv__local_sync(app_dir=".", cloud_app_id="<cloud-app-id>")
 ```
 
-### 2. Push the app
+### 2. Push the app and create a named version
 
-Push the app code to create a new deployable version. Use `--version-yes` to skip the interactive prompt.
+Use the CLI with `--version-yes` to push and automatically create a named version in one step. The version ID is auto-generated.
 
 ```bash
-# Push and create a new version (auto-generates version ID)
-nextmv cloud app push --app-id <cloud-app-id> --version-yes
-
-# Push with a specific version ID
-nextmv cloud app push --app-id <cloud-app-id> --version-id v1.0.0
+nextmv cloud app push --app-id <cloud-app-id> --app-dir . --version-yes
 ```
 
-### 3. Create cloud runs from all inputs
+The output will show the created version ID (e.g. `version-b4w8qco4`). Use that ID when creating or updating instances below.
 
-After the first push, create cloud runs on the `latest` instance using each input file. Use the same format distinction as local runs:
+### 4. Create cloud runs from all inputs
 
-**JSON format** — pipe input via stdin (same as local):
+After the first push, create cloud runs on the `latest` instance using each input. Use the same format distinction as local runs:
 
-```bash
+**JSON format** — pass the parsed JSON object as `input`:
+
+```python
 # Run default input
-cat input.json | nextmv cloud run create --app-id <cloud-app-id> --instance-id latest --name default --wait
+mcp__nextmv__cloud_run(app_id="<cloud-app-id>", instance_id="latest", input=<parsed input.json>)
 
-# Run all inputs in inputs/
-for f in inputs/*.json; do
-  cat "$f" | nextmv cloud run create --app-id <cloud-app-id> --instance-id latest \
-    --name "$(basename $f .json)" --wait
-done
+# Run each input in inputs/
+mcp__nextmv__cloud_run(app_id="<cloud-app-id>", instance_id="latest", input=<parsed inputs/small.json>)
+mcp__nextmv__cloud_run(app_id="<cloud-app-id>", instance_id="latest", input=<parsed inputs/large.json>)
 ```
 
-**Multi-file format** — pass the input directory path with `-i`:
+**Multi-file format** — pass the input directory path as `input_dir`:
 
-```bash
-# Run default input
-nextmv cloud run create --app-id <cloud-app-id> --instance-id latest -i input --name default --wait
+```python
+# Run default input directory
+mcp__nextmv__cloud_run(app_id="<cloud-app-id>", instance_id="latest", input_dir="input")
 
-# Run all input directories in inputs/
-for d in inputs/*/; do
-  nextmv cloud run create --app-id <cloud-app-id> --instance-id latest \
-    -i "$d" --name "$(basename $d)" --wait
-done
+# Run named input directories
+mcp__nextmv__cloud_run(app_id="<cloud-app-id>", instance_id="latest", input_dir="inputs/large")
 ```
 
-### 4. Create production and staging instances
+### 5. Create production and staging instances
 
 Instances link a version to a set of default options. Create at minimum a `production` instance and a `staging` instance so you can compare them in tests.
 
-```bash
+```python
 # Production instance — conservative defaults
-nextmv cloud instance create \
-  --app-id <cloud-app-id> \
-  --version-id <version-id> \
-  --instance-id production \
-  --name "Production"
+mcp__nextmv__cloud_create_instance(
+  app_id="<cloud-app-id>",
+  version_id="<version-id>",
+  instance_id="production",
+  name="Production"
+)
 
 # Staging instance — candidate config to test against production
-nextmv cloud instance create \
-  --app-id <cloud-app-id> \
-  --version-id <version-id> \
-  --instance-id staging \
-  --name "Staging" \
-  --options <option-name>=<value>
+mcp__nextmv__cloud_create_instance(
+  app_id="<cloud-app-id>",
+  version_id="<version-id>",
+  instance_id="staging",
+  name="Staging",
+  configuration={"options": {"<option-name>": "<value>"}}
+)
 ```
 
 To update an existing instance to a new version:
 
-```bash
-nextmv cloud instance update \
-  --app-id <cloud-app-id> \
-  --instance-id staging \
-  --version-id <new-version-id>
+```python
+mcp__nextmv__cloud_update_instance(
+  app_id="<cloud-app-id>",
+  instance_id="staging",
+  version_id="<new-version-id>"
+)
 ```
 
-### 4. Run a scenario test
+### 6. Run a scenario test
 
 A scenario test runs one or more inputs against one or more instances and compares the results. Use this to validate that a new version or config change does not regress quality metrics.
 
-Each scenario requires an `instance_id` and an `input_set` input (create input sets in the Cloud UI or via `nextmv cloud input-set`).
+Each scenario requires an `instance_id` and a `scenario_input`. Create input sets in the Cloud UI first.
 
-```bash
-SCENARIO='{
-  "instance_id": "staging",
-  "scenario_input": {
-    "scenario_input_type": "input_set",
-    "scenario_input_data": {
-      "input_id": "<input-id>",
-      "input_set_id": "<input-set-id>"
+```python
+mcp__nextmv__cloud_create_scenario_test(
+  app_id="<cloud-app-id>",
+  name="Smoke test after deploy",
+  scenarios=[
+    {
+      "instance_id": "staging",
+      "scenario_input": {
+        "scenario_input_type": "input_set",
+        "scenario_input_data": {
+          "input_id": "<input-id>",
+          "input_set_id": "<input-set-id>"
+        }
+      }
     }
-  }
-}'
-
-nextmv cloud scenario create \
-  --app-id <cloud-app-id> \
-  --name "Smoke test after deploy" \
-  --scenarios "$SCENARIO" \
-  --wait
-```
-
-To sweep multiple option values in a single test, add a `configuration` block:
-
-```bash
-SCENARIO='{
-  "instance_id": "production",
-  "scenario_input": {
-    "scenario_input_type": "input_set",
-    "scenario_input_data": {
-      "input_id": "<input-id>",
-      "input_set_id": "<input-set-id>"
-    }
-  },
-  "configuration": [
-    {"name": "<option-name>", "values": ["<value-1>", "<value-2>"]}
   ]
-}'
+)
 ```
 
-### 5. Run a shadow test
+To sweep multiple option values in a single test, add a `configuration` list to the scenario:
+
+```python
+mcp__nextmv__cloud_create_scenario_test(
+  app_id="<cloud-app-id>",
+  name="Option sweep",
+  scenarios=[
+    {
+      "instance_id": "production",
+      "scenario_input": {
+        "scenario_input_type": "input_set",
+        "scenario_input_data": {"input_id": "<input-id>", "input_set_id": "<input-set-id>"}
+      },
+      "configuration": [
+        {"name": "<option-name>", "values": ["<value-1>", "<value-2>"]}
+      ]
+    }
+  ]
+)
+```
+
+### 7. Run a shadow test
 
 A shadow test routes live traffic to both a baseline and one or more candidate instances simultaneously and compares their outputs. Use this to evaluate a new version or config against real production traffic before promoting.
 
-```bash
-COMPARISONS='{
-  "production": ["staging"]
-}'
+```python
+# Create the shadow test
+mcp__nextmv__cloud_create_shadow_test(
+  app_id="<cloud-app-id>",
+  name="Staging vs Production",
+  comparisons={"production": ["staging"]},
+  termination_events={"maximum_runs": 50}
+)
 
-nextmv cloud shadow create \
-  --app-id <cloud-app-id> \
-  --name "Staging vs Production" \
-  --comparisons "$COMPARISONS" \
-  --termination-maximum-runs 50
-
-# Start the shadow test (if not using --start-time)
-nextmv cloud shadow start --app-id <cloud-app-id> --shadow-test-id <shadow-test-id>
+# Start the shadow test
+mcp__nextmv__cloud_start_shadow_test(app_id="<cloud-app-id>", shadow_test_id="<shadow-test-id>")
 
 # Stop it early if needed
-nextmv cloud shadow stop --app-id <cloud-app-id> --shadow-test-id <shadow-test-id>
+mcp__nextmv__cloud_stop_shadow_test(app_id="<cloud-app-id>", shadow_test_id="<shadow-test-id>")
 ```
 
 ---
@@ -673,27 +724,18 @@ nextmv cloud shadow stop --app-id <cloud-app-id> --shadow-test-id <shadow-test-i
 - [ ] All solver/library dependencies are Apache 2.0 (or MIT/BSD) licensed
 - [ ] `input.json` sample is included and works locally
 - [ ] `requirements.txt` has pinned versions
-- [ ] Ran locally with the Nextmv CLI and confirmed:
+- [ ] Ran locally with the Nextmv MCP server and confirmed:
   - Run status is `succeeded` (not `failed`)
   - Quality metric is in the expected range
-  - At least one non-default option value was tested (e.g. `-o penalty_unmet_demand=1000`) and the result changed in the expected direction
+  - At least one non-default option value was tested (e.g. `run_options={"penalty_unmet_demand": "1000"}`) and the result changed in the expected direction
 
-  **JSON format** — pipe input via stdin:
+  **JSON format**: `mcp__nextmv__local_run(app_dir=".", input=<parsed input.json>)`
 
-  ```bash
-  nextmv local run create -i input.json --app-src . --wait
-  ```
+  **Multi-file format**: `mcp__nextmv__local_run(app_dir=".", input_dir="input")`
 
-  **Multi-file format** — pass the input directory with `--input-dir`; do NOT pipe via stdin:
-
-  ```bash
-  nextmv local run create --app-src . --input-dir input --wait
-  nextmv local run create --app-src . --input-dir inputs/large --name large --wait
-  ```
-
-- [ ] Synced local runs to Cloud app (`nextmv local app sync --app-src . --target-app-id <cloud-app-id>`)
-- [ ] Pushed app to Cloud and created a new version (`nextmv cloud app push --app-id <cloud-app-id> --version-yes`)
-- [ ] Created cloud runs on the `latest` instance for all inputs using `nextmv cloud run create --app-id <cloud-app-id> --instance-id latest -i <input-file-or-dir> --name <name> --wait`
+- [ ] Synced local runs to Cloud app (`mcp__nextmv__local_sync(app_dir=".", cloud_app_id="<cloud-app-id>")`)
+- [ ] Pushed app and created a named version (`nextmv cloud app push --app-id <cloud-app-id> --app-dir . --version-yes`)
+- [ ] Created cloud runs on the `latest` instance for all inputs using `mcp__nextmv__cloud_run(app_id="<cloud-app-id>", instance_id="latest", input=<...>)`
 - [ ] Created or updated `production` and `staging` instances with the new version
 - [ ] Ran a scenario test against the production instance and confirmed metrics are within expected range
 - [ ] (For config changes) Ran a shadow test comparing `staging` vs `production` before promoting

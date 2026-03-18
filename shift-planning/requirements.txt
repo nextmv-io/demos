@@ -1,0 +1,5 @@
+nextmv==1.2.0
+plotly==6.5.2
+numpy==2.2.0
+pyomo==6.8.0
+highspy==1.7.2
