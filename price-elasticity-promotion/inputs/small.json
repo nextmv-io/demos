@@ -1,0 +1,42 @@
+{
+  "promotion_budget": 500.0,
+  "products": [
+    {
+      "id": "SKU001",
+      "name": "Premium Coffee Beans",
+      "base_price": 18.99,
+      "cost": 7.50,
+      "base_demand": 80,
+      "price_history": [
+        {"price": 14.99, "demand": 143},
+        {"price": 16.99, "demand": 105},
+        {"price": 18.99, "demand": 80},
+        {"price": 20.99, "demand": 62}
+      ]
+    },
+    {
+      "id": "SKU002",
+      "name": "Craft Beer 6-pack",
+      "base_price": 12.99,
+      "cost": 5.50,
+      "base_demand": 150,
+      "price_history": [
+        {"price": 9.99,  "demand": 219},
+        {"price": 12.99, "demand": 150},
+        {"price": 15.99, "demand": 106}
+      ]
+    },
+    {
+      "id": "SKU003",
+      "name": "Organic Orange Juice",
+      "base_price": 6.49,
+      "cost": 2.80,
+      "base_demand": 220,
+      "price_history": [
+        {"price": 4.99,  "demand": 330},
+        {"price": 6.49,  "demand": 220},
+        {"price": 7.99,  "demand": 151}
+      ]
+    }
+  ]
+}

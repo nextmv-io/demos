@@ -1,0 +1,144 @@
+{
+  "promotion_budget": 2000.0,
+  "products": [
+    {
+      "id": "SKU001",
+      "name": "Premium Coffee Beans",
+      "base_price": 18.99,
+      "cost": 7.50,
+      "base_demand": 80,
+      "price_history": [
+        {"price": 14.99, "demand": 143},
+        {"price": 16.99, "demand": 105},
+        {"price": 18.99, "demand": 80},
+        {"price": 20.99, "demand": 62},
+        {"price": 22.99, "demand": 49}
+      ]
+    },
+    {
+      "id": "SKU002",
+      "name": "Craft Beer 6-pack",
+      "base_price": 12.99,
+      "cost": 5.50,
+      "base_demand": 150,
+      "price_history": [
+        {"price": 9.99,  "demand": 219},
+        {"price": 11.99, "demand": 170},
+        {"price": 12.99, "demand": 150},
+        {"price": 13.99, "demand": 134},
+        {"price": 15.99, "demand": 106}
+      ]
+    },
+    {
+      "id": "SKU003",
+      "name": "Organic Orange Juice",
+      "base_price": 6.49,
+      "cost": 2.80,
+      "base_demand": 220,
+      "price_history": [
+        {"price": 4.99,  "demand": 330},
+        {"price": 5.99,  "demand": 258},
+        {"price": 6.49,  "demand": 220},
+        {"price": 6.99,  "demand": 192},
+        {"price": 7.99,  "demand": 151}
+      ]
+    },
+    {
+      "id": "SKU004",
+      "name": "Brand-name Cereal",
+      "base_price": 5.29,
+      "cost": 1.90,
+      "base_demand": 310,
+      "price_history": [
+        {"price": 3.99,  "demand": 432},
+        {"price": 4.99,  "demand": 344},
+        {"price": 5.29,  "demand": 310},
+        {"price": 5.99,  "demand": 264},
+        {"price": 6.49,  "demand": 235}
+      ]
+    },
+    {
+      "id": "SKU005",
+      "name": "Bottled Water 24-pack",
+      "base_price": 8.99,
+      "cost": 3.20,
+      "base_demand": 400,
+      "price_history": [
+        {"price": 6.99,  "demand": 485},
+        {"price": 7.99,  "demand": 440},
+        {"price": 8.99,  "demand": 400},
+        {"price": 9.99,  "demand": 366},
+        {"price": 10.99, "demand": 337}
+      ]
+    },
+    {
+      "id": "SKU006",
+      "name": "Table Salt 1kg",
+      "base_price": 2.49,
+      "cost": 0.60,
+      "base_demand": 500,
+      "price_history": [
+        {"price": 1.99,  "demand": 538},
+        {"price": 2.49,  "demand": 500},
+        {"price": 2.99,  "demand": 468},
+        {"price": 3.49,  "demand": 441}
+      ]
+    },
+    {
+      "id": "SKU007",
+      "name": "Baby Formula 400g",
+      "base_price": 24.99,
+      "cost": 11.00,
+      "base_demand": 90,
+      "price_history": [
+        {"price": 19.99, "demand": 106},
+        {"price": 22.99, "demand": 96},
+        {"price": 24.99, "demand": 90},
+        {"price": 26.99, "demand": 85},
+        {"price": 29.99, "demand": 78}
+      ]
+    },
+    {
+      "id": "SKU008",
+      "name": "Ibuprofen 200mg 50ct",
+      "base_price": 7.99,
+      "cost": 2.10,
+      "base_demand": 180,
+      "price_history": [
+        {"price": 5.99,  "demand": 211},
+        {"price": 6.99,  "demand": 194},
+        {"price": 7.99,  "demand": 180},
+        {"price": 8.99,  "demand": 168},
+        {"price": 9.99,  "demand": 157}
+      ]
+    },
+    {
+      "id": "SKU009",
+      "name": "Cooking Oil 1L",
+      "base_price": 4.99,
+      "cost": 2.00,
+      "base_demand": 260,
+      "price_history": [
+        {"price": 3.49,  "demand": 372},
+        {"price": 4.49,  "demand": 290},
+        {"price": 4.99,  "demand": 260},
+        {"price": 5.49,  "demand": 237},
+        {"price": 6.49,  "demand": 200}
+      ]
+    },
+    {
+      "id": "SKU010",
+      "name": "Dark Chocolate Bar",
+      "base_price": 3.99,
+      "cost": 1.40,
+      "base_demand": 350,
+      "price_history": [
+        {"price": 2.49,  "demand": 597},
+        {"price": 2.99,  "demand": 479},
+        {"price": 3.49,  "demand": 404},
+        {"price": 3.99,  "demand": 350},
+        {"price": 4.99,  "demand": 263}
+      ]
+    }
+  ]
+}
