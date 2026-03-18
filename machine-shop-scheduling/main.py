@@ -3,6 +3,7 @@
 import csv
 import json
 import os
+import time
 from collections import defaultdict
 
 import nextmv
@@ -146,7 +147,9 @@ def main():
         rule = options.dispatch_rule or "spt"
         nextmv.log(f"Running greedy heuristic ({rule})")
         nextmv.redirect_stdout()
+        t0 = time.time()
         schedule = greedy_schedule(jobs, changeovers, options.changeover_weight, rule)
+        solver_duration = round(time.time() - t0, 3)
         makespan_val = max((t["end"] for t in schedule), default=0)
         solver_used = f"heuristic_{rule}"
         status_str = "feasible"
@@ -159,8 +162,9 @@ def main():
 
         nextmv.redirect_stdout()
         status_code = solver.Solve(model)
+        solver_duration = round(solver.WallTime(), 3)
         status_str = solver.StatusName(status_code).lower()
-        nextmv.log(f"Solver status: {status_str}")
+        nextmv.log(f"Solver status: {status_str}, wall time: {solver_duration}s")
 
         solver_feasible = status_code in (cp_model.OPTIMAL, cp_model.FEASIBLE)
         solver_used = "cp_sat"
@@ -192,10 +196,19 @@ def main():
             m: sum(t["duration"] for t in schedule if t["machine"] == m) / makespan_val
             for m in all_machines
         }
-        nextmv.log(f"Makespan: {makespan_val} min | Avg utilization: {avg_util:.1%}")
+        bottleneck_machine = max(machine_util, key=machine_util.get)
+        total_changeover_time = 0
+        for machine in all_machines:
+            ops = sorted([t for t in schedule if t["machine"] == machine], key=lambda x: x["start"])
+            for i in range(len(ops) - 1):
+                co = changeovers.get((machine, ops[i]["job_id"], ops[i + 1]["job_id"]), 0)
+                total_changeover_time += int(round(co * options.changeover_weight))
+        nextmv.log(f"Makespan: {makespan_val} min | Avg utilization: {avg_util:.1%} | Changeovers: {total_changeover_time} min")
     else:
         avg_util = 0.0
         machine_util = {m: 0.0 for m in all_machines}
+        bottleneck_machine = ""
+        total_changeover_time = 0
 
     # Write solution CSV
     os.makedirs("output", exist_ok=True)
@@ -221,6 +234,9 @@ def main():
                 "total_tasks": len(tasks),
                 "status": STATUS_MAP.get(status_str, status_str),
                 "solver_used": solver_used,
+                "solver_duration": solver_duration,
+                "total_changeover_time": total_changeover_time,
+                "bottleneck_machine": bottleneck_machine,
             },
             f,
         )

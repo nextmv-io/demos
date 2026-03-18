@@ -35,7 +35,15 @@ my-app/
 
 ## Step 1: Create the App Manifest
 
-Write `app.yaml` manually based on the templates in Step 2. The `nextmv manifest` CLI command does not exist in the current CLI version.
+Use `mcp__nextmv__manifest_init` to scaffold an `app.yaml`, then edit it to match your app's options and content format:
+
+```python
+mcp__nextmv__manifest_init(manifest_type="python", content_format="json", dirpath="my-app")
+# or for multi-file:
+mcp__nextmv__manifest_init(manifest_type="python", content_format="multi-file", dirpath="my-app")
+```
+
+The generated file is a starting point — replace the placeholder options with your app's actual options per the templates in Step 2.
 
 ---
 
@@ -446,6 +454,18 @@ mcp__nextmv__local_list_runs(app_dir=".")
 
 # View logs for a specific run
 mcp__nextmv__local_run_logs(app_dir=".", run_id="<run-id>")
+
+# Check status of a submitted run
+mcp__nextmv__local_run_status(app_dir=".", run_id="<run-id>")
+
+# Get path to the result file of a completed run
+mcp__nextmv__local_run_result(app_dir=".", run_id="<run-id>")
+
+# Poll until a submitted run completes and return the result path
+mcp__nextmv__local_run_poll_result(app_dir=".", run_id="<run-id>")
+
+# Get the input data used in a local run
+mcp__nextmv__local_run_input(app_dir=".", run_id="<run-id>")
 ```
 
 ### Sync local runs to Nextmv Cloud
@@ -571,6 +591,14 @@ mcp__nextmv__local_sync(app_dir=".", cloud_app_id="<cloud-app-id>")
 
 Once local tests pass, deploy the app to Nextmv Cloud, set up instances, and run tests to validate behavior before and after changes.
 
+### 0. Create the Cloud app (first time only)
+
+```python
+mcp__nextmv__cloud_create_app(name="My App Name", app_id="my-app-id", description="What this app does")
+```
+
+The `app_id` becomes the URL-friendly identifier used in all subsequent calls. It is auto-generated from the name if omitted.
+
 ### 1. Sync local runs to the Cloud app
 
 Sync successful local runs so they are visible in the Cloud UI and can be used as inputs for scenario tests.
@@ -581,38 +609,75 @@ mcp__nextmv__local_sync(app_dir=".", cloud_app_id="<cloud-app-id>")
 
 ### 2. Push the app and create a named version
 
-Use the CLI with `--version-yes` to push and automatically create a named version in one step. The version ID is auto-generated.
+Use `mcp__nextmv__cloud_push_app` to upload the local directory, then `mcp__nextmv__cloud_create_version` to tag the push as a named version.
 
-```bash
-nextmv cloud app push --app-id <cloud-app-id> --app-dir . --version-yes
+```python
+# Push the app code
+mcp__nextmv__cloud_push_app(app_id="<cloud-app-id>", app_dir=".")
+
+# Create a named version (version_id is auto-generated if omitted)
+mcp__nextmv__cloud_create_version(
+  app_id="<cloud-app-id>",
+  name="v1.0",
+  description="Initial release"
+)
 ```
 
-The output will show the created version ID (e.g. `version-b4w8qco4`). Use that ID when creating or updating instances below.
+The returned `version_id` (e.g. `version-b4w8qco4`) is used when creating or updating instances below.
 
 ### 4. Create cloud runs from all inputs
 
-After the first push, create cloud runs on the `latest` instance using each input. Use the same format distinction as local runs:
+After the first push, create cloud runs on the `latest` instance using each input. Use `mcp__nextmv__cloud_run` (blocking) or `mcp__nextmv__cloud_run_submit` (non-blocking) depending on whether you need to wait for the result.
 
 **JSON format** — pass the parsed JSON object as `input`:
 
 ```python
-# Run default input
+# Run default input (blocking — waits for result)
 mcp__nextmv__cloud_run(app_id="<cloud-app-id>", instance_id="latest", input=<parsed input.json>)
 
 # Run each input in inputs/
 mcp__nextmv__cloud_run(app_id="<cloud-app-id>", instance_id="latest", input=<parsed inputs/small.json>)
 mcp__nextmv__cloud_run(app_id="<cloud-app-id>", instance_id="latest", input=<parsed inputs/large.json>)
+
+# Submit without waiting (returns run_id immediately)
+mcp__nextmv__cloud_run_submit(app_id="<cloud-app-id>", instance_id="latest", input=<parsed input.json>)
 ```
 
-**Multi-file format** — pass the input directory path as `input_dir`:
+**Multi-file format** — pass the local directory path as `input_dir_path` with `content_format="multi-file"`:
 
 ```python
-# Run default input directory
+# Run default input directory (blocking)
 mcp__nextmv__cloud_run(app_id="<cloud-app-id>", instance_id="latest", input_dir="input")
 
-# Run named input directories
-mcp__nextmv__cloud_run(app_id="<cloud-app-id>", instance_id="latest", input_dir="inputs/large")
+# Submit without waiting
+mcp__nextmv__cloud_run_submit(
+  app_id="<cloud-app-id>",
+  instance_id="latest",
+  input_dir_path="inputs/large",
+  content_format="multi-file"
+)
 ```
+
+**Inspect cloud runs:**
+
+```python
+# Check status of a submitted run (also returns metrics when succeeded)
+mcp__nextmv__cloud_run_status(app_id="<cloud-app-id>", run_id="<run-id>")
+
+# Get full result of a completed run (saves to temp file)
+mcp__nextmv__cloud_run_result(app_id="<cloud-app-id>", run_id="<run-id>")
+
+# Get logs snapshot (use for completed runs)
+mcp__nextmv__cloud_run_logs(app_id="<cloud-app-id>", run_id="<run-id>")
+
+# Get the input that was submitted to a run
+mcp__nextmv__cloud_run_input(app_id="<cloud-app-id>", run_id="<run-id>")
+
+# Cancel a run
+mcp__nextmv__cloud_cancel_run(app_id="<cloud-app-id>", run_id="<run-id>")
+```
+
+`mcp__nextmv__cloud_poll_run_logs` is not yet implemented — use repeated `mcp__nextmv__cloud_run_status` calls to wait for completion instead.
 
 ### 5. Create production and staging instances
 
@@ -647,11 +712,50 @@ mcp__nextmv__cloud_update_instance(
 )
 ```
 
-### 6. Run a scenario test
+### 6. Create an input set
+
+An input set collects inputs for use in batch experiments and acceptance tests. Create one from recent runs on an instance, from specific run IDs, or from managed inputs.
+
+```python
+# From recent runs on an instance (default: up to 20 runs)
+mcp__nextmv__cloud_create_input_set(
+  app_id="<cloud-app-id>",
+  name="My input set",
+  instance_id="latest",
+  maximum_runs=10
+)
+
+# From specific run IDs (preferred — use the staging run IDs from step 4)
+mcp__nextmv__cloud_create_input_set(
+  app_id="<cloud-app-id>",
+  name="My input set",
+  run_ids=["<run-id-1>", "<run-id-2>"]
+)
+```
+
+The returned `input_set_id` is used in scenario tests, acceptance tests, and batch experiments below.
+
+### 7. Run a batch experiment
+
+A batch experiment runs the app against every input in an input set, optionally sweeping multiple option configurations side by side.
+
+```python
+mcp__nextmv__cloud_create_batch(
+  app_id="<cloud-app-id>",
+  input_set_id="<input-set-id>",
+  name="Config comparison",
+  option_sets={
+    "fast": {"solve.duration": "5s"},
+    "thorough": {"solve.duration": "60s"}
+  }
+)
+```
+
+### 8. Run a scenario test
 
 A scenario test runs one or more inputs against one or more instances and compares the results. Use this to validate that a new version or config change does not regress quality metrics.
 
-Each scenario requires an `instance_id` and a `scenario_input`. Create input sets in the Cloud UI first.
+Each scenario requires an `instance_id` and a `scenario_input`.
 
 ```python
 mcp__nextmv__cloud_create_scenario_test(
@@ -693,7 +797,33 @@ mcp__nextmv__cloud_create_scenario_test(
 )
 ```
 
-### 7. Run a shadow test
+### 9. Run an acceptance test
+
+An acceptance test runs both a candidate and baseline instance against the same input set and compares results using defined metrics to determine whether the candidate meets acceptance criteria.
+
+```python
+mcp__nextmv__cloud_create_acceptance_test(
+  app_id="<cloud-app-id>",
+  name="Staging vs Production quality check",
+  candidate_instance_id="staging",
+  baseline_instance_id="production",
+  input_set_id="<input-set-id>",
+  metrics=[
+    {
+      "field": "result_value",
+      "metric_type": "direct-comparison",  # only valid value
+      "statistic": "mean",
+      "params": {
+        "operator": "le"  # operator goes inside params: gt, ge, lt, le, eq, ne
+      }
+    }
+  ]
+)
+```
+
+> The acceptance test auto-runs on creation. Poll `mcp__nextmv__cloud_get_acceptance_test` until `status == "completed"`, then check `results.passed`.
+
+### 10. Run a shadow test
 
 A shadow test routes live traffic to both a baseline and one or more candidate instances simultaneously and compares their outputs. Use this to evaluate a new version or config against real production traffic before promoting.
 
@@ -711,6 +841,28 @@ mcp__nextmv__cloud_start_shadow_test(app_id="<cloud-app-id>", shadow_test_id="<s
 
 # Stop it early if needed
 mcp__nextmv__cloud_stop_shadow_test(app_id="<cloud-app-id>", shadow_test_id="<shadow-test-id>")
+```
+
+### 11. Run a switchback test
+
+A switchback test alternates live traffic between baseline and candidate instances over fixed time periods. Use this when shadow testing is insufficient and you want to measure real-world impact in alternating windows.
+
+```python
+# Create the switchback test (alternates every 60 minutes, 6 total units)
+mcp__nextmv__cloud_create_switchback_test(
+  app_id="<cloud-app-id>",
+  name="Staging vs Production switchback",
+  baseline_instance_id="production",
+  candidate_instance_id="staging",
+  unit_duration_minutes=60.0,
+  units=6
+)
+
+# Start the switchback test
+mcp__nextmv__cloud_start_switchback_test(app_id="<cloud-app-id>", switchback_test_id="<switchback-test-id>")
+
+# Stop it early if needed
+mcp__nextmv__cloud_stop_switchback_test(app_id="<cloud-app-id>", switchback_test_id="<switchback-test-id>")
 ```
 
 ---
@@ -734,8 +886,10 @@ mcp__nextmv__cloud_stop_shadow_test(app_id="<cloud-app-id>", shadow_test_id="<sh
   **Multi-file format**: `mcp__nextmv__local_run(app_dir=".", input_dir="input")`
 
 - [ ] Synced local runs to Cloud app (`mcp__nextmv__local_sync(app_dir=".", cloud_app_id="<cloud-app-id>")`)
-- [ ] Pushed app and created a named version (`nextmv cloud app push --app-id <cloud-app-id> --app-dir . --version-yes`)
-- [ ] Created cloud runs on the `latest` instance for all inputs using `mcp__nextmv__cloud_run(app_id="<cloud-app-id>", instance_id="latest", input=<...>)`
-- [ ] Created or updated `production` and `staging` instances with the new version
-- [ ] Ran a scenario test against the production instance and confirmed metrics are within expected range
-- [ ] (For config changes) Ran a shadow test comparing `staging` vs `production` before promoting
+- [ ] Pushed app (`mcp__nextmv__cloud_push_app(app_id="<cloud-app-id>", app_dir=".")`) and cut a named version (`mcp__nextmv__cloud_create_version(app_id="<cloud-app-id>", name="v1.0")`)
+- [ ] Updated `staging` instance to the new version (`mcp__nextmv__cloud_update_instance(app_id="<cloud-app-id>", instance_id="staging", version_id="<version-id>")`)
+- [ ] Created sample runs on `staging` for each input and confirmed results look correct
+- [ ] Created an input set from staging runs (`mcp__nextmv__cloud_create_input_set(app_id="<cloud-app-id>", instance_id="staging")`)
+- [ ] Ran an acceptance test comparing `staging` (candidate) vs `production` (baseline) and reviewed results
+- [ ] **Asked the user** whether to promote `staging` to `production` — do NOT update the `production` instance without explicit confirmation
+- [ ] (If approved) Updated `production` instance to the new version (`mcp__nextmv__cloud_update_instance(app_id="<cloud-app-id>", instance_id="production", version_id="<version-id>")`)
