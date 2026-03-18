@@ -1,0 +1,59 @@
+type: python
+runtime: ghcr.io/nextmv-io/runtime/python:3.11
+python:
+  pip-requirements: requirements.txt
+files:
+- main.py
+- rules.py
+- visuals.py
+configuration:
+  options:
+    strict: false
+    items:
+    - name: rule_set
+      option_type: string
+      default: cost-first
+      description: ''
+      required: false
+      additional_attributes:
+        values:
+        - cost-first
+        - deadline-first
+        - tier-first
+      ui:
+        control_type: select
+        display_name: Rule Set
+    - name: expedite_deadline_days
+      option_type: int
+      default: 2
+      description: ''
+      required: false
+      additional_attributes:
+        min: 1
+        max: 14
+        step: 1
+      ui:
+        control_type: slider
+        display_name: Expedite if Deadline Within (days)
+    - name: standard_deadline_days
+      option_type: int
+      default: 7
+      description: ''
+      required: false
+      additional_attributes:
+        min: 2
+        max: 30
+        step: 1
+      ui:
+        control_type: slider
+        display_name: Standard if Deadline Within (days)
+  content:
+    format: multi-file
+    multi-file:
+      input:
+        path: .
+      output:
+        statistics: ''
+        metrics: metrics.json
+        assets: assets.json
+        solutions: output

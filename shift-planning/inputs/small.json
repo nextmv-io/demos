@@ -1,0 +1,10 @@
+{
+  "time_periods": [
+    {"id": "t0", "label": "08:00", "demand": 2},
+    {"id": "t1", "label": "09:00", "demand": 4},
+    {"id": "t2", "label": "10:00", "demand": 5},
+    {"id": "t3", "label": "11:00", "demand": 4},
+    {"id": "t4", "label": "12:00", "demand": 3},
+    {"id": "t5", "label": "13:00", "demand": 2}
+  ]
+}

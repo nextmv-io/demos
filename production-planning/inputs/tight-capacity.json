@@ -1,0 +1,15 @@
+{
+  "_comment": "Capacity is barely sufficient to meet total demand — solver must spread production carefully across periods.",
+  "products": ["Widget A", "Widget B", "Widget C"],
+  "periods": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+  "demand": [
+    [60, 70, 65, 80, 90, 85],
+    [40, 45, 50, 55, 60, 65],
+    [25, 30, 35, 40, 45, 50]
+  ],
+  "production_cost": [2.0, 3.5, 5.0],
+  "holding_cost": [0.20, 0.35, 0.50],
+  "resource_use": [1.0, 1.5, 2.0],
+  "capacity": [175, 170, 180, 185, 180, 185],
+  "initial_inventory": [0, 0, 0]
+}

@@ -1,0 +1,113 @@
+type: python
+runtime: ghcr.io/nextmv-io/runtime/python:3.11
+python:
+  pip-requirements: requirements.txt
+files:
+- main.py
+- visuals.py
+configuration:
+  options:
+    strict: false
+    items:
+    - name: input
+      option_type: string
+      default: ''
+      description: ''
+      required: false
+      ui:
+        control_type: input
+        hidden_from:
+        - operator
+    - name: output
+      option_type: string
+      default: ''
+      description: ''
+      required: false
+      ui:
+        control_type: input
+        hidden_from:
+        - operator
+    - name: min_shift_length
+      option_type: int
+      default: 4
+      description: ''
+      required: false
+      additional_attributes:
+        min: 2
+        max: 12
+        step: 1
+      ui:
+        control_type: slider
+        display_name: Min Shift Length (hours)
+    - name: max_shift_length
+      option_type: int
+      default: 8
+      description: ''
+      required: false
+      additional_attributes:
+        min: 2
+        max: 12
+        step: 1
+      ui:
+        control_type: slider
+        display_name: Max Shift Length (hours)
+    - name: max_workers_per_shift
+      option_type: int
+      default: 10
+      description: ''
+      required: false
+      additional_attributes:
+        min: 1
+        max: 30
+        step: 1
+      ui:
+        control_type: slider
+        display_name: Max Workers per Shift
+    - name: hourly_wage
+      option_type: float
+      default: 15.0
+      description: ''
+      required: false
+      additional_attributes:
+        min: 5.0
+        max: 100.0
+        step: 1.0
+      ui:
+        control_type: slider
+        display_name: Hourly Wage (per worker)
+    - name: shift_setup_cost
+      option_type: float
+      default: 50.0
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0.0
+        max: 500.0
+        step: 10.0
+      ui:
+        control_type: slider
+        display_name: Shift Setup Cost (fixed per shift)
+    - name: penalty_unmet_demand
+      option_type: float
+      default: 1000.0
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0.0
+        max: 5000.0
+        step: 100.0
+      ui:
+        control_type: slider
+        display_name: Penalty for Unmet Demand (per worker-hour)
+    - name: time_limit
+      option_type: float
+      default: 30.0
+      description: ''
+      required: false
+      additional_attributes:
+        min: 5.0
+        max: 300.0
+        step: 5.0
+      ui:
+        control_type: slider
+        display_name: Solver Time Limit (seconds)

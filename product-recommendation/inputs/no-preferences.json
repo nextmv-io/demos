@@ -1,0 +1,28 @@
+{
+  "customer": {
+    "id": "electronics-only",
+    "preferred_categories": ["electronics"],
+    "preferred_brands": ["Apple", "Sony", "Anker"],
+    "excluded_categories": ["beauty", "toys"],
+    "budget": 500,
+    "price_sensitivity": 0.4,
+    "previously_purchased": ["p001"]
+  },
+  "products": [
+    {"id": "p001", "name": "Apple AirPods Pro", "category": "electronics", "brand": "Apple", "price": 249, "rating": 4.7, "in_stock": true},
+    {"id": "p002", "name": "Sony WH-1000XM5", "category": "electronics", "brand": "Sony", "price": 299, "rating": 4.8, "in_stock": true},
+    {"id": "p003", "name": "Anker PowerCore 26800", "category": "electronics", "brand": "Anker", "price": 55, "rating": 4.6, "in_stock": true},
+    {"id": "p004", "name": "Anker USB-C Hub", "category": "electronics", "brand": "Anker", "price": 35, "rating": 4.5, "in_stock": true},
+    {"id": "p005", "name": "Apple iPad Air", "category": "electronics", "brand": "Apple", "price": 599, "rating": 4.8, "in_stock": true},
+    {"id": "p006", "name": "Logitech MX Master 3", "category": "electronics", "brand": "Logitech", "price": 99, "rating": 4.7, "in_stock": true},
+    {"id": "p007", "name": "Kindle Paperwhite", "category": "electronics", "brand": "Amazon", "price": 149, "rating": 4.7, "in_stock": true},
+    {"id": "p008", "name": "Anker Wireless Charger", "category": "electronics", "brand": "Anker", "price": 15, "rating": 4.4, "in_stock": true},
+    {"id": "p009", "name": "Designing Data-Intensive Applications", "category": "books", "brand": "O'Reilly", "price": 55, "rating": 4.8, "in_stock": true},
+    {"id": "p010", "name": "Nike Running Shoes", "category": "sports", "brand": "Nike", "price": 129, "rating": 4.5, "in_stock": true},
+    {"id": "p011", "name": "Hydro Flask 32oz", "category": "sports", "brand": "Hydro Flask", "price": 44, "rating": 4.8, "in_stock": true},
+    {"id": "p012", "name": "CeraVe Moisturizing Cream", "category": "beauty", "brand": "CeraVe", "price": 16, "rating": 4.8, "in_stock": true},
+    {"id": "p013", "name": "LEGO Technic Set", "category": "toys", "brand": "LEGO", "price": 149, "rating": 4.9, "in_stock": true},
+    {"id": "p014", "name": "Bose QuietComfort Earbuds", "category": "electronics", "brand": "Bose", "price": 199, "rating": 4.5, "in_stock": true},
+    {"id": "p015", "name": "Samsung Galaxy Watch", "category": "electronics", "brand": "Samsung", "price": 249, "rating": 4.4, "in_stock": true}
+  ]
+}

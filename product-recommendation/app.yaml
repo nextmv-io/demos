@@ -1,0 +1,97 @@
+type: python
+runtime: ghcr.io/nextmv-io/runtime/python:3.11
+python:
+  pip-requirements: requirements.txt
+files:
+- main.py
+- visuals.py
+configuration:
+  options:
+    strict: false
+    items:
+    - name: input
+      option_type: string
+      default: ''
+      description: ''
+      required: false
+      ui:
+        control_type: input
+        hidden_from:
+        - operator
+    - name: output
+      option_type: string
+      default: ''
+      description: ''
+      required: false
+      ui:
+        control_type: input
+        hidden_from:
+        - operator
+    - name: max_recommendations
+      option_type: int
+      default: 10
+      description: ''
+      required: false
+      additional_attributes:
+        min: 3
+        max: 20
+        step: 1
+      ui:
+        control_type: slider
+        display_name: Max Recommendations
+    - name: category_weight
+      option_type: float
+      default: 0.35
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0.0
+        max: 1.0
+        step: 0.05
+      ui:
+        control_type: slider
+        display_name: Category Match Weight
+    - name: brand_weight
+      option_type: float
+      default: 0.25
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0.0
+        max: 1.0
+        step: 0.05
+      ui:
+        control_type: slider
+        display_name: Brand Affinity Weight
+    - name: price_weight
+      option_type: float
+      default: 0.2
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0.0
+        max: 1.0
+        step: 0.05
+      ui:
+        control_type: slider
+        display_name: Price Fit Weight
+    - name: rating_weight
+      option_type: float
+      default: 0.2
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0.0
+        max: 1.0
+        step: 0.05
+      ui:
+        control_type: slider
+        display_name: Rating Weight
+    - name: diversity
+      option_type: bool
+      default: true
+      description: ''
+      required: false
+      ui:
+        control_type: toggle
+        display_name: Enforce Category Diversity

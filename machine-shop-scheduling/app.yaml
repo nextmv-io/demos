@@ -1,0 +1,78 @@
+type: python
+runtime: ghcr.io/nextmv-io/runtime/python:3.11
+python:
+  pip-requirements: requirements.txt
+files:
+- main.py
+- visuals.py
+- heuristic.py
+configuration:
+  options:
+    strict: false
+    items:
+    - name: time_limit
+      option_type: float
+      default: 30.0
+      description: ''
+      required: false
+      additional_attributes:
+        min: 5.0
+        max: 300.0
+        step: 5.0
+      ui:
+        control_type: slider
+        display_name: Solver Time Limit (seconds)
+    - name: num_workers
+      option_type: int
+      default: 4
+      description: ''
+      required: false
+      additional_attributes:
+        min: 1
+        max: 8
+        step: 1
+      ui:
+        control_type: slider
+        display_name: Parallel Search Workers
+    - name: changeover_weight
+      option_type: float
+      default: 1.0
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0.0
+        max: 3.0
+        step: 0.25
+      ui:
+        control_type: slider
+        display_name: Changeover Weight (multiplier)
+    - name: use_heuristic
+      option_type: bool
+      default: false
+      description: ''
+      required: false
+      ui:
+        display_name: Use Heuristic Fallback
+    - name: dispatch_rule
+      option_type: string
+      default: spt
+      description: ''
+      required: false
+      additional_attributes:
+        values:
+        - spt
+        - lpt
+        - fifo
+      ui:
+        control_type: select
+        display_name: Dispatch Rule (spt / lpt / fifo)
+  content:
+    format: multi-file
+    multi-file:
+      input:
+        path: .
+      output:
+        statistics: ''
+        metrics: metrics.json
+        assets: assets.json
+        solutions: output

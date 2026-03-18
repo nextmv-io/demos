@@ -1,0 +1,23 @@
+{
+  "customer": {
+    "id": "customer-simple",
+    "preferred_categories": ["books"],
+    "preferred_brands": ["O'Reilly"],
+    "excluded_categories": [],
+    "budget": 100,
+    "price_sensitivity": 0.8,
+    "previously_purchased": []
+  },
+  "products": [
+    {"id": "p001", "name": "Designing Data-Intensive Applications", "category": "books", "brand": "O'Reilly", "price": 55, "rating": 4.8, "in_stock": true},
+    {"id": "p002", "name": "Clean Code", "category": "books", "brand": "Prentice Hall", "price": 35, "rating": 4.6, "in_stock": true},
+    {"id": "p003", "name": "The Pragmatic Programmer", "category": "books", "brand": "Addison-Wesley", "price": 45, "rating": 4.7, "in_stock": true},
+    {"id": "p004", "name": "Atomic Habits", "category": "books", "brand": "Avery", "price": 18, "rating": 4.8, "in_stock": true},
+    {"id": "p005", "name": "Logitech Webcam 1080p", "category": "electronics", "brand": "Logitech", "price": 79, "rating": 4.3, "in_stock": true},
+    {"id": "p006", "name": "Anker USB-C Hub", "category": "electronics", "brand": "Anker", "price": 35, "rating": 4.5, "in_stock": true},
+    {"id": "p007", "name": "Yoga Mat", "category": "sports", "brand": "Manduka", "price": 88, "rating": 4.6, "in_stock": true},
+    {"id": "p008", "name": "Water Bottle", "category": "sports", "brand": "Hydro Flask", "price": 44, "rating": 4.8, "in_stock": true},
+    {"id": "p009", "name": "Moisturizing Cream", "category": "beauty", "brand": "CeraVe", "price": 16, "rating": 4.8, "in_stock": true},
+    {"id": "p010", "name": "Expensive Laptop", "category": "electronics", "brand": "Apple", "price": 1299, "rating": 4.9, "in_stock": true}
+  ]
+}

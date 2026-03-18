@@ -1,0 +1,13 @@
+machine,from_job,to_job,changeover
+drill,product_A,product_B,5
+drill,product_A,product_C,3
+drill,product_B,product_A,4
+drill,product_B,product_C,3
+drill,product_C,product_A,3
+drill,product_C,product_B,4
+mill,product_A,product_B,8
+mill,product_A,product_C,5
+mill,product_B,product_A,6
+mill,product_B,product_C,5
+mill,product_C,product_A,5
+mill,product_C,product_B,6

@@ -1,0 +1,29 @@
+{
+  "customer": {
+    "id": "general-shopper",
+    "preferred_categories": [],
+    "preferred_brands": [],
+    "excluded_categories": [],
+    "budget": 300,
+    "price_sensitivity": 0.5,
+    "previously_purchased": []
+  },
+  "products": [
+    {"id": "p001", "name": "Sony WH-1000XM5 Headphones", "category": "electronics", "brand": "Sony", "price": 299, "rating": 4.8, "in_stock": true},
+    {"id": "p002", "name": "Atomic Habits", "category": "books", "brand": "Avery", "price": 18, "rating": 4.8, "in_stock": true},
+    {"id": "p003", "name": "Hydro Flask 32oz", "category": "sports", "brand": "Hydro Flask", "price": 44, "rating": 4.8, "in_stock": true},
+    {"id": "p004", "name": "CeraVe Moisturizing Cream", "category": "beauty", "brand": "CeraVe", "price": 16, "rating": 4.8, "in_stock": true},
+    {"id": "p005", "name": "Instant Pot Duo 7-in-1", "category": "home", "brand": "Instant Pot", "price": 89, "rating": 4.7, "in_stock": true},
+    {"id": "p006", "name": "Designing Data-Intensive Applications", "category": "books", "brand": "O'Reilly", "price": 55, "rating": 4.8, "in_stock": true},
+    {"id": "p007", "name": "Apple AirPods Pro", "category": "electronics", "brand": "Apple", "price": 249, "rating": 4.7, "in_stock": true},
+    {"id": "p008", "name": "Nike Air Zoom Running Shoes", "category": "sports", "brand": "Nike", "price": 129, "rating": 4.5, "in_stock": true},
+    {"id": "p009", "name": "Bamboo Cutting Board", "category": "home", "brand": "OXO", "price": 29, "rating": 4.7, "in_stock": true},
+    {"id": "p010", "name": "Logitech MX Master 3", "category": "electronics", "brand": "Logitech", "price": 99, "rating": 4.7, "in_stock": true},
+    {"id": "p011", "name": "Yoga Mat Premium", "category": "sports", "brand": "Manduka", "price": 88, "rating": 4.6, "in_stock": true},
+    {"id": "p012", "name": "Anker PowerCore 26800", "category": "electronics", "brand": "Anker", "price": 55, "rating": 4.6, "in_stock": true},
+    {"id": "p013", "name": "Deep Work", "category": "books", "brand": "Grand Central", "price": 17, "rating": 4.6, "in_stock": true},
+    {"id": "p014", "name": "Philips Hue Starter Kit", "category": "home", "brand": "Philips", "price": 179, "rating": 4.4, "in_stock": true},
+    {"id": "p015", "name": "Resistance Bands Set", "category": "sports", "brand": "Fit Simplify", "price": 12, "rating": 4.5, "in_stock": true},
+    {"id": "p016", "name": "Low-Rated Charger", "category": "electronics", "brand": "Unknown", "price": 8, "rating": 2.1, "in_stock": true}
+  ]
+}

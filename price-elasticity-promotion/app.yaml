@@ -1,0 +1,102 @@
+type: python
+runtime: ghcr.io/nextmv-io/runtime/python:3.11
+python:
+  pip-requirements: requirements.txt
+files:
+- main.py
+- visuals.py
+configuration:
+  options:
+    strict: false
+    items:
+    - name: input
+      option_type: string
+      default: ''
+      description: ''
+      required: false
+      ui:
+        control_type: input
+        hidden_from:
+        - operator
+    - name: output
+      option_type: string
+      default: ''
+      description: ''
+      required: false
+      ui:
+        control_type: input
+        hidden_from:
+        - operator
+    - name: objective
+      option_type: string
+      default: profit
+      description: ''
+      required: false
+      additional_attributes:
+        values:
+        - profit
+        - revenue
+        - units
+      ui:
+        control_type: select
+        display_name: Optimization Objective
+    - name: min_discount_pct
+      option_type: int
+      default: 10
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0
+        max: 40
+        step: 5
+      ui:
+        control_type: slider
+        display_name: Minimum Discount (%)
+    - name: max_discount_pct
+      option_type: int
+      default: 50
+      description: ''
+      required: false
+      additional_attributes:
+        min: 10
+        max: 70
+        step: 5
+      ui:
+        control_type: slider
+        display_name: Maximum Discount (%)
+    - name: discount_step_pct
+      option_type: int
+      default: 10
+      description: ''
+      required: false
+      additional_attributes:
+        min: 5
+        max: 20
+        step: 5
+      ui:
+        control_type: slider
+        display_name: Discount Step (%)
+    - name: max_products_on_promotion
+      option_type: int
+      default: 0
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0
+        max: 20
+        step: 1
+      ui:
+        control_type: slider
+        display_name: Max Products on Promotion (0 = unlimited)
+    - name: solve_duration
+      option_type: int
+      default: 30
+      description: ''
+      required: false
+      additional_attributes:
+        min: 5
+        max: 120
+        step: 5
+      ui:
+        control_type: slider
+        display_name: Solver Time Limit (seconds)

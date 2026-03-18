@@ -1,0 +1,102 @@
+type: python
+runtime: ghcr.io/nextmv-io/runtime/python:3.11
+python:
+  pip-requirements: requirements.txt
+files:
+- main.py
+- visuals.py
+configuration:
+  options:
+    strict: false
+    items:
+    - name: input
+      option_type: string
+      default: ''
+      description: ''
+      required: false
+      ui:
+        control_type: input
+        hidden_from:
+        - operator
+    - name: output
+      option_type: string
+      default: ''
+      description: ''
+      required: false
+      ui:
+        control_type: input
+        hidden_from:
+        - operator
+    - name: solver
+      option_type: string
+      default: highs
+      description: ''
+      required: false
+      additional_attributes:
+        values:
+        - highs
+        - cbc
+        - glpk
+      ui:
+        control_type: select
+        display_name: Solver
+    - name: holding_cost_weight
+      option_type: float
+      default: 1.0
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0.0
+        max: 5.0
+        step: 0.1
+      ui:
+        control_type: slider
+        display_name: Holding Cost Weight
+    - name: penalty_unmet_demand
+      option_type: float
+      default: 500.0
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0.0
+        max: 2000.0
+        step: 50.0
+      ui:
+        control_type: slider
+        display_name: Penalty for Unmet Demand (per unit)
+    - name: safety_stock_pct
+      option_type: float
+      default: 0.0
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0.0
+        max: 50.0
+        step: 5.0
+      ui:
+        control_type: slider
+        display_name: Safety Stock (% of next period demand)
+    - name: max_production_ramp_pct
+      option_type: float
+      default: 100.0
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0.0
+        max: 100.0
+        step: 5.0
+      ui:
+        control_type: slider
+        display_name: Max Production Change (% of avg period demand)
+    - name: time_limit
+      option_type: float
+      default: 30.0
+      description: ''
+      required: false
+      additional_attributes:
+        min: 5.0
+        max: 300.0
+        step: 5.0
+      ui:
+        control_type: slider
+        display_name: Solver Time Limit (seconds)

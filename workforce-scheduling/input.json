@@ -1,0 +1,24 @@
+{
+  "workers": [
+    {"id": "w1", "name": "Alice",  "cost_per_shift": 120, "max_shifts": 5, "available_shifts": ["mon-am","mon-pm","tue-am","wed-am","thu-am","fri-am"]},
+    {"id": "w2", "name": "Bob",    "cost_per_shift": 140, "max_shifts": 4, "available_shifts": ["mon-am","tue-am","tue-pm","wed-pm","thu-pm","fri-pm"]},
+    {"id": "w3", "name": "Carol",  "cost_per_shift": 110, "max_shifts": 5, "available_shifts": ["mon-pm","tue-am","wed-am","wed-pm","thu-am","fri-am"]},
+    {"id": "w4", "name": "Dave",   "cost_per_shift": 150, "max_shifts": 3, "available_shifts": ["mon-am","mon-pm","tue-pm","thu-am","thu-pm","fri-am"]},
+    {"id": "w5", "name": "Eve",    "cost_per_shift": 125, "max_shifts": 5, "available_shifts": ["mon-am","tue-am","wed-pm","thu-pm","fri-am","fri-pm"]},
+    {"id": "w6", "name": "Frank",  "cost_per_shift": 130, "max_shifts": 4, "available_shifts": ["mon-pm","tue-pm","wed-am","wed-pm","fri-pm"]},
+    {"id": "w7", "name": "Grace",  "cost_per_shift": 115, "max_shifts": 5, "available_shifts": ["mon-am","tue-am","thu-am","thu-pm","fri-am","fri-pm"]},
+    {"id": "w8", "name": "Henry",  "cost_per_shift": 135, "max_shifts": 4, "available_shifts": ["mon-pm","wed-am","wed-pm","thu-am","thu-pm","fri-pm"]}
+  ],
+  "shifts": [
+    {"id": "mon-am", "name": "Mon Morning",   "min_workers": 3},
+    {"id": "mon-pm", "name": "Mon Afternoon", "min_workers": 2},
+    {"id": "tue-am", "name": "Tue Morning",   "min_workers": 3},
+    {"id": "tue-pm", "name": "Tue Afternoon", "min_workers": 2},
+    {"id": "wed-am", "name": "Wed Morning",   "min_workers": 3},
+    {"id": "wed-pm", "name": "Wed Afternoon", "min_workers": 2},
+    {"id": "thu-am", "name": "Thu Morning",   "min_workers": 3},
+    {"id": "thu-pm", "name": "Thu Afternoon", "min_workers": 2},
+    {"id": "fri-am", "name": "Fri Morning",   "min_workers": 3},
+    {"id": "fri-pm", "name": "Fri Afternoon", "min_workers": 2}
+  ]
+}
