@@ -17,7 +17,7 @@ configuration:
       ui:
         control_type: input
         hidden_from:
-        - admin
+        - operator
     - name: output
       option_type: string
       default: ''
@@ -26,7 +26,7 @@ configuration:
       ui:
         control_type: input
         hidden_from:
-        - admin
+        - operator
     - name: solver
       option_type: string
       default: highs
@@ -52,26 +52,6 @@ configuration:
       ui:
         control_type: slider
         display_name: Penalty for Unmet Demand (per unit)
-    - name: supply_utilization_min
-      option_type: float
-      default: 0
-      description: ''
-      required: false
-      additional_attributes:
-        min: 0
-        max: 1
-        step: 0.05
-      ui:
-        control_type: slider
-        display_name: Min Supply Utilization (fraction)
-    - name: cost_threshold
-      option_type: float
-      default: 0
-      description: ''
-      required: false
-      ui:
-        control_type: input
-        display_name: Max Lane Cost (0 = no limit)
     - name: time_limit
       option_type: float
       default: 30
@@ -84,3 +64,10 @@ configuration:
       ui:
         control_type: slider
         display_name: Solver Time Limit (seconds)
+    - name: random_seed
+      option_type: int
+      description: ''
+      required: false
+      ui:
+        control_type: input
+        display_name: Random Seed (optional, for reproducibility)

@@ -1,0 +1,39 @@
+{
+  "students": [
+    {"id": "s1", "name": "Alice Brown", "priority": 3, "class_level": "standard", "preferences": ["STEM"]},
+    {"id": "s2", "name": "Ben Carter", "priority": 2, "class_level": "standard", "preferences": ["arts"]},
+    {"id": "s3", "name": "Clara Diaz", "priority": 1, "class_level": "standard", "preferences": ["humanities"]},
+    {"id": "s4", "name": "David Evans", "priority": 3, "class_level": "standard", "preferences": ["STEM", "arts"]},
+    {"id": "s5", "name": "Ella Ford", "priority": 2, "class_level": "standard", "preferences": ["humanities", "STEM"]},
+    {"id": "s6", "name": "Felix Grant", "priority": 1, "class_level": "standard", "preferences": ["arts"]},
+    {"id": "s7", "name": "Gina Hart", "priority": 3, "class_level": "standard", "preferences": ["STEM"]},
+    {"id": "s8", "name": "Henry Irwin", "priority": 2, "class_level": "standard", "preferences": ["humanities"]},
+    {"id": "s9", "name": "Iris James", "priority": 1, "class_level": "honors", "preferences": ["STEM", "arts"], "extended_day_request": 16},
+    {"id": "s10", "name": "Jake Kim", "priority": 3, "class_level": "honors", "preferences": ["arts"]},
+    {"id": "s11", "name": "Karen Lee", "priority": 2, "class_level": "honors", "preferences": ["STEM"], "extended_day_request": 17},
+    {"id": "s12", "name": "Liam Moore", "priority": 1, "class_level": "honors", "preferences": ["humanities"]},
+    {"id": "s13", "name": "Maya Nelson", "priority": 3, "class_level": "honors", "preferences": ["STEM", "humanities"]},
+    {"id": "s14", "name": "Noah Owens", "priority": 2, "class_level": "honors", "preferences": ["arts", "STEM"], "extended_day_request": 16},
+    {"id": "s15", "name": "Olivia Park", "priority": 1, "class_level": "honors", "preferences": ["humanities"]},
+    {"id": "s16", "name": "Paul Quinn", "priority": 3, "class_level": "AP", "preferences": ["STEM"]},
+    {"id": "s17", "name": "Rose Reed", "priority": 2, "class_level": "AP", "preferences": ["humanities", "arts"]},
+    {"id": "s18", "name": "Sam Scott", "priority": 1, "class_level": "AP", "preferences": ["STEM", "arts"], "extended_day_request": 17},
+    {"id": "s19", "name": "Tara Todd", "priority": 3, "class_level": "AP", "preferences": ["humanities"]},
+    {"id": "s20", "name": "Umar Vance", "priority": 2, "class_level": "AP", "preferences": ["STEM"]}
+  ],
+  "classes": [
+    {"id": "std-stem-1", "name": "Standard STEM", "capacity": 4, "level": "standard", "subject_focus": "STEM"},
+    {"id": "std-arts-1", "name": "Standard Arts", "capacity": 4, "level": "standard", "subject_focus": "arts"},
+    {"id": "std-hum-1", "name": "Standard Humanities", "capacity": 3, "level": "standard", "subject_focus": "humanities"},
+    {"id": "hon-stem-1", "name": "Honors STEM", "capacity": 3, "level": "honors", "subject_focus": "STEM"},
+    {"id": "hon-arts-1", "name": "Honors Arts", "capacity": 2, "level": "honors", "subject_focus": "arts"},
+    {"id": "hon-hum-1", "name": "Honors Humanities", "capacity": 2, "level": "honors", "subject_focus": "humanities"},
+    {"id": "ap-stem-1", "name": "AP STEM", "capacity": 3, "level": "AP", "subject_focus": "STEM"},
+    {"id": "ap-hum-1", "name": "AP Humanities", "capacity": 2, "level": "AP", "subject_focus": "humanities"}
+  ],
+  "separations": [
+    ["s1", "s4"],
+    ["s2", "s6"],
+    ["s9", "s11"]
+  ]
+}

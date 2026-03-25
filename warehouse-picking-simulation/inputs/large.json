@@ -1,0 +1,6 @@
+{
+  "warehouse": {
+    "name": "Large Warehouse",
+    "description": "High-volume stress test with many pickers and high arrival rate"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "warehouse": {
+    "name": "Small Warehouse",
+    "description": "Few pickers, low arrival rate — fast simulation, easy to inspect"
+  }
+}

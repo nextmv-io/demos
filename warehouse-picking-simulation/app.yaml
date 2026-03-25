@@ -1,0 +1,96 @@
+type: python
+runtime: ghcr.io/nextmv-io/runtime/python:3.11
+python:
+  pip-requirements: requirements.txt
+files:
+- main.py
+- visuals.py
+configuration:
+  options:
+    strict: false
+    items:
+    - name: input
+      option_type: string
+      default: ''
+      description: ''
+      required: false
+      ui:
+        control_type: input
+        hidden_from:
+        - operator
+    - name: output
+      option_type: string
+      default: ''
+      description: ''
+      required: false
+      ui:
+        control_type: input
+        hidden_from:
+        - operator
+    - name: num_pickers
+      option_type: int
+      default: 5
+      description: ''
+      required: false
+      additional_attributes:
+        min: 1
+        max: 20
+        step: 1
+      ui:
+        control_type: slider
+        display_name: Number of Pickers
+    - name: num_steps
+      option_type: int
+      default: 200
+      description: ''
+      required: false
+      additional_attributes:
+        min: 50
+        max: 500
+        step: 50
+      ui:
+        control_type: slider
+        display_name: Simulation Steps
+    - name: order_arrival_rate
+      option_type: float
+      default: 0.3
+      description: ''
+      required: false
+      additional_attributes:
+        min: 0.1
+        max: 1.0
+        step: 0.1
+      ui:
+        control_type: slider
+        display_name: Order Arrival Rate (orders/step)
+    - name: pick_duration
+      option_type: int
+      default: 5
+      description: ''
+      required: false
+      additional_attributes:
+        min: 1
+        max: 20
+        step: 1
+      ui:
+        control_type: input
+        display_name: Pick Duration (steps/item)
+    - name: items_per_order
+      option_type: int
+      default: 3
+      description: ''
+      required: false
+      additional_attributes:
+        min: 1
+        max: 10
+        step: 1
+      ui:
+        control_type: input
+        display_name: Items Per Order
+    - name: random_seed
+      option_type: int
+      description: ''
+      required: false
+      ui:
+        control_type: input
+        display_name: Random Seed (optional, for reproducibility)
