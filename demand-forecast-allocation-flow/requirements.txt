@@ -1,0 +1,6 @@
+nextmv==1.2.2
+nextpipe==0.6.1
+plotly==6.1.0
+numpy==2.2.0
+pandas==2.2.3
+scikit-learn==1.6.1

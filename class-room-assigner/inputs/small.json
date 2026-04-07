@@ -1,0 +1,26 @@
+{
+  "students": [
+    {"id": "s1", "name": "Alice Brown", "priority": 3, "class_level": "standard", "preferences": ["STEM"]},
+    {"id": "s2", "name": "Ben Carter", "priority": 1, "class_level": "honors", "preferences": ["arts", "STEM"], "extended_day_request": 16},
+    {"id": "s3", "name": "Clara Diaz", "priority": 2, "class_level": "AP", "preferences": ["humanities"]},
+    {"id": "s4", "name": "David Evans", "priority": 1, "class_level": "standard", "preferences": ["arts"]},
+    {"id": "s5", "name": "Ella Ford", "priority": 3, "class_level": "honors", "preferences": ["STEM", "humanities"], "extended_day_request": 17},
+    {"id": "s6", "name": "Felix Grant", "priority": 2, "class_level": "AP", "preferences": ["STEM"]},
+    {"id": "s7", "name": "Gina Hart", "priority": 1, "class_level": "standard", "preferences": ["humanities"]},
+    {"id": "s8", "name": "Henry Irwin", "priority": 2, "class_level": "honors", "preferences": ["arts"]},
+    {"id": "s9", "name": "Iris James", "priority": 3, "class_level": "AP", "preferences": ["STEM", "arts"]},
+    {"id": "s10", "name": "Jake Kim", "priority": 1, "class_level": "standard", "preferences": ["STEM"], "extended_day_request": 16}
+  ],
+  "classes": [
+    {"id": "std-stem-1", "name": "Standard STEM", "capacity": 4, "level": "standard", "subject_focus": "STEM"},
+    {"id": "std-arts-1", "name": "Standard Arts", "capacity": 4, "level": "standard", "subject_focus": "arts"},
+    {"id": "std-hum-1", "name": "Standard Humanities", "capacity": 4, "level": "standard", "subject_focus": "humanities"},
+    {"id": "hon-stem-1", "name": "Honors STEM", "capacity": 3, "level": "honors", "subject_focus": "STEM"},
+    {"id": "hon-arts-1", "name": "Honors Arts", "capacity": 3, "level": "honors", "subject_focus": "arts"},
+    {"id": "ap-stem-1", "name": "AP STEM", "capacity": 3, "level": "AP", "subject_focus": "STEM"},
+    {"id": "ap-hum-1", "name": "AP Humanities", "capacity": 3, "level": "AP", "subject_focus": "humanities"}
+  ],
+  "separations": [
+    ["s1", "s7"]
+  ]
+}

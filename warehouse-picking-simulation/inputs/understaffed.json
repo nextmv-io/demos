@@ -1,0 +1,6 @@
+{
+  "warehouse": {
+    "name": "Understaffed Warehouse",
+    "description": "Arrival rate far exceeds picker capacity — queue builds up over time"
+  }
+}

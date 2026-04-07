@@ -4,11 +4,23 @@ import nextmv
 import plotly.graph_objects as go
 
 
-def allocation_chart(allocations, num_warehouses, num_stores, tab_order=1) -> nextmv.Asset:
+def allocation_chart(
+    allocations,
+    num_warehouses,
+    num_stores,
+    warehouse_labels=None,
+    store_labels=None,
+    tab_order=1,
+) -> nextmv.Asset:
     """Sankey diagram showing unit flow from warehouses to stores."""
 
     W = num_warehouses
-    labels = [f"Warehouse {w}" for w in range(W)] + [f"Store {s}" for s in range(num_stores)]
+    if warehouse_labels is None:
+        warehouse_labels = [f"Warehouse {w}" for w in range(W)]
+    if store_labels is None:
+        store_labels = [f"Store {s}" for s in range(num_stores)]
+
+    labels = list(warehouse_labels) + list(store_labels)
 
     sources = [a["warehouse"] for a in allocations]
     targets = [W + a["store"] for a in allocations]

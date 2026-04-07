@@ -1,0 +1,6 @@
+{
+  "warehouse": {
+    "name": "Overstaffed Warehouse",
+    "description": "Many pickers relative to order volume — high idle time, low utilization"
+  }
+}
