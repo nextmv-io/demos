@@ -146,7 +146,10 @@ def main() -> None:
         raise RuntimeError(
             f"Solver '{solver_name}' ({pyomo_solver}) is not installed or not on PATH."
         )
-    solver.options[time_limit_key] = options.time_limit
+    if pyomo_solver == "glpk":
+        solver.options[time_limit_key] = int(options.time_limit * 1000)
+    else:
+        solver.options[time_limit_key] = options.time_limit
 
     _saved = os.dup(1)
     os.dup2(2, 1)

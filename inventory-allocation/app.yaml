@@ -1,11 +1,14 @@
 type: python
-runtime: ghcr.io/nextmv-io/runtime/python:3.11
+runtime: ghcr.io/nextmv-io/runtime/pyomo:latest
 python:
   pip-requirements: requirements.txt
 files:
 - main.py
 - visuals.py
 configuration:
+  # Define the content format of the app, one of: json, multi-file.
+  content:
+    format: "json" # Read JSON from stdin and write JSON to stdout.
   options:
     strict: false
     items:
@@ -29,7 +32,7 @@ configuration:
         - admin
     - name: solver
       option_type: string
-      default: highs
+      default: glpk
       description: ''
       required: false
       additional_attributes:
