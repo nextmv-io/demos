@@ -14,6 +14,15 @@ This repo contains Nextmv demo apps that showcase Apache-licensed, open-source P
   - **Simulation / rules-engine apps**: use domain-specific metrics (e.g. throughput, utilization, queue length); no `status`/`result_value` unless the model includes an optimization objective.
 - **Visualization**: Every app must include at least one Plotly visualization rendered as a `nextmv.Asset`.
 - **Configuration**: Every app must expose user-facing configuration options via `app.yaml`. Any app that uses a random seed internally must expose a `random_seed` option (`option_type: int`, not required, no default) so results can be reproduced on demand.
+- **Cloud Links**: Always provide a clickable link to any Nextmv Cloud resource when it is created or referenced (runs, apps, scenario tests, acceptance tests, input sets, instances, etc.). Use these URL patterns:
+  - App: `https://cloud.nextmv.io/acc/{account-id}/app/{app-id}`
+  - Run: `https://cloud.nextmv.io/acc/{account-id}/app/{app-id}/run?id={run-id}`
+  - Scenario test: `https://cloud.nextmv.io/acc/{account-id}/app/{app-id}/experiments/scenario`
+  - Acceptance test: `https://cloud.nextmv.io/acc/{account-id}/app/{app-id}/experiments/acceptance`
+  - Batch experiment: `https://cloud.nextmv.io/acc/{account-id}/app/{app-id}/experiments/batch`
+  - Input set: `https://cloud.nextmv.io/acc/{account-id}/app/{app-id}/input-sets`
+  - Instance: `https://cloud.nextmv.io/acc/{account-id}/app/{app-id}/instances`
+  - Use account ID `cd1ce146-1bf2-461a-83d0-20ba107387e5` for the mooney profile
 
 ---
 
