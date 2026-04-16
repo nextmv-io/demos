@@ -224,19 +224,27 @@ def main():
     chart2 = utilization_chart(machine_util, makespan_val)
 
     # Write metrics
+    custom_metrics = {
+        "result_value": makespan_val,
+        "makespan": makespan_val,
+        "avg_machine_utilization": round(avg_util, 4),
+        "total_jobs": len(all_job_ids),
+        "total_tasks": len(tasks),
+        "status": STATUS_MAP.get(status_str, status_str),
+        "solver_used": solver_used,
+        "solver_duration": solver_duration,
+        "total_changeover_time": total_changeover_time,
+        "bottleneck_machine": bottleneck_machine,
+    }
     with open("metrics.json", "w") as f:
         json.dump(
             {
-                "result_value": makespan_val,
-                "makespan": makespan_val,
-                "avg_machine_utilization": round(avg_util, 4),
-                "total_jobs": len(all_job_ids),
-                "total_tasks": len(tasks),
-                "status": STATUS_MAP.get(status_str, status_str),
-                "solver_used": solver_used,
-                "solver_duration": solver_duration,
-                "total_changeover_time": total_changeover_time,
-                "bottleneck_machine": bottleneck_machine,
+                **custom_metrics,
+                "result": {
+                    "value": makespan_val,
+                    "custom": custom_metrics,
+                },
+                "schema": "v1",
             },
             f,
         )

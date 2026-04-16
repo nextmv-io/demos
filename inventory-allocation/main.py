@@ -115,20 +115,28 @@ def main() -> None:
         num_stores=num_stores,
     )
 
+    metrics_dict = {
+        "result_value": round(value(model.obj), 2),
+        "transportation_cost": round(transport_cost, 2),
+        "fill_rate": round(fill_rate, 4),
+        "total_units_allocated": round(total_allocated, 2),
+        "total_demand": total_demand,
+        "total_supply": sum(supply),
+        "num_unmet_stores": len(unmet),
+        "status": STATUS_MAP.get(status, status),
+        "solver": solver_name,
+    }
+
     output = nextmv.Output(
         solution={"allocations": allocations, "unmet_demand": unmet},
         assets=[chart],
-        metrics={
-            "result_value": round(value(model.obj), 2),
-            "transportation_cost": round(transport_cost, 2),
-            "fill_rate": round(fill_rate, 4),
-            "total_units_allocated": round(total_allocated, 2),
-            "total_demand": total_demand,
-            "total_supply": sum(supply),
-            "num_unmet_stores": len(unmet),
-            "status": STATUS_MAP.get(status, status),
-            "solver": solver_name,
-        },
+        metrics=metrics_dict,
+        statistics=nextmv.Statistics(
+            result=nextmv.ResultStatistics(
+                custom=metrics_dict,
+                value=metrics_dict["result_value"],
+            ),
+        ),
     )
 
     nextmv.write(output, path=options.output)
