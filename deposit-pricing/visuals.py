@@ -93,7 +93,7 @@ def build_input_chart(data, label="Baseline Portfolio", tab_order=1) -> nextmv.A
     )
 
 
-def build_solution_chart(solution, data, label="Scenario Results", tab_order=2) -> nextmv.Asset:
+def build_solution_chart(solution, data, label="Rate Impact Analysis", tab_order=2) -> nextmv.Asset:
     products = solution["products"]
     names = [p["name"] for p in products]
     deltas = [p["delta_volume_mm"] for p in products]
@@ -154,12 +154,12 @@ def build_solution_chart(solution, data, label="Scenario Results", tab_order=2) 
         go.Bar(
             x=names,
             y=new_vols,
-            name="Post-Scenario",
+            name="Projected",
             marker_color="#1F77B4",
             text=[f"{a:.2f}%" for a in new_apys],
             textposition="inside",
             textfont=dict(color="white", size=11),
-            hovertemplate="<b>%{x}</b> Post-Scenario<br>Volume: $%{y:,.0f}MM<br>APY: %{text}<extra></extra>",
+            hovertemplate="<b>%{x}</b> Projected<br>Volume: $%{y:,.0f}MM<br>APY: %{text}<extra></extra>",
         ),
         row=1, col=2,
     )
@@ -175,7 +175,7 @@ def build_solution_chart(solution, data, label="Scenario Results", tab_order=2) 
     fig.update_yaxes(title_text="Volume ($MM)", row=1, col=2)
     fig.update_xaxes(tickangle=-25)
     fig.update_layout(
-        title=dict(text=f"Rate Scenario Results<br><sup>{subtitle}</sup>"),
+        title=dict(text=f"Rate Impact Analysis<br><sup>{subtitle}</sup>"),
         height=460,
         barmode="group",
         legend=dict(orientation="h", yanchor="bottom", y=1.04, xanchor="right", x=1),

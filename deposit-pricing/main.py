@@ -7,7 +7,7 @@ def main():
     manifest = nextmv.Manifest.from_yaml(".")
     options = manifest.extract_options()
 
-    input_data = nextmv.load(options=options, path=options.input)
+    input_data = nextmv.load(options=options)
     data = input_data.data
 
     nextmv.redirect_stdout()
@@ -24,7 +24,7 @@ def main():
         for j, pid_j in enumerate(product_ids):
             elasticity[i][j] = elasticity_raw.get(pid_i, {}).get(pid_j, 0.0)
 
-    # Rate scenario: delta in bps per product, driven by app.yaml sliders
+    # Rate deltas in bps per product, driven by app.yaml sliders
     delta_rates = np.array([
         getattr(options, f"delta_{pid}_bps", None) or 0
         for pid in product_ids
@@ -39,7 +39,7 @@ def main():
     new_rates = baseline_rates + delta_rates
 
     funding_rate_bps = options.funding_rate_bps
-    total_assets_mm = data.get("portfolio", {}).get("total_assets_mm", 10000)
+    total_assets_mm = options.total_assets_mm
 
     # Interest expense = Σ volume_i * rate_i  (volume in $MM, rate in bps → / 10000 → annual $MM)
     baseline_interest_mm = float(np.sum(baseline_volumes * baseline_rates) / 10000)
@@ -76,6 +76,11 @@ def main():
             "new_interest_expense_mm": round(nvol * float(new_rates[i]) / 10000, 3),
         })
 
+    total_volume_change = float(np.sum(delta_volumes))
+    volume_per_nim_bps = (
+        round(total_volume_change / abs(nim_impact_bps), 2)
+        if nim_impact_bps != 0 else None
+    )
     total_baseline_vol = float(np.sum(baseline_volumes))
     total_new_vol = float(np.sum(new_volumes))
     vw_baseline_apy = float(np.sum(baseline_volumes * baseline_rates) / total_baseline_vol) if total_baseline_vol > 0 else 0.0
@@ -87,7 +92,7 @@ def main():
         "portfolio_summary": {
             "total_baseline_volume_mm": round(total_baseline_vol, 2),
             "total_new_volume_mm": round(total_new_vol, 2),
-            "total_delta_volume_mm": round(float(np.sum(delta_volumes)), 2),
+            "total_delta_volume_mm": round(total_volume_change, 2),
             "volume_weighted_baseline_apy_bps": round(vw_baseline_apy, 1),
             "volume_weighted_new_apy_bps": round(vw_new_apy, 1),
             "baseline_interest_expense_mm": round(baseline_interest_mm, 3),
@@ -102,11 +107,12 @@ def main():
     }
 
     metrics = {
-        "total_volume_change_mm": round(float(np.sum(delta_volumes)), 2),
+        "total_volume_change_mm": round(total_volume_change, 2),
         "delta_interest_expense_mm": round(delta_interest_mm, 3),
         "nim_impact_bps": round(nim_impact_bps, 2),
         "delta_spread_income_mm": round(delta_spread_mm, 3),
         "volume_weighted_new_apy_bps": round(vw_new_apy, 1),
+        "volume_per_nim_bps_mm": volume_per_nim_bps,
         "nim_warning": 1.0 if nim_warning else 0.0,
     }
 
@@ -123,7 +129,7 @@ def main():
         assets=[input_chart, solution_chart],
         metrics=metrics,
     )
-    nextmv.write(output, path=options.output)
+    nextmv.write(output)
 
 
 if __name__ == "__main__":

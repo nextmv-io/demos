@@ -11,110 +11,101 @@ configuration:
   options:
     strict: false
     items:
-      - name: input
-        option_type: string
-        default: ''
-        required: false
-        ui:
-          control_type: input
-          hidden_from:
-            - operator
-      - name: output
-        option_type: string
-        default: ''
-        required: false
-        ui:
-          control_type: input
-          hidden_from:
-            - operator
       - name: delta_hysa_bps
         option_type: int
         default: 0
         required: false
+        additional_attributes:
+          min: -100
+          max: 100
+          step: 5
         ui:
           control_type: slider
           display_name: High-Yield Savings Rate Change (bps)
-          additional_attributes:
-            min: -100
-            max: 100
-            step: 5
       - name: delta_traditional_savings_bps
         option_type: int
         default: 0
         required: false
+        additional_attributes:
+          min: -100
+          max: 100
+          step: 5
         ui:
           control_type: slider
           display_name: Traditional Savings Rate Change (bps)
-          additional_attributes:
-            min: -100
-            max: 100
-            step: 5
       - name: delta_money_market_bps
         option_type: int
         default: 0
         required: false
+        additional_attributes:
+          min: -100
+          max: 100
+          step: 5
         ui:
           control_type: slider
           display_name: Money Market Rate Change (bps)
-          additional_attributes:
-            min: -100
-            max: 100
-            step: 5
       - name: delta_cd_6mo_bps
         option_type: int
         default: 0
         required: false
+        additional_attributes:
+          min: -100
+          max: 100
+          step: 5
         ui:
           control_type: slider
           display_name: 6-Month CD Rate Change (bps)
-          additional_attributes:
-            min: -100
-            max: 100
-            step: 5
       - name: delta_cd_12mo_bps
         option_type: int
         default: 0
         required: false
+        additional_attributes:
+          min: -100
+          max: 100
+          step: 5
         ui:
           control_type: slider
           display_name: 12-Month CD Rate Change (bps)
-          additional_attributes:
-            min: -100
-            max: 100
-            step: 5
       - name: delta_cd_24mo_bps
         option_type: int
         default: 0
         required: false
+        additional_attributes:
+          min: -100
+          max: 100
+          step: 5
         ui:
           control_type: slider
           display_name: 24-Month CD Rate Change (bps)
-          additional_attributes:
-            min: -100
-            max: 100
-            step: 5
       - name: delta_cd_36mo_bps
         option_type: int
         default: 0
         required: false
+        additional_attributes:
+          min: -100
+          max: 100
+          step: 5
         ui:
           control_type: slider
           display_name: 36-Month CD Rate Change (bps)
-          additional_attributes:
-            min: -100
-            max: 100
-            step: 5
+      - name: total_assets_mm
+        option_type: int
+        default: 10000
+        required: false
+        ui:
+          control_type: input
+          display_name: Total Bank Assets ($MM)
       - name: funding_rate_bps
         option_type: int
         default: 530
         required: false
+        additional_attributes:
+          min: 200
+          max: 800
+          step: 5
         ui:
           control_type: slider
           display_name: Funding Rate / Asset Yield (bps)
-          additional_attributes:
-            min: 200
-            max: 800
-            step: 5
       - name: min_nim_impact_bps
         option_type: float
         default: -2.0
