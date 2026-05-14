@@ -1,0 +1,114 @@
+{
+  "products": [
+    {
+      "id": "hysa",
+      "name": "High-Yield Savings",
+      "baseline_apy_bps": 450,
+      "baseline_volume_mm": 1200
+    },
+    {
+      "id": "traditional_savings",
+      "name": "Traditional Savings",
+      "baseline_apy_bps": 45,
+      "baseline_volume_mm": 3500
+    },
+    {
+      "id": "money_market",
+      "name": "Money Market",
+      "baseline_apy_bps": 400,
+      "baseline_volume_mm": 850
+    },
+    {
+      "id": "cd_6mo",
+      "name": "6-Month CD",
+      "baseline_apy_bps": 450,
+      "baseline_volume_mm": 280
+    },
+    {
+      "id": "cd_12mo",
+      "name": "12-Month CD",
+      "baseline_apy_bps": 475,
+      "baseline_volume_mm": 620
+    },
+    {
+      "id": "cd_24mo",
+      "name": "24-Month CD",
+      "baseline_apy_bps": 430,
+      "baseline_volume_mm": 390
+    },
+    {
+      "id": "cd_36mo",
+      "name": "36-Month CD",
+      "baseline_apy_bps": 410,
+      "baseline_volume_mm": 220
+    }
+  ],
+  "elasticity_matrix": {
+    "hysa": {
+      "hysa": 8.5,
+      "traditional_savings": -0.8,
+      "money_market": -2.1,
+      "cd_6mo": -0.4,
+      "cd_12mo": -0.3,
+      "cd_24mo": -0.2,
+      "cd_36mo": -0.1
+    },
+    "traditional_savings": {
+      "hysa": -1.2,
+      "traditional_savings": 3.2,
+      "money_market": -0.5,
+      "cd_6mo": -0.1,
+      "cd_12mo": -0.1,
+      "cd_24mo": -0.1,
+      "cd_36mo": -0.1
+    },
+    "money_market": {
+      "hysa": -2.8,
+      "traditional_savings": -0.6,
+      "money_market": 6.8,
+      "cd_6mo": -0.5,
+      "cd_12mo": -0.4,
+      "cd_24mo": -0.3,
+      "cd_36mo": -0.2
+    },
+    "cd_6mo": {
+      "hysa": -0.5,
+      "traditional_savings": -0.1,
+      "money_market": -0.6,
+      "cd_6mo": 8.0,
+      "cd_12mo": -2.5,
+      "cd_24mo": -0.8,
+      "cd_36mo": -0.4
+    },
+    "cd_12mo": {
+      "hysa": -0.5,
+      "traditional_savings": -0.2,
+      "money_market": -0.8,
+      "cd_6mo": -2.2,
+      "cd_12mo": 9.2,
+      "cd_24mo": -3.1,
+      "cd_36mo": -1.0
+    },
+    "cd_24mo": {
+      "hysa": -0.3,
+      "traditional_savings": -0.1,
+      "money_market": -0.4,
+      "cd_6mo": -0.6,
+      "cd_12mo": -2.8,
+      "cd_24mo": 7.4,
+      "cd_36mo": -2.0
+    },
+    "cd_36mo": {
+      "hysa": -0.2,
+      "traditional_savings": -0.1,
+      "money_market": -0.3,
+      "cd_6mo": -0.3,
+      "cd_12mo": -0.9,
+      "cd_24mo": -1.8,
+      "cd_36mo": 6.5
+    }
+  },
+  "portfolio": {
+    "total_assets_mm": 14000
+  }
+}

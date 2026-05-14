@@ -1,0 +1,42 @@
+{
+  "products": [
+    {
+      "id": "hysa",
+      "name": "High-Yield Savings",
+      "baseline_apy_bps": 450,
+      "baseline_volume_mm": 800
+    },
+    {
+      "id": "traditional_savings",
+      "name": "Traditional Savings",
+      "baseline_apy_bps": 45,
+      "baseline_volume_mm": 2000
+    },
+    {
+      "id": "money_market",
+      "name": "Money Market",
+      "baseline_apy_bps": 390,
+      "baseline_volume_mm": 500
+    }
+  ],
+  "elasticity_matrix": {
+    "hysa": {
+      "hysa": 8.5,
+      "traditional_savings": -0.8,
+      "money_market": -2.1
+    },
+    "traditional_savings": {
+      "hysa": -1.2,
+      "traditional_savings": 3.2,
+      "money_market": -0.5
+    },
+    "money_market": {
+      "hysa": -2.8,
+      "traditional_savings": -0.6,
+      "money_market": 6.8
+    }
+  },
+  "portfolio": {
+    "total_assets_mm": 5000
+  }
+}
