@@ -1,0 +1,76 @@
+# This manifest holds the information the app needs to run on the Nextmv Cloud.
+type: python
+runtime: ghcr.io/nextmv-io/runtime/python:3.11
+# List all files/directories that should be included in the app. Globbing
+# (e.g.: configs/*.json) is supported.
+files:
+  - main.py
+python:
+  # Packages the app depends on need to be listed in a requirements.txt file
+  # that is referenced here. All listed packages will get bundled with the app.
+  pip-requirements: requirements.txt
+
+configuration:
+  # Specify the format the app reads and writes.
+  content:
+    format: json # Read JSON from stdin and write JSON to stdout.
+  # Define the options (parameters) of the app.
+  options:
+    strict: false
+    items:
+      - name: duration
+        option_type: int
+        default: 30
+        description: Max solver runtime (in seconds).
+        required: false
+        additional_attributes:
+          min: 1
+          max: 300
+          step: 5
+        ui:
+          control_type: slider
+          display_name: Duration
+      - name: first_solution_strategy
+        option_type: string
+        default: AUTOMATIC
+        description: OR-Tools first-solution strategy (builds the initial routes).
+        required: false
+        additional_attributes:
+          values:
+            - AUTOMATIC
+            - PATH_CHEAPEST_ARC
+            - PATH_MOST_CONSTRAINED_ARC
+            - GLOBAL_CHEAPEST_ARC
+            - LOCAL_CHEAPEST_ARC
+            - SAVINGS
+            - SWEEP
+            - CHRISTOFIDES
+            - PARALLEL_CHEAPEST_INSERTION
+            - LOCAL_CHEAPEST_INSERTION
+        ui:
+          control_type: select
+          display_name: First solution strategy
+      - name: local_search_metaheuristic
+        option_type: string
+        default: AUTOMATIC
+        description: OR-Tools local-search metaheuristic (improves the routes).
+        required: false
+        additional_attributes:
+          values:
+            - AUTOMATIC
+            - GREEDY_DESCENT
+            - GUIDED_LOCAL_SEARCH
+            - SIMULATED_ANNEALING
+            - TABU_SEARCH
+            - GENERIC_TABU_SEARCH
+        ui:
+          control_type: select
+          display_name: Local search metaheuristic
+      - name: log_search
+        option_type: bool
+        default: false
+        description: Log OR-Tools search progress to stderr.
+        required: false
+        ui:
+          control_type: toggle
+          display_name: Log search

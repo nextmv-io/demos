@@ -865,6 +865,50 @@ mcp__nextmv__cloud_start_switchback_test(app_id="<cloud-app-id>", switchback_tes
 mcp__nextmv__cloud_stop_switchback_test(app_id="<cloud-app-id>", switchback_test_id="<switchback-test-id>")
 ```
 
+### 12. Define and run an ensemble
+
+An **ensemble** runs several configurations in parallel against the same input and returns the single best result per a list of evaluation rules. Use it when no one configuration is best (or even *feasible*) across all inputs — the platform picks the winner per request instead of you betting on one config.
+
+```python
+mcp__nextmv__cloud_create_ensemble(
+  app_id="<cloud-app-id>",
+  ensemble_id="best-feasible",
+  name="best-feasible",
+  run_groups=[
+    {"id": "cfg-a", "instance_id": "production", "options": {"<option>": "<value-a>"}},
+    {"id": "cfg-b", "instance_id": "production", "options": {"<option>": "<value-b>"}},
+  ],
+  rules=[
+    {"id": "min-obj", "statistics_path": "$.result.value", "objective": "minimize", "index": 0},
+  ],
+)
+
+# Run it against an input (inline JSON or a managed input), then read the winner
+mcp__nextmv__cloud_ensemble_run(app_id="<cloud-app-id>", ensemble_id="best-feasible", managed_input_id="<id>")
+# winner is in the parent run's output.statistics.result (value + custom)
+```
+
+> **Two gotchas that will cost you an afternoon if you miss them:**
+>
+> 1. **`statistics_path` is a JSONPath and needs the `$.` prefix** — `"$.result.value"`, NOT bare `"result.value"` or `"objective_value"`. A bare path fails with *"No statistic found … at JSON path"*. (Docs: nextmv.io → using-nextmv → runs-ensembling → ensemble-definition-schema.)
+> 2. **Ensemble rules read the canonical `statistics` object, not the flat `metrics` dict.** Scenario/acceptance tests read `metrics={...}`; ensembles read `output.statistics.result.value` / `.custom.*`. An app that only does `nextmv.write(metrics={...})` produces no `statistics`, so its ensembles can't select a winner. Emit both:
+>
+> ```python
+> stats = nextmv.Statistics(
+>     run=nextmv.RunStatistics(duration=elapsed),
+>     result=nextmv.ResultStatistics(
+>         value=objective if feasible else 1e12,   # large sentinel when infeasible
+>         custom={**metrics, "feasible": 1.0 if feasible else 0.0},
+>     ),
+> )
+> nextmv.write(nextmv.Output(solution=sol, statistics=stats, metrics=metrics, options=options))
+> ```
+>
+> - **Feasibility-first with a single rule:** emit a large **sentinel** `result.value` (e.g. `1e12`) for infeasible runs. Then one `minimize $.result.value` rule returns the best *feasible* result automatically and routes around configs that found nothing — no separate feasibility rule needed. (Booleans like `solution_found` are **not** queryable as statistics; only numeric values become indicators.)
+> - **Tooling caveat:** `mcp__nextmv__cloud_run_result` / `cloud_run_status` currently error on `ensemble-child` runs (a pydantic enum gap). To introspect a child run use `cloud_run_logs`; for the winner, read the parent ensemble run's `output.statistics`.
+
+A worked end-to-end example (sweep → acceptance gate → ensemble, all real) lives in `ortools-routing/`.
+
 ---
 
 ## Checklist Before Committing

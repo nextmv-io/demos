@@ -1,0 +1,1468 @@
+{
+  "vehicles": [
+    {
+      "id": "vehicle-1",
+      "capacity": 40,
+      "speed": 8.0,
+      "start_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "end_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "max_duration": 4032
+    },
+    {
+      "id": "vehicle-2",
+      "capacity": 40,
+      "speed": 8.0,
+      "start_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "end_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "max_duration": 4032
+    },
+    {
+      "id": "vehicle-3",
+      "capacity": 40,
+      "speed": 8.0,
+      "start_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "end_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "max_duration": 4032
+    },
+    {
+      "id": "vehicle-4",
+      "capacity": 40,
+      "speed": 8.0,
+      "start_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "end_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "max_duration": 4032
+    },
+    {
+      "id": "vehicle-5",
+      "capacity": 40,
+      "speed": 8.0,
+      "start_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "end_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "max_duration": 4032
+    },
+    {
+      "id": "vehicle-6",
+      "capacity": 40,
+      "speed": 8.0,
+      "start_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "end_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "max_duration": 4032
+    },
+    {
+      "id": "vehicle-7",
+      "capacity": 40,
+      "speed": 8.0,
+      "start_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "end_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "max_duration": 4032
+    },
+    {
+      "id": "vehicle-8",
+      "capacity": 40,
+      "speed": 8.0,
+      "start_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "end_location": {
+        "lon": 7.625,
+        "lat": 51.9622
+      },
+      "max_duration": 4032
+    }
+  ],
+  "stops": [
+    {
+      "id": "stop-1",
+      "location": {
+        "lon": 7.592438,
+        "lat": 51.965681
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-2",
+      "location": {
+        "lon": 7.576139,
+        "lat": 51.914901
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-3",
+      "location": {
+        "lon": 7.570302,
+        "lat": 51.966149
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-4",
+      "location": {
+        "lon": 7.5865,
+        "lat": 51.952375
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-5",
+      "location": {
+        "lon": 7.58718,
+        "lat": 51.959703
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-6",
+      "location": {
+        "lon": 7.644812,
+        "lat": 51.928429
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-7",
+      "location": {
+        "lon": 7.635978,
+        "lat": 51.955553
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-8",
+      "location": {
+        "lon": 7.603992,
+        "lat": 51.925997
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-9",
+      "location": {
+        "lon": 7.586363,
+        "lat": 51.95625
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-10",
+      "location": {
+        "lon": 7.624947,
+        "lat": 51.960266
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-11",
+      "location": {
+        "lon": 7.642998,
+        "lat": 51.926213
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-12",
+      "location": {
+        "lon": 7.627593,
+        "lat": 51.945208
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-13",
+      "location": {
+        "lon": 7.605552,
+        "lat": 51.930507
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-14",
+      "location": {
+        "lon": 7.64432,
+        "lat": 51.921163
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-15",
+      "location": {
+        "lon": 7.609861,
+        "lat": 51.922981
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-16",
+      "location": {
+        "lon": 7.625513,
+        "lat": 51.942523
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-17",
+      "location": {
+        "lon": 7.587635,
+        "lat": 51.963983
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-18",
+      "location": {
+        "lon": 7.584501,
+        "lat": 51.96079
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-19",
+      "location": {
+        "lon": 7.583404,
+        "lat": 51.932699
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-20",
+      "location": {
+        "lon": 7.583942,
+        "lat": 51.968654
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-21",
+      "location": {
+        "lon": 7.63484,
+        "lat": 51.951056
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-22",
+      "location": {
+        "lon": 7.584925,
+        "lat": 51.957632
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-23",
+      "location": {
+        "lon": 7.638143,
+        "lat": 51.917692
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-24",
+      "location": {
+        "lon": 7.612195,
+        "lat": 51.936037
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-25",
+      "location": {
+        "lon": 7.643638,
+        "lat": 51.912852
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-26",
+      "location": {
+        "lon": 7.581413,
+        "lat": 51.928234
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-27",
+      "location": {
+        "lon": 7.640762,
+        "lat": 51.926754
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-28",
+      "location": {
+        "lon": 7.587009,
+        "lat": 51.932238
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-29",
+      "location": {
+        "lon": 7.638541,
+        "lat": 51.924261
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-30",
+      "location": {
+        "lon": 7.578092,
+        "lat": 51.961907
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-31",
+      "location": {
+        "lon": 7.595599,
+        "lat": 51.913993
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-32",
+      "location": {
+        "lon": 7.585862,
+        "lat": 51.918751
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-33",
+      "location": {
+        "lon": 7.578652,
+        "lat": 51.960017
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-34",
+      "location": {
+        "lon": 7.58379,
+        "lat": 51.961262
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-35",
+      "location": {
+        "lon": 7.635888,
+        "lat": 51.924775
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-36",
+      "location": {
+        "lon": 7.615355,
+        "lat": 51.935431
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-37",
+      "location": {
+        "lon": 7.616999,
+        "lat": 51.928167
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-38",
+      "location": {
+        "lon": 7.636019,
+        "lat": 51.921484
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-39",
+      "location": {
+        "lon": 7.622784,
+        "lat": 51.946035
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-40",
+      "location": {
+        "lon": 7.591934,
+        "lat": 51.962578
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-41",
+      "location": {
+        "lon": 7.630619,
+        "lat": 51.951543
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-42",
+      "location": {
+        "lon": 7.585243,
+        "lat": 51.93659
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-43",
+      "location": {
+        "lon": 7.597955,
+        "lat": 51.958359
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-44",
+      "location": {
+        "lon": 7.632773,
+        "lat": 51.956093
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-45",
+      "location": {
+        "lon": 7.580812,
+        "lat": 51.964449
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-46",
+      "location": {
+        "lon": 7.590381,
+        "lat": 51.919377
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-47",
+      "location": {
+        "lon": 7.629246,
+        "lat": 51.942782
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-48",
+      "location": {
+        "lon": 7.622817,
+        "lat": 51.943859
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-49",
+      "location": {
+        "lon": 7.642683,
+        "lat": 51.914766
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-50",
+      "location": {
+        "lon": 7.632994,
+        "lat": 51.923097
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-51",
+      "location": {
+        "lon": 7.610837,
+        "lat": 51.924207
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-52",
+      "location": {
+        "lon": 7.581934,
+        "lat": 51.921982
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-53",
+      "location": {
+        "lon": 7.633717,
+        "lat": 51.948518
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-54",
+      "location": {
+        "lon": 7.609721,
+        "lat": 51.934706
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-55",
+      "location": {
+        "lon": 7.576056,
+        "lat": 51.953812
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-56",
+      "location": {
+        "lon": 7.589857,
+        "lat": 51.959894
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-57",
+      "location": {
+        "lon": 7.610683,
+        "lat": 51.928163
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-58",
+      "location": {
+        "lon": 7.586293,
+        "lat": 51.918522
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-59",
+      "location": {
+        "lon": 7.586533,
+        "lat": 51.957637
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-60",
+      "location": {
+        "lon": 7.575588,
+        "lat": 51.965139
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-61",
+      "location": {
+        "lon": 7.596546,
+        "lat": 51.941276
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-62",
+      "location": {
+        "lon": 7.632933,
+        "lat": 51.920093
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-63",
+      "location": {
+        "lon": 7.632412,
+        "lat": 51.91851
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-64",
+      "location": {
+        "lon": 7.589514,
+        "lat": 51.924027
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-65",
+      "location": {
+        "lon": 7.649241,
+        "lat": 51.925161
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-66",
+      "location": {
+        "lon": 7.59426,
+        "lat": 51.931372
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-67",
+      "location": {
+        "lon": 7.589156,
+        "lat": 51.962536
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-68",
+      "location": {
+        "lon": 7.609087,
+        "lat": 51.935772
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-69",
+      "location": {
+        "lon": 7.579918,
+        "lat": 51.96291
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-70",
+      "location": {
+        "lon": 7.613879,
+        "lat": 51.927773
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-71",
+      "location": {
+        "lon": 7.575031,
+        "lat": 51.918864
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-72",
+      "location": {
+        "lon": 7.58572,
+        "lat": 51.95875
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-73",
+      "location": {
+        "lon": 7.616387,
+        "lat": 51.923331
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-74",
+      "location": {
+        "lon": 7.609702,
+        "lat": 51.927404
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-75",
+      "location": {
+        "lon": 7.582993,
+        "lat": 51.960802
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-76",
+      "location": {
+        "lon": 7.625185,
+        "lat": 51.943389
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-77",
+      "location": {
+        "lon": 7.610669,
+        "lat": 51.929402
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-78",
+      "location": {
+        "lon": 7.630856,
+        "lat": 51.950825
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-79",
+      "location": {
+        "lon": 7.595892,
+        "lat": 51.958442
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-80",
+      "location": {
+        "lon": 7.57783,
+        "lat": 51.977236
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-81",
+      "location": {
+        "lon": 7.584886,
+        "lat": 51.96082
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-82",
+      "location": {
+        "lon": 7.585894,
+        "lat": 51.949543
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-83",
+      "location": {
+        "lon": 7.574158,
+        "lat": 51.923583
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-84",
+      "location": {
+        "lon": 7.586529,
+        "lat": 51.953709
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-85",
+      "location": {
+        "lon": 7.633398,
+        "lat": 51.926715
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-86",
+      "location": {
+        "lon": 7.606129,
+        "lat": 51.925194
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-87",
+      "location": {
+        "lon": 7.585289,
+        "lat": 51.928263
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-88",
+      "location": {
+        "lon": 7.582731,
+        "lat": 51.920871
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-89",
+      "location": {
+        "lon": 7.642722,
+        "lat": 51.922864
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-90",
+      "location": {
+        "lon": 7.587902,
+        "lat": 51.960503
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-91",
+      "location": {
+        "lon": 7.641951,
+        "lat": 51.929135
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-92",
+      "location": {
+        "lon": 7.583116,
+        "lat": 51.966225
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-93",
+      "location": {
+        "lon": 7.608938,
+        "lat": 51.929604
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-94",
+      "location": {
+        "lon": 7.584153,
+        "lat": 51.963288
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-95",
+      "location": {
+        "lon": 7.578256,
+        "lat": 51.951178
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-96",
+      "location": {
+        "lon": 7.619672,
+        "lat": 51.929787
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-97",
+      "location": {
+        "lon": 7.608978,
+        "lat": 51.932474
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-98",
+      "location": {
+        "lon": 7.628632,
+        "lat": 51.939012
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-99",
+      "location": {
+        "lon": 7.62205,
+        "lat": 51.954258
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-100",
+      "location": {
+        "lon": 7.578037,
+        "lat": 51.956409
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-101",
+      "location": {
+        "lon": 7.610316,
+        "lat": 51.927142
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-102",
+      "location": {
+        "lon": 7.636111,
+        "lat": 51.946897
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-103",
+      "location": {
+        "lon": 7.605835,
+        "lat": 51.928101
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-104",
+      "location": {
+        "lon": 7.603912,
+        "lat": 51.93234
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-105",
+      "location": {
+        "lon": 7.589464,
+        "lat": 51.960763
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-106",
+      "location": {
+        "lon": 7.60478,
+        "lat": 51.930031
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-107",
+      "location": {
+        "lon": 7.638301,
+        "lat": 51.927502
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-108",
+      "location": {
+        "lon": 7.582855,
+        "lat": 51.934894
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-109",
+      "location": {
+        "lon": 7.581464,
+        "lat": 51.962867
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-110",
+      "location": {
+        "lon": 7.61079,
+        "lat": 51.93072
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-111",
+      "location": {
+        "lon": 7.569715,
+        "lat": 51.924775
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-112",
+      "location": {
+        "lon": 7.585397,
+        "lat": 51.969398
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-113",
+      "location": {
+        "lon": 7.579901,
+        "lat": 51.928263
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-114",
+      "location": {
+        "lon": 7.581891,
+        "lat": 51.960133
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-115",
+      "location": {
+        "lon": 7.632164,
+        "lat": 51.961874
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-116",
+      "location": {
+        "lon": 7.597849,
+        "lat": 51.939291
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-117",
+      "location": {
+        "lon": 7.646959,
+        "lat": 51.924471
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-118",
+      "location": {
+        "lon": 7.586527,
+        "lat": 51.965025
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-119",
+      "location": {
+        "lon": 7.581037,
+        "lat": 51.951941
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-120",
+      "location": {
+        "lon": 7.584508,
+        "lat": 51.931777
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-121",
+      "location": {
+        "lon": 7.623809,
+        "lat": 51.951678
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-122",
+      "location": {
+        "lon": 7.582666,
+        "lat": 51.95765
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-123",
+      "location": {
+        "lon": 7.638412,
+        "lat": 51.923937
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-124",
+      "location": {
+        "lon": 7.602142,
+        "lat": 51.931902
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-125",
+      "location": {
+        "lon": 7.637987,
+        "lat": 51.923701
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-126",
+      "location": {
+        "lon": 7.614079,
+        "lat": 51.937045
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-127",
+      "location": {
+        "lon": 7.606549,
+        "lat": 51.938825
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-128",
+      "location": {
+        "lon": 7.594715,
+        "lat": 51.953136
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-129",
+      "location": {
+        "lon": 7.594498,
+        "lat": 51.918812
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-130",
+      "location": {
+        "lon": 7.58608,
+        "lat": 51.953325
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-131",
+      "location": {
+        "lon": 7.636809,
+        "lat": 51.93186
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-132",
+      "location": {
+        "lon": 7.613453,
+        "lat": 51.922302
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-133",
+      "location": {
+        "lon": 7.577869,
+        "lat": 51.929374
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-134",
+      "location": {
+        "lon": 7.647051,
+        "lat": 51.918338
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-135",
+      "location": {
+        "lon": 7.612816,
+        "lat": 51.923728
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-136",
+      "location": {
+        "lon": 7.594572,
+        "lat": 51.923018
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-137",
+      "location": {
+        "lon": 7.617394,
+        "lat": 51.932998
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-138",
+      "location": {
+        "lon": 7.58916,
+        "lat": 51.956285
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-139",
+      "location": {
+        "lon": 7.602784,
+        "lat": 51.924317
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-140",
+      "location": {
+        "lon": 7.638953,
+        "lat": 51.950335
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-141",
+      "location": {
+        "lon": 7.585485,
+        "lat": 51.954651
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-142",
+      "location": {
+        "lon": 7.608962,
+        "lat": 51.923979
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-143",
+      "location": {
+        "lon": 7.629192,
+        "lat": 51.96015
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-144",
+      "location": {
+        "lon": 7.582368,
+        "lat": 51.919974
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-145",
+      "location": {
+        "lon": 7.60012,
+        "lat": 51.931974
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-146",
+      "location": {
+        "lon": 7.580695,
+        "lat": 51.953273
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-147",
+      "location": {
+        "lon": 7.634302,
+        "lat": 51.931307
+      },
+      "quantity": 3,
+      "duration": 120
+    },
+    {
+      "id": "stop-148",
+      "location": {
+        "lon": 7.625904,
+        "lat": 51.947897
+      },
+      "quantity": 2,
+      "duration": 120
+    },
+    {
+      "id": "stop-149",
+      "location": {
+        "lon": 7.593123,
+        "lat": 51.93221
+      },
+      "quantity": 1,
+      "duration": 120
+    },
+    {
+      "id": "stop-150",
+      "location": {
+        "lon": 7.58769,
+        "lat": 51.93218
+      },
+      "quantity": 3,
+      "duration": 120
+    }
+  ]
+}
