@@ -307,6 +307,8 @@ def solve(input: nextmv.Input, options: nextmv.Options) -> tuple[dict[str, Any],
         metrics = {
             "duration": end_time - start_time,
             "solution_found": False,
+            "first_solution_strategy": options.first_solution_strategy,
+            "local_search_metaheuristic": options.local_search_metaheuristic,
         }
 
     return {"vehicles": routes, "unplanned": []}, metrics
