@@ -1,0 +1,69 @@
+type: python
+runtime: ghcr.io/nextmv-io/runtime/python:3.11
+python:
+  pip-requirements: requirements.txt
+
+files:
+  - main.py
+  - visuals.py
+
+configuration:
+  options:
+    strict: false
+    items:
+      - name: objective_mode
+        option_type: string
+        default: weighted
+        required: false
+        additional_attributes:
+          values:
+            - cost_only
+            - fair_only
+            - weighted
+        ui:
+          control_type: select
+          display_name: Objective Mode
+      - name: hourly_wage
+        option_type: float
+        default: 18.0
+        required: false
+        additional_attributes:
+          min: 10.0
+          max: 80.0
+          step: 1.0
+        ui:
+          control_type: slider
+          display_name: Hourly Wage ($/hr per worker)
+      - name: coverage_penalty
+        option_type: float
+        default: 10000.0
+        required: false
+        additional_attributes:
+          min: 0.0
+          max: 50000.0
+          step: 1000.0
+        ui:
+          control_type: slider
+          display_name: Coverage Penalty ($/unstaffed worker-slot)
+      - name: fairness_penalty
+        option_type: float
+        default: 200.0
+        required: false
+        additional_attributes:
+          min: 0.0
+          max: 2000.0
+          step: 50.0
+        ui:
+          control_type: slider
+          display_name: Fairness Penalty ($/shift spread unit, weighted mode only)
+      - name: time_limit
+        option_type: float
+        default: 30.0
+        required: false
+        additional_attributes:
+          min: 5.0
+          max: 120.0
+          step: 5.0
+        ui:
+          control_type: slider
+          display_name: Solver Time Limit (seconds)

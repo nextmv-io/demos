@@ -1,0 +1,24 @@
+{
+  "_comment": "Week 3 — peak week with more shifts required. 12 shifts, 3 workers needed on heavy days. w1 and w4 are senior.",
+  "workers": [
+    {"id": "w1", "hourly_wage": 26, "min_shifts": 0, "max_shifts": 6, "available_shifts": ["mon-am", "mon-pm", "tue-am", "wed-am", "wed-pm", "thu-am", "fri-am", "fri-pm"]},
+    {"id": "w2", "hourly_wage": 18, "min_shifts": 0, "max_shifts": 6, "available_shifts": ["mon-am", "mon-pm", "tue-pm", "wed-am", "thu-am", "thu-pm", "fri-am", "fri-pm"]},
+    {"id": "w3", "hourly_wage": 18, "min_shifts": 0, "max_shifts": 6, "available_shifts": ["mon-pm", "tue-am", "tue-pm", "wed-pm", "thu-pm", "fri-am", "fri-pm", "sat-am"]},
+    {"id": "w4", "hourly_wage": 26, "min_shifts": 0, "max_shifts": 6, "available_shifts": ["mon-am", "tue-am", "wed-am", "wed-pm", "thu-am", "fri-am", "sat-am"]},
+    {"id": "w5", "hourly_wage": 18, "min_shifts": 0, "max_shifts": 6, "available_shifts": ["mon-pm", "tue-am", "tue-pm", "wed-am", "thu-am", "thu-pm", "fri-pm", "sat-am"]},
+    {"id": "w6", "hourly_wage": 18, "min_shifts": 0, "max_shifts": 6, "available_shifts": ["mon-am", "mon-pm", "wed-pm", "thu-am", "thu-pm", "fri-am", "fri-pm", "sat-am"]}
+  ],
+  "shifts": [
+    {"id": "mon-am", "name": "Monday AM",    "hours": 4, "required_workers": 2},
+    {"id": "mon-pm", "name": "Monday PM",    "hours": 4, "required_workers": 2},
+    {"id": "tue-am", "name": "Tuesday AM",   "hours": 4, "required_workers": 2},
+    {"id": "tue-pm", "name": "Tuesday PM",   "hours": 4, "required_workers": 2},
+    {"id": "wed-am", "name": "Wednesday AM", "hours": 4, "required_workers": 3},
+    {"id": "wed-pm", "name": "Wednesday PM", "hours": 4, "required_workers": 3},
+    {"id": "thu-am", "name": "Thursday AM",  "hours": 4, "required_workers": 3},
+    {"id": "thu-pm", "name": "Thursday PM",  "hours": 4, "required_workers": 2},
+    {"id": "fri-am", "name": "Friday AM",    "hours": 4, "required_workers": 2},
+    {"id": "fri-pm", "name": "Friday PM",    "hours": 4, "required_workers": 2},
+    {"id": "sat-am", "name": "Saturday AM",  "hours": 6, "required_workers": 2}
+  ]
+}

@@ -810,7 +810,7 @@ mcp__nextmv__cloud_create_acceptance_test(
   input_set_id="<input-set-id>",
   metrics=[
     {
-      "field": "result_value",
+      "field": "result.custom.<metric>",  # dot-path from statistics — read a run result first to confirm the path
       "metric_type": "direct-comparison",  # only valid value
       "statistic": "mean",
       "params": {
@@ -820,6 +820,8 @@ mcp__nextmv__cloud_create_acceptance_test(
   ]
 )
 ```
+
+> **IMPORTANT — field name format:** The `field` is a dot-path into the run's `statistics` object, starting with `result.`. Flat names like `shift_spread` fail with "not found in summary." Before creating an acceptance test, read a completed run's result to find the correct path — e.g. if the metric is at `statistics.result.custom.shift_spread`, the field is `result.custom.shift_spread`. If it's at `statistics.result.value`, the field is `result.value`. Drop the leading `statistics.` and use the rest.
 
 > The acceptance test auto-runs on creation. Poll `mcp__nextmv__cloud_get_acceptance_test` until `status == "completed"`, then check `results.passed`.
 
