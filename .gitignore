@@ -1,2 +1,4 @@
 .DS_Store
 */.nextmv
+**/__pycache__
+**/*.pyc
