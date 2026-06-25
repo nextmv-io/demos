@@ -1,0 +1,23 @@
+{
+  "_comment": "Default week. w1 and w4 are senior ($20/hr); others $18/hr. Cost_only packs cheap workers (spread=5); fair scheduling costs ~3% more.",
+  "workers": [
+    {"id": "w1", "hourly_wage": 20, "min_shifts": 0, "max_shifts": 5, "available_shifts": ["mon-am", "mon-pm", "tue-am", "wed-am", "wed-pm", "thu-am", "fri-pm"]},
+    {"id": "w2", "hourly_wage": 18, "min_shifts": 0, "max_shifts": 5, "available_shifts": ["mon-am", "mon-pm", "tue-pm", "wed-am", "thu-am", "thu-pm", "fri-am"]},
+    {"id": "w3", "hourly_wage": 18, "min_shifts": 0, "max_shifts": 5, "available_shifts": ["mon-pm", "tue-am", "tue-pm", "wed-pm", "thu-pm", "fri-am", "fri-pm"]},
+    {"id": "w4", "hourly_wage": 20, "min_shifts": 0, "max_shifts": 5, "available_shifts": ["mon-am", "tue-am", "wed-am", "wed-pm", "thu-am", "fri-am", "fri-pm"]},
+    {"id": "w5", "hourly_wage": 18, "min_shifts": 0, "max_shifts": 5, "available_shifts": ["mon-pm", "tue-am", "tue-pm", "wed-am", "thu-am", "thu-pm", "fri-pm"]},
+    {"id": "w6", "hourly_wage": 18, "min_shifts": 0, "max_shifts": 5, "available_shifts": ["mon-am", "mon-pm", "wed-pm", "thu-am", "thu-pm", "fri-am", "fri-pm"]}
+  ],
+  "shifts": [
+    {"id": "mon-am", "name": "Monday AM",    "hours": 4, "required_workers": 2},
+    {"id": "mon-pm", "name": "Monday PM",    "hours": 4, "required_workers": 2},
+    {"id": "tue-am", "name": "Tuesday AM",   "hours": 4, "required_workers": 2},
+    {"id": "tue-pm", "name": "Tuesday PM",   "hours": 4, "required_workers": 2},
+    {"id": "wed-am", "name": "Wednesday AM", "hours": 4, "required_workers": 2},
+    {"id": "wed-pm", "name": "Wednesday PM", "hours": 4, "required_workers": 2},
+    {"id": "thu-am", "name": "Thursday AM",  "hours": 4, "required_workers": 2},
+    {"id": "thu-pm", "name": "Thursday PM",  "hours": 4, "required_workers": 2},
+    {"id": "fri-am", "name": "Friday AM",    "hours": 4, "required_workers": 2},
+    {"id": "fri-pm", "name": "Friday PM",    "hours": 4, "required_workers": 2}
+  ]
+}

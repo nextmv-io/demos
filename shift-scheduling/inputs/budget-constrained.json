@@ -1,0 +1,28 @@
+{
+  "workers": [
+    {"id": "w1", "hourly_wage": 17.5, "min_shifts": 0, "max_shifts": 5,
+     "available_shifts": ["mon-am", "mon-pm", "tue-am", "tue-pm", "wed-am"]},
+    {"id": "w2", "hourly_wage": 17.5, "min_shifts": 0, "max_shifts": 5,
+     "available_shifts": ["wed-pm", "thu-am", "thu-pm", "fri-am", "fri-pm"]},
+    {"id": "w3", "hourly_wage": 18, "min_shifts": 0, "max_shifts": 8,
+     "available_shifts": ["mon-pm", "tue-am", "tue-pm", "wed-am", "wed-pm", "thu-am", "thu-pm", "fri-am"]},
+    {"id": "w4", "hourly_wage": 18, "min_shifts": 0, "max_shifts": 8,
+     "available_shifts": ["mon-pm", "tue-am", "tue-pm", "wed-am", "wed-pm", "thu-am", "thu-pm", "fri-am"]},
+    {"id": "w5", "hourly_wage": 18, "min_shifts": 0, "max_shifts": 5,
+     "available_shifts": ["tue-am", "tue-pm", "wed-am", "wed-pm", "thu-am"]},
+    {"id": "w6", "hourly_wage": 52, "min_shifts": 0, "max_shifts": 10,
+     "available_shifts": ["mon-am", "mon-pm", "tue-am", "tue-pm", "wed-am", "wed-pm", "thu-am", "thu-pm", "fri-am", "fri-pm"]}
+  ],
+  "shifts": [
+    {"id": "mon-am", "name": "Monday AM",    "hours": 4, "required_workers": 1},
+    {"id": "mon-pm", "name": "Monday PM",    "hours": 4, "required_workers": 1},
+    {"id": "tue-am", "name": "Tuesday AM",   "hours": 4, "required_workers": 1},
+    {"id": "tue-pm", "name": "Tuesday PM",   "hours": 4, "required_workers": 1},
+    {"id": "wed-am", "name": "Wednesday AM", "hours": 4, "required_workers": 1},
+    {"id": "wed-pm", "name": "Wednesday PM", "hours": 4, "required_workers": 1},
+    {"id": "thu-am", "name": "Thursday AM",  "hours": 4, "required_workers": 1},
+    {"id": "thu-pm", "name": "Thursday PM",  "hours": 4, "required_workers": 1},
+    {"id": "fri-am", "name": "Friday AM",    "hours": 4, "required_workers": 1},
+    {"id": "fri-pm", "name": "Friday PM",    "hours": 4, "required_workers": 1}
+  ]
+}

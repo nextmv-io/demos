@@ -1,0 +1,23 @@
+{
+  "_comment": "Tight week — w1/w4 are senior ($24/hr vs $18/hr for others). Fairness requires assigning seniors, costs ~8% above cost_only floor. Ensemble filters max-fairness (>5%); strong-fairness wins with spread=1.",
+  "workers": [
+    {"id": "w1", "hourly_wage": 24, "min_shifts": 0, "max_shifts": 5, "available_shifts": ["mon-am", "tue-am", "tue-pm", "wed-am", "thu-am"]},
+    {"id": "w2", "hourly_wage": 18, "min_shifts": 0, "max_shifts": 5, "available_shifts": ["mon-am", "mon-pm", "wed-pm", "thu-pm", "fri-pm"]},
+    {"id": "w3", "hourly_wage": 18, "min_shifts": 0, "max_shifts": 5, "available_shifts": ["tue-am", "tue-pm", "wed-am", "fri-am", "fri-pm"]},
+    {"id": "w4", "hourly_wage": 24, "min_shifts": 0, "max_shifts": 5, "available_shifts": ["mon-pm", "wed-am", "wed-pm", "thu-am", "fri-pm"]},
+    {"id": "w5", "hourly_wage": 18, "min_shifts": 0, "max_shifts": 5, "available_shifts": ["mon-pm", "tue-pm", "thu-am", "thu-pm", "fri-am"]},
+    {"id": "w6", "hourly_wage": 18, "min_shifts": 0, "max_shifts": 5, "available_shifts": ["mon-am", "mon-pm", "wed-pm", "fri-am", "fri-pm"]}
+  ],
+  "shifts": [
+    {"id": "mon-am", "name": "Monday AM",    "hours": 4, "required_workers": 2},
+    {"id": "mon-pm", "name": "Monday PM",    "hours": 4, "required_workers": 2},
+    {"id": "tue-am", "name": "Tuesday AM",   "hours": 4, "required_workers": 2},
+    {"id": "tue-pm", "name": "Tuesday PM",   "hours": 4, "required_workers": 2},
+    {"id": "wed-am", "name": "Wednesday AM", "hours": 4, "required_workers": 2},
+    {"id": "wed-pm", "name": "Wednesday PM", "hours": 4, "required_workers": 2},
+    {"id": "thu-am", "name": "Thursday AM",  "hours": 4, "required_workers": 2},
+    {"id": "thu-pm", "name": "Thursday PM",  "hours": 4, "required_workers": 2},
+    {"id": "fri-am", "name": "Friday AM",    "hours": 4, "required_workers": 2},
+    {"id": "fri-pm", "name": "Friday PM",    "hours": 4, "required_workers": 2}
+  ]
+}
