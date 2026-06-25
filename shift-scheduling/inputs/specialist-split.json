@@ -1,0 +1,23 @@
+{
+  "_comment": "Specialist split — w6 earns $31/hr vs $18 for others. cost_only gives w6 exactly 2 shifts (min_shifts=2), spread=2. Going from spread=2 to spread=1 requires replacing one $18 slot with w6 ($104 extra). penalty=100 saves $100 per spread unit, not enough to make the swap — light-fairness stays at spread=2. fair_only ignores cost and gets to spread=1. Tests Rule 1 actually deciding the winner.",
+  "workers": [
+    {"id": "w1", "hourly_wage": 18, "min_shifts": 3, "max_shifts": 4, "available_shifts": ["mon-am", "mon-pm", "tue-am", "wed-am", "wed-pm", "thu-am", "fri-pm"]},
+    {"id": "w2", "hourly_wage": 18, "min_shifts": 3, "max_shifts": 4, "available_shifts": ["mon-am", "mon-pm", "tue-pm", "wed-am", "thu-am", "thu-pm", "fri-am"]},
+    {"id": "w3", "hourly_wage": 18, "min_shifts": 3, "max_shifts": 4, "available_shifts": ["mon-pm", "tue-am", "tue-pm", "wed-pm", "thu-pm", "fri-am", "fri-pm"]},
+    {"id": "w4", "hourly_wage": 18, "min_shifts": 3, "max_shifts": 4, "available_shifts": ["mon-am", "tue-am", "wed-am", "wed-pm", "thu-am", "fri-am", "fri-pm"]},
+    {"id": "w5", "hourly_wage": 18, "min_shifts": 3, "max_shifts": 4, "available_shifts": ["mon-am", "mon-pm", "tue-pm", "wed-pm", "thu-am", "thu-pm", "fri-pm"]},
+    {"id": "w6", "hourly_wage": 31, "min_shifts": 2, "max_shifts": 4, "available_shifts": ["mon-pm", "tue-am", "wed-am", "thu-pm", "fri-am", "fri-pm"]}
+  ],
+  "shifts": [
+    {"id": "mon-am", "name": "Monday AM",    "hours": 8, "required_workers": 2},
+    {"id": "mon-pm", "name": "Monday PM",    "hours": 8, "required_workers": 2},
+    {"id": "tue-am", "name": "Tuesday AM",   "hours": 8, "required_workers": 2},
+    {"id": "tue-pm", "name": "Tuesday PM",   "hours": 8, "required_workers": 2},
+    {"id": "wed-am", "name": "Wednesday AM", "hours": 8, "required_workers": 2},
+    {"id": "wed-pm", "name": "Wednesday PM", "hours": 8, "required_workers": 2},
+    {"id": "thu-am", "name": "Thursday AM",  "hours": 8, "required_workers": 2},
+    {"id": "thu-pm", "name": "Thursday PM",  "hours": 8, "required_workers": 2},
+    {"id": "fri-am", "name": "Friday AM",    "hours": 8, "required_workers": 2},
+    {"id": "fri-pm", "name": "Friday PM",    "hours": 8, "required_workers": 2}
+  ]
+}

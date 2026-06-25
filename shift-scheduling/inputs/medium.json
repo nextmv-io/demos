@@ -1,0 +1,24 @@
+{
+  "workers": [
+    {"id": "w1",  "min_shifts": 2, "max_shifts": 5, "available_shifts": ["mon-am", "mon-pm", "tue-am", "wed-am", "wed-pm", "thu-am", "fri-pm"]},
+    {"id": "w2",  "min_shifts": 2, "max_shifts": 5, "available_shifts": ["mon-am", "mon-pm", "tue-pm", "wed-am", "thu-am", "thu-pm", "fri-am"]},
+    {"id": "w3",  "min_shifts": 2, "max_shifts": 5, "available_shifts": ["mon-pm", "tue-am", "tue-pm", "wed-pm", "thu-pm", "fri-am", "fri-pm"]},
+    {"id": "w4",  "min_shifts": 2, "max_shifts": 5, "available_shifts": ["mon-am", "tue-am", "wed-am", "wed-pm", "thu-am", "fri-am", "fri-pm"]},
+    {"id": "w5",  "min_shifts": 2, "max_shifts": 5, "available_shifts": ["mon-pm", "tue-am", "tue-pm", "wed-am", "thu-am", "thu-pm", "fri-pm"]},
+    {"id": "w6",  "min_shifts": 2, "max_shifts": 5, "available_shifts": ["mon-am", "mon-pm", "wed-pm", "thu-am", "thu-pm", "fri-am", "fri-pm"]},
+    {"id": "w7",  "min_shifts": 2, "max_shifts": 5, "available_shifts": ["mon-am", "tue-am", "tue-pm", "wed-am", "thu-am", "fri-am", "fri-pm"]},
+    {"id": "w8",  "min_shifts": 2, "max_shifts": 5, "available_shifts": ["mon-pm", "tue-pm", "wed-pm", "thu-am", "thu-pm", "fri-am", "fri-pm"]}
+  ],
+  "shifts": [
+    {"id": "mon-am", "name": "Monday AM",    "hours": 4, "required_workers": 2},
+    {"id": "mon-pm", "name": "Monday PM",    "hours": 4, "required_workers": 2},
+    {"id": "tue-am", "name": "Tuesday AM",   "hours": 4, "required_workers": 2},
+    {"id": "tue-pm", "name": "Tuesday PM",   "hours": 4, "required_workers": 2},
+    {"id": "wed-am", "name": "Wednesday AM", "hours": 4, "required_workers": 2},
+    {"id": "wed-pm", "name": "Wednesday PM", "hours": 4, "required_workers": 2},
+    {"id": "thu-am", "name": "Thursday AM",  "hours": 4, "required_workers": 2},
+    {"id": "thu-pm", "name": "Thursday PM",  "hours": 4, "required_workers": 2},
+    {"id": "fri-am", "name": "Friday AM",    "hours": 4, "required_workers": 2},
+    {"id": "fri-pm", "name": "Friday PM",    "hours": 4, "required_workers": 2}
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "_comment": "Shifts have varied lengths (4h, 6h, 8h) — cost vs fairness tradeoff differs from the default input",
+  "workers": [
+    {"id": "w1", "min_shifts": 2, "max_shifts": 5, "available_shifts": ["mon-full","tue-half","wed-half","thu-half","fri-full"]},
+    {"id": "w2", "min_shifts": 2, "max_shifts": 5, "available_shifts": ["mon-half","mon-full","tue-full","wed-half","thu-full"]},
+    {"id": "w3", "min_shifts": 2, "max_shifts": 5, "available_shifts": ["mon-half","tue-half","wed-full","thu-half","fri-half"]},
+    {"id": "w4", "min_shifts": 2, "max_shifts": 5, "available_shifts": ["mon-full","tue-full","wed-half","thu-full","fri-half"]},
+    {"id": "w5", "min_shifts": 2, "max_shifts": 5, "available_shifts": ["mon-half","tue-half","wed-full","fri-full","fri-half"]},
+    {"id": "w6", "min_shifts": 2, "max_shifts": 5, "available_shifts": ["mon-half","tue-full","thu-half","thu-full","fri-full"]}
+  ],
+  "shifts": [
+    {"id": "mon-half",  "name": "Mon 4h",  "hours": 4, "required_workers": 2},
+    {"id": "mon-full",  "name": "Mon 8h",  "hours": 8, "required_workers": 1},
+    {"id": "tue-half",  "name": "Tue 4h",  "hours": 4, "required_workers": 2},
+    {"id": "tue-full",  "name": "Tue 8h",  "hours": 8, "required_workers": 1},
+    {"id": "wed-half",  "name": "Wed 4h",  "hours": 4, "required_workers": 2},
+    {"id": "wed-full",  "name": "Wed 8h",  "hours": 8, "required_workers": 1},
+    {"id": "thu-half",  "name": "Thu 4h",  "hours": 4, "required_workers": 2},
+    {"id": "thu-full",  "name": "Thu 8h",  "hours": 8, "required_workers": 1},
+    {"id": "fri-half",  "name": "Fri 4h",  "hours": 4, "required_workers": 2},
+    {"id": "fri-full",  "name": "Fri 8h",  "hours": 8, "required_workers": 1}
+  ]
+}
